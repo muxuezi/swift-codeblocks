@@ -1,0 +1,26 @@
+{
+    "sections": {
+        "primary": [
+            {
+                "title": "Books about Swift",
+                "url": "https://www.gitbook.io/explore/tag/swift",
+                "image": "https://raw.github.com/GitbookIO/gitbook.io/master/assets/primary/swift.png"
+            },
+            {
+                "title": "Sass in the Real World",
+                "url": "https://www.gitbook.io/book/anotheruiguy/sassintherealworld_book-i",
+                "image": "https://raw.github.com/GitbookIO/gitbook.io/master/assets/primary/sass.png"
+            },
+            {
+                "title": "Books about Javascript",
+                "url": "https://www.gitbook.io/explore/tag/javascript",
+                "image": "https://raw.github.com/GitbookIO/gitbook.io/master/assets/primary/javascript.png"
+            },
+            {
+                "title": "Books in Chinese",
+                "url": "https://www.gitbook.io/explore/lang/zh",
+                "image": "https://raw.github.com/GitbookIO/gitbook.io/master/assets/primary/chinese.png"
+            }
+        ]
+    }
+}
