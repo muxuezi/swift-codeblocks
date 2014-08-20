@@ -11,7 +11,7 @@ Everthing is Ok now, thanks [Samy Pessé](http://www.samypesse.fr/).
 ~~There's a swfit syntax bug highlight on [Gitbook](https://www.gitbook.io) now, even though [Samy Pessé](http://www.samypesse.fr/) had upgraded the highlight version of [gitbook/package.json](https://github.com/GitbookIO/gitbook) to [8.1.0](https://highlightjs.org/), which support swfit syntax.~~
 
 test:
-```swift
+
 ```swift
 extension OCBool: Equatable{
 }
