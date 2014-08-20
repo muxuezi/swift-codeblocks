@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <title>Introduction | Swift Codeblocks Syntax Highlight</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta name="description" content="For The Swift Programming Language 中文版.">
+        <meta name="description" content="Everthing is Ok now, thanks Samy Pessé.">
         <meta name="generator" content="GitBook 0.7.1">
         <meta name="HandheldFriendly" content="true"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -32,7 +32,7 @@
 
 
         
-    <div class="book" data-github="muxuezi/swift-codeblocks" data-level="0" data-basepath="." data-revision="1408517630970">
+    <div class="book" data-github="muxuezi/swift-codeblocks" data-level="0" data-basepath="." data-revision="1408521897680">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -1002,12 +1002,32 @@
                     <section class="normal" id="section-gitbook_1">
                     
                         <h1 id="swift-codeblocks-syntax-highlight">Swift Codeblocks Syntax Highlight</h1>
-<p>For <a href="http://numbbbbb.gitbooks.io/-the-swift-programming-language-/" target="_blank">The Swift Programming Language 中文版</a>.</p>
 <p>Everthing is Ok now, thanks <a href="http://www.samypesse.fr/" target="_blank">Samy Pessé</a>.</p>
-<p><a href="https://coding.net" target="_blank">Coding</a> has swift syntax highlight in <a href="http://swift.coding.io/" target="_blank">Swift Codeblocks Syntax Highlight</a>, and <a href="https://coding.net/u/tj2/p/swift/git" target="_blank">source code</a>.</p>
-<p><a href="http://muxuezi.gitbooks.io/swift-codeblocks/" target="_blank">Swift Codeblocks Syntax Highlight</a> on Gitbook is Ok.</p>
-<p><del>There&#39;s a swfit syntax bug highlight on <a href="https://www.gitbook.io" target="_blank">Gitbook</a> now, even though <a href="http://www.samypesse.fr/" target="_blank">Samy Pessé</a> had upgraded the highlight version of <a href="https://github.com/GitbookIO/gitbook" target="_blank">gitbook/package.json</a> to <a href="https://highlightjs.org/" target="_blank">8.1.0</a>, which support swfit syntax.</del></p>
-<p>test:</p>
+<p>由于<a href="http://numbbbbb.gitbooks.io/-the-swift-programming-language-/" target="_blank">The Swift Programming Language 中文版</a>不能swift语言高亮.</p>
+<p>制作：</p>
+<ul>
+<li><p><a href="http://swift.coding.io/" target="_blank">Swift Codeblocks Syntax Highlight</a> on <a href="https://coding.net/u/tj2/p/swift/git" target="_blank">Coding</a>.</p>
+</li>
+<li><p><a href="http://muxuezi.gitbooks.io/swift-codeblocks/" target="_blank">Swift Codeblocks Syntax Highlight</a> on <a href="https://github.com/muxuezi/swift-codeblocks/" target="_blank">Gitbhub</a>.</p>
+</li>
+</ul>
+<p><del>There&#39;s a swfit syntax bug highlight on<a href="https://www.gitbook.io" title="Gitbook" target="_blank">Gitbook</a>now, even though <a href="http://www.samypesse.fr/" target="_blank">Samy Pessé</a> had upgraded the highlight version of <a href="https://github.com/GitbookIO/gitbook" target="_blank">gitbook/package.json</a> to <a href="https://highlightjs.org/" target="_blank">8.1.0</a>, which support swfit syntax.</del></p>
+<ul>
+<li><a href="https://coding.net/" title="Coding" target="_blank">Coding</a>和<a href="https://www.gitbook.io" title="Gitbook" target="_blank">Gitbook</a>都通过<a href="https://highlightjs.org/usage/" title="highlightjs" target="_blank">highlightjs</a>支持swift语法高亮;</li>
+<li><a href="https://coding.net/u/tj2/p/swift/git" target="_blank">Coding</a>和<a href="https://github.com/muxuezi/swift-codeblocks/" target="_blank">Github</a>可以在代码管理页面直接语法高亮;</li>
+<li><a href="https://www.gitbook.io" title="Gitbook" target="_blank">Gitbook</a>还不行，如<a href="https://www.gitbook.io/book/muxuezi/swift-codeblocks" target="_blank">首页</a>不支持swift语法高亮。</li>
+</ul>
+<p>如果不论PDF、MOBI、EPUB格式输出，则</p>
+<script type="math/tex; mode=display">Coding \approx Github + Gitbook</script><p>一般html解决办法见<a href="https://highlightjs.org/usage/" title="highlightjs" target="_blank">highlightjs</a>，需要xcode.css、highlight.pack.js，并在head增加:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"../assert/css/xcode.css"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"../assert/js/highlight.pack.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">hljs.initHighlightingOnLoad();</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p><link rel="stylesheet" href="../assets/css/xcode.css"></p>
+<script src="../assets/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<p>Test:</p>
 <pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">OCBool</span>: <span class="hljs-title">Equatable</span></span>{
 }
 

@@ -1,16 +1,43 @@
 # Swift Codeblocks Syntax Highlight
 
-For [The Swift Programming Language 中文版](http://numbbbbb.gitbooks.io/-the-swift-programming-language-/).
-
 Everthing is Ok now, thanks [Samy Pessé](http://www.samypesse.fr/).
 
-[Coding](https://coding.net) has swift syntax highlight in [Swift Codeblocks Syntax Highlight](http://swift.coding.io/), and [source code](https://coding.net/u/tj2/p/swift/git).
+由于[The Swift Programming Language 中文版](http://numbbbbb.gitbooks.io/-the-swift-programming-language-/)不能swift语言高亮.
 
-[Swift Codeblocks Syntax Highlight](http://muxuezi.gitbooks.io/swift-codeblocks/) on Gitbook is Ok.
+制作：
 
-~~There's a swfit syntax bug highlight on [Gitbook](https://www.gitbook.io) now, even though [Samy Pessé](http://www.samypesse.fr/) had upgraded the highlight version of [gitbook/package.json](https://github.com/GitbookIO/gitbook) to [8.1.0](https://highlightjs.org/), which support swfit syntax.~~
+- [Swift Codeblocks Syntax Highlight](http://swift.coding.io/) on [Coding][0].
 
-test:
+- [Swift Codeblocks Syntax Highlight](http://muxuezi.gitbooks.io/swift-codeblocks/) on [Gitbhub][4].
+
+~~There's a swfit syntax bug highlight on[Gitbook][2]now, even though [Samy Pessé](http://www.samypesse.fr/) had upgraded the highlight version of [gitbook/package.json](https://github.com/GitbookIO/gitbook) to [8.1.0](https://highlightjs.org/), which support swfit syntax.~~
+
+- [Coding][1]和[Gitbook][2]都通过[highlightjs][3]支持swift语法高亮;
+- [Coding][0]和[Github][4]可以在代码管理页面直接语法高亮;
+- [Gitbook][2]还不行，如[首页](https://www.gitbook.io/book/muxuezi/swift-codeblocks)不支持swift语法高亮。
+
+如果不论PDF、MOBI、EPUB格式输出，则
+$$Coding \approx Github + Gitbook$$
+
+一般html解决办法见[highlightjs][3]，需要xcode.css、highlight.pack.js，并在head增加:
+
+```html
+<link rel="stylesheet" href="../assert/css/xcode.css">
+<script src="../assert/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+```
+[0]:https://coding.net/u/tj2/p/swift/git
+[1]:https://coding.net/ "Coding"
+[2]:https://www.gitbook.io "Gitbook"
+[3]:https://highlightjs.org/usage/ "highlightjs"
+[4]:https://github.com/muxuezi/swift-codeblocks/
+
+
+<link rel="stylesheet" href="../assets/css/xcode.css">
+<script src="../assets/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+Test:
 
 ```swift
 extension OCBool: Equatable{
