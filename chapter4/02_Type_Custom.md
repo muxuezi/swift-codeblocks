@@ -64,9 +64,9 @@ var isSuccess:OCBool = true
 ```
 
 如果小伙伴们直接这么用，则会出现如下错误：
-
+```
 /Users/tyrion-OldCoder/Documents/Learning/BoolType/BoolType/main.swift:30:24: Type 'OCBool' does not conform to protocol 'BooleanLiteralConvertible'
-
+```
 编译器咆哮的原因是，我们的类型没有遵从“布尔字面量转换协议”，接下来修正这个问题，
 #####代码示例如下：
 
@@ -115,9 +115,9 @@ if isSuccess {
 ```
 
 你永远吃不到老码的火锅，因为这里编译器会咆哮：
-
+```
 /Users/tyrion-OldCoder/Documents/Learning/BoolType/BoolType/main.swift:27:4: Type 'OCBool' does not conform to protocol 'LogicValue'
-
+```
 OCBool现在只能用bool类型初始化，而不能直接返回bool型，小火把们还记得在《老码说编程之白话Swift江湖》中，老码多次提到，妈妈再也不担心我们 if a = 1{}的写法了， 因为等号不支持值返回了， 所以在if判断是后面的条件必须有返回值，OCBool没有，所以编译器哭了。我们解决这个问题。
 
 #####代码示例如下：
