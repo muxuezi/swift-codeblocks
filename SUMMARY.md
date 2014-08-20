@@ -27,7 +27,7 @@
    * [扩展](chapter2/20_Extensions.md)
    * [协议](chapter2/21_Protocols.md)
    * [泛型](chapter2/22_Generics.md)
-   * [权限控制](chapter2/23_Access Control.md)
+   * [权限控制](chapter2/23_Access_Control.md)
    * [高级操作符](chapter2/24_Advanced_Operators.md)
 * [语言参考](chapter3/chapter3.md)
    * [关于语言参考](chapter3/01_About_the_Language_Reference.md)
