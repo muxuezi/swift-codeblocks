@@ -161,11 +161,11 @@ if isSuccess {
 ```
 
 ####运行结果如下：
-
+```
 Hello, World!
 老码请你吃火锅！
 Program ended with exit code: 0
-
+```
 #####注意：
 - 如果小伙伴们现在用的是Beta版的Xcode，注意苹果官方Blog中，在代码第17行如果在Xcode Beta4下是错误的，这里的协议是，LogicValue而不是BooleanVue，所以记得看错误提示才是好习惯。
 - 注意代码第34行，完美支持if判断，且输出结果为“老码请你吃火锅”，老码也是说说而已，请不要当真。
@@ -199,11 +199,11 @@ if ocResult {
 ```
 
 #####代码运行结果如下：
-
+```
 Hello, World!
 老码没钱，郭美美请你吃火锅！
 Program ended with exit code: 0
-
+```
 漂亮！我们的OCBool类型现在支持了所有的逻辑变量初始化。
 
 #####注意：
