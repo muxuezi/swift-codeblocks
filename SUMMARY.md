@@ -1,10 +1,9 @@
 # Summary
 
-* [Introduction](README.md)
 * [欢迎使用 Swift](chapter1/chapter1.md)
-   * [关于 Swift](chapter1/01_Swift.md)
-   * [Swift 初见](chapter1/02_A_Swift_Tour.md)
-   * [Swift 版本历史记录](chapter1/03_Revision_History.md)
+   * [关于 Swift](chapter1/01_swift.md)
+   * [Swift 初见](chapter1/02_a_swift_tour.md)
+   * [Swift 版本历史记录](chapter1/03_revision_history.md)
 * [Swift 教程](chapter2/chapter2.md)
    * [基础部分](chapter2/01_The_Basics.md)
    * [基本运算符](chapter2/02_Basic_Operators.md)
@@ -45,4 +44,4 @@
    * [Access Control 权限控制的黑与白](chapter4/01_Access_Control.md)
    * [造个类型不是梦-白话Swift类型创建](chapter4/02_Type_Custom.md)
    * [WWDC里面的那个“大炮打气球”](chapter4/03_Ballons.md)
-
+   * [Interacting with C Pointers 与C语言指针的交互](chapter4/04_Interacting_with_C_Pointers.md)
