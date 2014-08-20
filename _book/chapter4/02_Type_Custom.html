@@ -1,0 +1,1303 @@
+<!DOCTYPE HTML>
+<html lang="en-US" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <title>造个类型不是梦-白话Swift类型创建 | Swift Codeblocks Syntax Highlight</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 0.7.1">
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    
+    
+    <meta name="author" content="muxuezi">
+    
+    
+    <link rel="next" href="../chapter4/03_Ballons.html" />
+    
+    
+    <link rel="prev" href="../chapter4/01_Access_Control.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+<link rel="stylesheet" href="../gitbook/style.css">
+
+
+        
+    <div class="book" data-github="muxuezi/swift-codeblocks" data-level="4.2" data-basepath=".." data-revision="1408517470304">
+    <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    
+    <a href="https://github.com/muxuezi/swift-codeblocks" target="_blank" class="btn pull-left home-bookmark" aria-label="GitHub home"><i class="fa fa-bookmark-o"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    <span id="font-settings-wrapper">
+        <a href="#" class="btn pull-left toggle-font-settings" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="btn-group btn-block">
+        <button id="reduce-font-size" class="btn btn-default">A</button>
+        <button id="enlarge-font-size" class="btn btn-default">A</button>
+    </div>
+
+    <ul class="list-group font-family-list">
+        <li class="list-group-item" data-font="0">Serif</li>
+        <li class="list-group-item" data-font="1">Sans</li>
+    </ul>
+
+    <div class="btn-group btn-group-xs btn-block color-theme-list">
+        <button type="button" class="btn btn-default" id="color-theme-preview-0" data-theme="0">White</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-1" data-theme="1">Sepia</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-2" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </span>
+
+    <!-- Actions Right -->
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-spinner fa-spin"></i>
+        <a href="../" >Swift Codeblocks Syntax Highlight</a>
+    </h1>
+</div>
+
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        <li>
+            <a href="https://github.com/muxuezi" target="blank" class="author-link">About the author</a>
+        </li>
+        
+
+        
+        
+        <li>
+            <a href="https://github.com/muxuezi/swift-codeblocks/issues" target="blank" class="issues-link">Questions and Issues</a>
+        </li>
+        
+
+        
+        
+        <li>
+            <a href="https://github.com/muxuezi/swift-codeblocks/edit/master/chapter4/02_Type_Custom.md" target="blank" class="contribute-link">Edit and Contribute</a>
+        </li>
+        
+
+	
+
+        
+        <li class="divider"></li>
+        
+
+        
+    
+        
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                        <i class="fa fa-check"></i>
+                        
+                         Introduction
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1" data-path="chapter1/chapter1.html">
+            
+                
+                    <a href="../chapter1/chapter1.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                         欢迎使用 Swift
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="1.1" data-path="chapter1/01_swift.html">
+            
+                
+                    <a href="../chapter1/01_swift.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                         关于 Swift
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.2" data-path="chapter1/02_a_swift_tour.html">
+            
+                
+                    <a href="../chapter1/02_a_swift_tour.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                         Swift 初见
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="1.3" data-path="chapter1/03_revision_history.html">
+            
+                
+                    <a href="../chapter1/03_revision_history.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                         Swift 版本历史记录
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2" data-path="chapter2/chapter2.html">
+            
+                
+                    <a href="../chapter2/chapter2.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                         Swift 教程
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="2.1" data-path="chapter2/01_The_Basics.html">
+            
+                
+                    <a href="../chapter2/01_The_Basics.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                         基础部分
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.2" data-path="chapter2/02_Basic_Operators.html">
+            
+                
+                    <a href="../chapter2/02_Basic_Operators.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                         基本运算符
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.3" data-path="chapter2/03_Strings_and_Characters.html">
+            
+                
+                    <a href="../chapter2/03_Strings_and_Characters.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                         字符串和字符
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.4" data-path="chapter2/04_Collection_Types.html">
+            
+                
+                    <a href="../chapter2/04_Collection_Types.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                         集合类型
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.5" data-path="chapter2/05_Control_Flow.html">
+            
+                
+                    <a href="../chapter2/05_Control_Flow.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                         控制流
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.6" data-path="chapter2/06_Functions.html">
+            
+                
+                    <a href="../chapter2/06_Functions.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                         函数
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.7" data-path="chapter2/07_Closures.html">
+            
+                
+                    <a href="../chapter2/07_Closures.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                         闭包
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.8" data-path="chapter2/08_Enumerations.html">
+            
+                
+                    <a href="../chapter2/08_Enumerations.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.</b>
+                        
+                         枚举
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.9" data-path="chapter2/09_Classes_and_Structures.html">
+            
+                
+                    <a href="../chapter2/09_Classes_and_Structures.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.</b>
+                        
+                         类和结构体
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.10" data-path="chapter2/10_Properties.html">
+            
+                
+                    <a href="../chapter2/10_Properties.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.</b>
+                        
+                         属性
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.11" data-path="chapter2/11_Methods.html">
+            
+                
+                    <a href="../chapter2/11_Methods.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.</b>
+                        
+                         方法
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.12" data-path="chapter2/12_Subscripts.html">
+            
+                
+                    <a href="../chapter2/12_Subscripts.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.12.</b>
+                        
+                         下标脚本
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.13" data-path="chapter2/13_Inheritance.html">
+            
+                
+                    <a href="../chapter2/13_Inheritance.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.13.</b>
+                        
+                         继承
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.14" data-path="chapter2/14_Initialization.html">
+            
+                
+                    <a href="../chapter2/14_Initialization.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.14.</b>
+                        
+                         构造过程
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.15" data-path="chapter2/15_Deinitialization.html">
+            
+                
+                    <a href="../chapter2/15_Deinitialization.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.15.</b>
+                        
+                         析构过程
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.16" data-path="chapter2/16_Automatic_Reference_Counting.html">
+            
+                
+                    <a href="../chapter2/16_Automatic_Reference_Counting.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.16.</b>
+                        
+                         自动引用计数
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.17" data-path="chapter2/17_Optional_Chaining.html">
+            
+                
+                    <a href="../chapter2/17_Optional_Chaining.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.17.</b>
+                        
+                         可选链
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.18" data-path="chapter2/18_Type_Casting.html">
+            
+                
+                    <a href="../chapter2/18_Type_Casting.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.18.</b>
+                        
+                         类型转换
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.19" data-path="chapter2/19_Nested_Types.html">
+            
+                
+                    <a href="../chapter2/19_Nested_Types.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.19.</b>
+                        
+                         嵌套类型
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.20" data-path="chapter2/20_Extensions.html">
+            
+                
+                    <a href="../chapter2/20_Extensions.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.20.</b>
+                        
+                         扩展
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.21" data-path="chapter2/21_Protocols.html">
+            
+                
+                    <a href="../chapter2/21_Protocols.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.21.</b>
+                        
+                         协议
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.22" data-path="chapter2/22_Generics.html">
+            
+                
+                    <a href="../chapter2/22_Generics.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.22.</b>
+                        
+                         泛型
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.23" data-path="chapter2/23_Access_Control.html">
+            
+                
+                    <a href="../chapter2/23_Access_Control.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.23.</b>
+                        
+                         权限控制
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="2.24" data-path="chapter2/24_Advanced_Operators.html">
+            
+                
+                    <a href="../chapter2/24_Advanced_Operators.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.24.</b>
+                        
+                         高级操作符
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3" data-path="chapter3/chapter3.html">
+            
+                
+                    <a href="../chapter3/chapter3.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                         语言参考
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="3.1" data-path="chapter3/01_About_the_Language_Reference.html">
+            
+                
+                    <a href="../chapter3/01_About_the_Language_Reference.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                         关于语言参考
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.2" data-path="chapter3/02_Lexical_Structure.html">
+            
+                
+                    <a href="../chapter3/02_Lexical_Structure.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                         词法结构
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.3" data-path="chapter3/03_Types.html">
+            
+                
+                    <a href="../chapter3/03_Types.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                         类型
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.4" data-path="chapter3/04_Expressions.html">
+            
+                
+                    <a href="../chapter3/04_Expressions.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                         表达式
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.5" data-path="chapter3/10_Statements.html">
+            
+                
+                    <a href="../chapter3/10_Statements.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                         语句
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.6" data-path="chapter3/05_Declarations.html">
+            
+                
+                    <a href="../chapter3/05_Declarations.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                         声明
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.7" data-path="chapter3/06_Attributes.html">
+            
+                
+                    <a href="../chapter3/06_Attributes.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                         特性
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.8" data-path="chapter3/07_Patterns.html">
+            
+                
+                    <a href="../chapter3/07_Patterns.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                         模式
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.9" data-path="chapter3/08_Generic_Parameters_and_Arguments.html">
+            
+                
+                    <a href="../chapter3/08_Generic_Parameters_and_Arguments.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.</b>
+                        
+                         泛型参数
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="3.10" data-path="chapter3/09_Summary_of_the_Grammar.html">
+            
+                
+                    <a href="../chapter3/09_Summary_of_the_Grammar.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.10.</b>
+                        
+                         语法总结
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4" data-path="chapter4/chapter4.html">
+            
+                
+                    <a href="../chapter4/chapter4.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                         苹果官方Blog官方翻译
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        
+        <li class="chapter " data-level="4.1" data-path="chapter4/01_Access_Control.html">
+            
+                
+                    <a href="../chapter4/01_Access_Control.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                         Access Control 权限控制的黑与白
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter active" data-level="4.2" data-path="chapter4/02_Type_Custom.html">
+            
+                
+                    <a href="../chapter4/02_Type_Custom.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                         造个类型不是梦-白话Swift类型创建
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.3" data-path="chapter4/03_Ballons.html">
+            
+                
+                    <a href="../chapter4/03_Ballons.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                         WWDC里面的那个“大炮打气球”
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.4" data-path="chapter4/04_Interacting_with_C_Pointers.html">
+            
+                
+                    <a href="../chapter4/04_Interacting_with_C_Pointers.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                         Interacting with C Pointers 与C语言指针的交互
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Generated using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 95.55555555555556%;min-width: 93.33333333333333%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="../index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="../chapter1/chapter1.html" title="欢迎使用 Swift" class="chapter done new-chapter" data-progress="1" style="left: 2.2222222222222223%;"></a>
+    
+        <a href="../chapter1/01_swift.html" title="关于 Swift" class="chapter done " data-progress="1.1" style="left: 4.444444444444445%;"></a>
+    
+        <a href="../chapter1/02_a_swift_tour.html" title="Swift 初见" class="chapter done " data-progress="1.2" style="left: 6.666666666666667%;"></a>
+    
+        <a href="../chapter1/03_revision_history.html" title="Swift 版本历史记录" class="chapter done " data-progress="1.3" style="left: 8.88888888888889%;"></a>
+    
+        <a href="../chapter2/chapter2.html" title="Swift 教程" class="chapter done new-chapter" data-progress="2" style="left: 11.11111111111111%;"></a>
+    
+        <a href="../chapter2/01_The_Basics.html" title="基础部分" class="chapter done " data-progress="2.1" style="left: 13.333333333333334%;"></a>
+    
+        <a href="../chapter2/02_Basic_Operators.html" title="基本运算符" class="chapter done " data-progress="2.2" style="left: 15.555555555555555%;"></a>
+    
+        <a href="../chapter2/03_Strings_and_Characters.html" title="字符串和字符" class="chapter done " data-progress="2.3" style="left: 17.77777777777778%;"></a>
+    
+        <a href="../chapter2/04_Collection_Types.html" title="集合类型" class="chapter done " data-progress="2.4" style="left: 20%;"></a>
+    
+        <a href="../chapter2/05_Control_Flow.html" title="控制流" class="chapter done " data-progress="2.5" style="left: 22.22222222222222%;"></a>
+    
+        <a href="../chapter2/06_Functions.html" title="函数" class="chapter done " data-progress="2.6" style="left: 24.444444444444443%;"></a>
+    
+        <a href="../chapter2/07_Closures.html" title="闭包" class="chapter done " data-progress="2.7" style="left: 26.666666666666668%;"></a>
+    
+        <a href="../chapter2/08_Enumerations.html" title="枚举" class="chapter done " data-progress="2.8" style="left: 28.88888888888889%;"></a>
+    
+        <a href="../chapter2/09_Classes_and_Structures.html" title="类和结构体" class="chapter done " data-progress="2.9" style="left: 31.11111111111111%;"></a>
+    
+        <a href="../chapter2/10_Properties.html" title="属性" class="chapter done " data-progress="2.10" style="left: 33.333333333333336%;"></a>
+    
+        <a href="../chapter2/11_Methods.html" title="方法" class="chapter done " data-progress="2.11" style="left: 35.55555555555556%;"></a>
+    
+        <a href="../chapter2/12_Subscripts.html" title="下标脚本" class="chapter done " data-progress="2.12" style="left: 37.77777777777778%;"></a>
+    
+        <a href="../chapter2/13_Inheritance.html" title="继承" class="chapter done " data-progress="2.13" style="left: 40%;"></a>
+    
+        <a href="../chapter2/14_Initialization.html" title="构造过程" class="chapter done " data-progress="2.14" style="left: 42.22222222222222%;"></a>
+    
+        <a href="../chapter2/15_Deinitialization.html" title="析构过程" class="chapter done " data-progress="2.15" style="left: 44.44444444444444%;"></a>
+    
+        <a href="../chapter2/16_Automatic_Reference_Counting.html" title="自动引用计数" class="chapter done " data-progress="2.16" style="left: 46.666666666666664%;"></a>
+    
+        <a href="../chapter2/17_Optional_Chaining.html" title="可选链" class="chapter done " data-progress="2.17" style="left: 48.888888888888886%;"></a>
+    
+        <a href="../chapter2/18_Type_Casting.html" title="类型转换" class="chapter done " data-progress="2.18" style="left: 51.111111111111114%;"></a>
+    
+        <a href="../chapter2/19_Nested_Types.html" title="嵌套类型" class="chapter done " data-progress="2.19" style="left: 53.333333333333336%;"></a>
+    
+        <a href="../chapter2/20_Extensions.html" title="扩展" class="chapter done " data-progress="2.20" style="left: 55.55555555555556%;"></a>
+    
+        <a href="../chapter2/21_Protocols.html" title="协议" class="chapter done " data-progress="2.21" style="left: 57.77777777777778%;"></a>
+    
+        <a href="../chapter2/22_Generics.html" title="泛型" class="chapter done " data-progress="2.22" style="left: 60%;"></a>
+    
+        <a href="../chapter2/23_Access_Control.html" title="权限控制" class="chapter done " data-progress="2.23" style="left: 62.22222222222222%;"></a>
+    
+        <a href="../chapter2/24_Advanced_Operators.html" title="高级操作符" class="chapter done " data-progress="2.24" style="left: 64.44444444444444%;"></a>
+    
+        <a href="../chapter3/chapter3.html" title="语言参考" class="chapter done new-chapter" data-progress="3" style="left: 66.66666666666667%;"></a>
+    
+        <a href="../chapter3/01_About_the_Language_Reference.html" title="关于语言参考" class="chapter done " data-progress="3.1" style="left: 68.88888888888889%;"></a>
+    
+        <a href="../chapter3/02_Lexical_Structure.html" title="词法结构" class="chapter done " data-progress="3.2" style="left: 71.11111111111111%;"></a>
+    
+        <a href="../chapter3/03_Types.html" title="类型" class="chapter done " data-progress="3.3" style="left: 73.33333333333333%;"></a>
+    
+        <a href="../chapter3/04_Expressions.html" title="表达式" class="chapter done " data-progress="3.4" style="left: 75.55555555555556%;"></a>
+    
+        <a href="../chapter3/10_Statements.html" title="语句" class="chapter done " data-progress="3.5" style="left: 77.77777777777777%;"></a>
+    
+        <a href="../chapter3/05_Declarations.html" title="声明" class="chapter done " data-progress="3.6" style="left: 80%;"></a>
+    
+        <a href="../chapter3/06_Attributes.html" title="特性" class="chapter done " data-progress="3.7" style="left: 82.22222222222223%;"></a>
+    
+        <a href="../chapter3/07_Patterns.html" title="模式" class="chapter done " data-progress="3.8" style="left: 84.44444444444444%;"></a>
+    
+        <a href="../chapter3/08_Generic_Parameters_and_Arguments.html" title="泛型参数" class="chapter done " data-progress="3.9" style="left: 86.66666666666667%;"></a>
+    
+        <a href="../chapter3/09_Summary_of_the_Grammar.html" title="语法总结" class="chapter done " data-progress="3.10" style="left: 88.88888888888889%;"></a>
+    
+        <a href="../chapter4/chapter4.html" title="苹果官方Blog官方翻译" class="chapter done new-chapter" data-progress="4" style="left: 91.11111111111111%;"></a>
+    
+        <a href="../chapter4/01_Access_Control.html" title="Access Control 权限控制的黑与白" class="chapter done " data-progress="4.1" style="left: 93.33333333333333%;"></a>
+    
+        <a href="../chapter4/02_Type_Custom.html" title="造个类型不是梦-白话Swift类型创建" class="chapter done " data-progress="4.2" style="left: 95.55555555555556%;"></a>
+    
+        <a href="../chapter4/03_Ballons.html" title="WWDC里面的那个“大炮打气球”" class="chapter  " data-progress="4.3" style="left: 97.77777777777777%;"></a>
+    
+        <a href="../chapter4/04_Interacting_with_C_Pointers.html" title="Interacting with C Pointers 与C语言指针的交互" class="chapter  " data-progress="4.4" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_77">
+                    
+                        <blockquote>
+<p>翻译：<a href="http://weibo.com/u/5241713117" target="_blank">老码团队翻译组-Tyrion</a>
+校对：<a href="http://weibo.com/u/5241713117" target="_blank">老码团队翻译组-Oberyn</a></p>
+</blockquote>
+<h1 id="-swift">造个类型不是梦-白话Swift类型创建</h1>
+<hr>
+<p>本页包含内容：</p>
+<ul>
+<li><a href="#prototype">自定义原型</a></li>
+<li><a href="#imp-default">实现默认值</a></li>
+<li><a href="#init-by-bool">支持基本布尔型初始化</a></li>
+<li><a href="#condition-by-bool">支持Bool类型判断</a></li>
+<li><a href="#support-all-type">支持兼容各们各派的类型</a></li>
+<li><a href="#make-up-type">完善OCBool的布尔基因体系</a></li>
+</ul>
+<p>小伙伴们，Swift中的Bool类型有着非常重要的语法功能，并支撑起了整个Swift体系中的逻辑判断体系，经过老码的研究和学习， Bool类型本身其实是对基础Boolean类型封装，小伙伴们可能咬着手指头问老码，怎么一会Bool类型，一会Boolean类型，其区别在于，前者是基于枚举的组合类型，而后者则是基本类型，只有两种true和false。</p>
+<p><a name="prefix_expressions"></a></p>
+<h4 id="">自定义原型</h4>
+<p>接下老码根据Bool的思想来创建一个OCBool类型，来让小伙伴们了解一下Swift中到底是怎么玩儿的。
+来我们先看一下OCBool的定义。</p>
+<h5 id="">代码示例如下：</h5>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">OCBool</span></span>{
+<span class="hljs-keyword">case</span> ocTrue
+<span class="hljs-keyword">case</span> ocFalse
+}
+</code></pre>
+<h5 id="">注意：</h5>
+<ul>
+<li>代码中第2行和第3行，可以合并到一行写，如苹果官方Blog所写的一样</li>
+<li>代码中命名需要注意：OCBool是类型名，所以首字母必须大写，而case中的ocTrue和ocFalse是小类型则需要首字母小写。</li>
+</ul>
+<p><a name="imp-default"></a></p>
+<h4 id="">实现默认值</h4>
+<p>行，我们给了一个漂亮的定义，不过按照传统语言的经验，Bool值默认情况下是假， 所以我们的OCBool也应该如此，我们使用类型扩展技术增加这个默认特性：</p>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">OCBool</span></span>{
+     <span class="hljs-keyword">init</span>(){
+             <span class="hljs-keyword">self</span> =.ocFalse
+     }
+}
+</code></pre>
+<h5 id="">注意：</h5>
+<ul>
+<li>代码中第1行：extension关键字，非常强大，小伙伴们可以通过此创造出许多好玩的东西，建议各位去Github上看一个名为“Swiftz”的项目，它将扩展用到了极致。</li>
+<li>代码中第3行：self = .ocFalse语法，刚入门的小伙伴们很迷糊，为什么会有奇怪的点语法，因为大牛Chris在Swift中增加了类型智能推断功能，在苹果Blog中，提到了“Context”概念，就是这个意思，因为这行语句是在枚举OCBool中的，其上下文就是OCBool的定义体，编译器当然知道.ocFalse就是OCBool.ocFalse了，所以这里直接点语法，非常整齐。
+现在我们可以使用如下方法使用这个Bool类型。</li>
+</ul>
+<h5 id="">代码示例如下：</h5>
+<pre><code class="lang-swift"><span class="hljs-keyword">var</span> result:<span class="hljs-type">OCBool</span> = <span class="hljs-type">OCBool</span>()
+<span class="hljs-keyword">var</span> result1:<span class="hljs-type">OCBool</span> = .ocTrue
+</code></pre>
+<p><a name="init-by-bool"></a></p>
+<h4 id="">支持基本布尔型初始化</h4>
+<p>正如上述代码所述，我们只能通过类型或者枚举项目赋值，这是组合类型的用法，但是编码的日子里，我们总是希望和true，false直接打交道，也就是说，我们希望这么做，
+代码示例如下：</p>
+<pre><code class="lang-swift"><span class="hljs-keyword">var</span> isSuccess:<span class="hljs-type">OCBool</span> = <span class="hljs-built_in">true</span>
+</code></pre>
+<p>如果小伙伴们直接这么用，则会出现如下错误：</p>
+<pre><code>/Users/tyrion-OldCoder/Documents/Learning/BoolType/BoolType/main.swift:30:24: Type &#39;OCBool&#39; does not conform to protocol &#39;BooleanLiteralConvertible&#39;
+</code></pre><p>编译器咆哮的原因是，我们的类型没有遵从“布尔字面量转换协议”，接下来修正这个问题，</p>
+<h5 id="">代码示例如下：</h5>
+<pre><code class="lang-swift"><span class="hljs-keyword">import</span> <span class="hljs-type">Foundation</span>
+
+<span class="hljs-built_in">println</span>(<span class="hljs-string">"Hello, World!"</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">OCBool</span></span>{
+    <span class="hljs-keyword">case</span> ocTrue
+    <span class="hljs-keyword">case</span> ocFalse
+}
+
+
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">OCBool</span>: <span class="hljs-title">BooleanLiteralConvertible</span></span>{
+<span class="hljs-keyword">static</span> <span class="hljs-func"><span class="hljs-keyword">func</span></span> convertFromBooleanLiteral( value: <span class="hljs-type">Bool</span>) -&gt;<span class="hljs-type">OCBool</span>{
+    <span class="hljs-keyword">return</span> value ? ocTrue : ocFalse
+    }
+}
+
+<span class="hljs-keyword">var</span> isSuccess:<span class="hljs-type">OCBool</span> = <span class="hljs-built_in">true</span>
+</code></pre>
+<h5 id="">注意：</h5>
+<ul>
+<li><p>代码中的第11行是重点，我的类型OCBool支持了BooleanLiteralConvertible协议，这个协到底是干什么的呢，小伙伴们在Xcode代码编辑器，按住Command键，然后点击第11行中的BooleanLiteralConvertible协议名，则会进入它的定义，</p>
+<h5 id="">其定义如下：</h5>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">protocol</span> <span class="hljs-title">BooleanLiteralConvertible</span> </span>{
+  <span class="hljs-keyword">typealias</span> <span class="hljs-type">BooleanLiteralType</span>
+  <span class="hljs-keyword">class</span> <span class="hljs-func"><span class="hljs-keyword">func</span></span> convertFromBooleanLiteral(value: <span class="hljs-type">BooleanLiteralType</span>) -&gt; <span class="hljs-type">Self</span>
+}
+</code></pre>
+</li>
+<li><p>这个定义中有个类方法convertFromBooleanLiteral，它的参数为BooleanLiteralType类型，也就是我传入的Bool类型， 且返回值为实现这个协议的类型本身，在我们的OCBool类型中，其返回值就是OCBool本身。经过这个定义，我们可以直接对OCBool类型直接进行布尔字面量初始化了。</p>
+</li>
+</ul>
+<p><a name="condition-by-bool"></a></p>
+<h4 id="bool">支持Bool类型判断</h4>
+<p>小伙伴们不安分， 肯定想着我怎么用它实现逻辑判断，所以如果你这么写，</p>
+<h5 id="">代码示例如下：</h5>
+<pre><code class="lang-swift"><span class="hljs-keyword">var</span> isSuccess:<span class="hljs-type">OCBool</span> = <span class="hljs-built_in">true</span>
+
+<span class="hljs-keyword">if</span> isSuccess {
+    <span class="hljs-built_in">println</span>( <span class="hljs-string">"老码请你吃火锅！"</span>)
+}
+</code></pre>
+<p>你永远吃不到老码的火锅，因为这里编译器会咆哮：</p>
+<pre><code>/Users/tyrion-OldCoder/Documents/Learning/BoolType/BoolType/main.swift:27:4: Type &#39;OCBool&#39; does not conform to protocol &#39;LogicValue&#39;
+</code></pre><p>OCBool现在只能用bool类型初始化，而不能直接返回bool型，小火把们还记得在《老码说编程之白话Swift江湖》中，老码多次提到，妈妈再也不担心我们 if a = 1{}的写法了， 因为等号不支持值返回了， 所以在if判断是后面的条件必须有返回值，OCBool没有，所以编译器哭了。我们解决这个问题。</p>
+<h5 id="">代码示例如下：</h5>
+<pre><code class="lang-swift"><span class="hljs-keyword">import</span> <span class="hljs-type">Foundation</span>
+
+<span class="hljs-built_in">println</span>(<span class="hljs-string">"Hello, World!"</span>)
+
+<span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">OCBool</span></span>{
+    <span class="hljs-keyword">case</span> ocTrue
+    <span class="hljs-keyword">case</span> ocFalse
+}
+
+
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">OCBool</span>: <span class="hljs-title">BooleanLiteralConvertible</span></span>{
+<span class="hljs-keyword">static</span> <span class="hljs-func"><span class="hljs-keyword">func</span></span> convertFromBooleanLiteral( value: <span class="hljs-type">Bool</span>) -&gt;<span class="hljs-type">OCBool</span>{
+    <span class="hljs-keyword">return</span> value ? ocTrue : ocFalse
+    }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">OCBool</span>: <span class="hljs-title">LogicValue</span></span>{
+    <span class="hljs-func"><span class="hljs-keyword">func</span></span> getLogicValue() -&gt;<span class="hljs-type">Bool</span> {
+        <span class="hljs-keyword">var</span> boolValue: <span class="hljs-type">Bool</span>{
+        <span class="hljs-keyword">switch</span> <span class="hljs-keyword">self</span>{
+        <span class="hljs-keyword">case</span> .ocTrue:
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">true</span>
+        <span class="hljs-keyword">case</span> .ocFalse:
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">false</span>
+            }
+        }
+        <span class="hljs-keyword">return</span> boolValue
+    }
+}
+
+
+<span class="hljs-keyword">var</span> isSuccess:<span class="hljs-type">OCBool</span> = <span class="hljs-built_in">true</span>
+
+<span class="hljs-keyword">if</span> isSuccess {
+    <span class="hljs-built_in">println</span>( <span class="hljs-string">"老码请你吃火锅！"</span>)
+}
+</code></pre>
+<h4 id="">运行结果如下：</h4>
+<pre><code>Hello, World!
+老码请你吃火锅！
+Program ended with exit code: 0
+</code></pre><h5 id="">注意：</h5>
+<ul>
+<li>如果小伙伴们现在用的是Beta版的Xcode，注意苹果官方Blog中，在代码第17行如果在Xcode Beta4下是错误的，这里的协议是，LogicValue而不是BooleanVue，所以记得看错误提示才是好习惯。</li>
+<li>注意代码第34行，完美支持if判断，且输出结果为“老码请你吃火锅”，老码也是说说而已，请不要当真。</li>
+</ul>
+<p></a><a name="support-all-type"></a></p>
+<h4 id="">支持兼容各们各派的类型</h4>
+<p>小伙伴们，江湖风险，门派众多，老码有自己的OCBool类型，可能嵩山少林有自己的SSBool类型，甚至连郭美美都可能有自己的MMBool类型，所以OCBool必须能够识别这些类型，这些各门各派的类型，只要支持LogicValue协议，就应该可以被识别，看老码怎么做，</p>
+<h5 id="">代码示例如下：</h5>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">OCBool</span></span>{
+    <span class="hljs-keyword">init</span>( <span class="hljs-number">_</span> v: <span class="hljs-type">LogicValue</span> )
+    {
+        <span class="hljs-keyword">if</span> v.getLogicValue(){
+            <span class="hljs-keyword">self</span> = .ocTrue
+        }
+        <span class="hljs-keyword">else</span>{
+            <span class="hljs-keyword">self</span> = .ocFalse
+        }
+    }
+
+}
+
+<span class="hljs-keyword">var</span> mmResult: <span class="hljs-type">Bool</span> = <span class="hljs-built_in">true</span>
+<span class="hljs-keyword">var</span> ocResult:<span class="hljs-type">OCBool</span> = <span class="hljs-type">OCBool</span>(mmResult)
+
+
+<span class="hljs-keyword">if</span> ocResult {
+    <span class="hljs-built_in">println</span>( <span class="hljs-string">"老码没钱，郭美美请你吃火锅！"</span>)
+}
+</code></pre>
+<h5 id="">代码运行结果如下：</h5>
+<pre><code>Hello, World!
+老码没钱，郭美美请你吃火锅！
+Program ended with exit code: 0
+</code></pre><p>漂亮！我们的OCBool类型现在支持了所有的逻辑变量初始化。</p>
+<h5 id="">注意：</h5>
+<ul>
+<li>代码中第2行：“_”下横杠的用法，这是一个功能强大的小强，在此的目的是屏蔽外部参数名，所以小伙伴们可以直接：var ocResult:OCBool = OCBool(mmResult)而不是：var ocResult:OCBool = OCBool(v: mmResult)，小伙伴们惊呆了！这个init函数中本来就没有外部参数名啊，还记得老码在书里说过没，Swift的初始化函数会默认使用内部参数名，作为外部参数名。</li>
+</ul>
+<p><a name="make-up-type"></a></p>
+<h4 id="ocbool">完善OCBool的布尔基因体系：</h4>
+<p>小伙伴们，bool类型的价值就是在于各种判断，诸如==，!=, &amp;，|,^,!，以及各种组合逻辑运算，我们OCBool也要具备这些功能，否则就会基因缺陷，且看老码如何实现：</p>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">OCBool</span>: <span class="hljs-title">Equatable</span></span>{
+}
+
+<span class="hljs-comment">//支持等值判断运算符</span>
+<span class="hljs-func"><span class="hljs-keyword">func</span></span> ==( <span class="hljs-keyword">left</span>: <span class="hljs-type">OCBool</span>, <span class="hljs-keyword">right</span>: <span class="hljs-type">OCBool</span> )-&gt;<span class="hljs-type">Bool</span>{
+    <span class="hljs-keyword">switch</span> (<span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>){
+    <span class="hljs-keyword">case</span> (.ocTrue, .ocTrue):
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">true</span>
+    <span class="hljs-keyword">default</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">false</span>
+    }
+}
+<span class="hljs-comment">//支持位与运算符</span>
+<span class="hljs-func"><span class="hljs-keyword">func</span></span> &amp;( <span class="hljs-keyword">left</span>:<span class="hljs-type">OCBool</span>, <span class="hljs-keyword">right</span>: <span class="hljs-type">OCBool</span>)-&gt;<span class="hljs-type">OCBool</span>{
+
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">left</span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">right</span>
+    }
+    <span class="hljs-keyword">else</span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">false</span>
+    }
+}
+<span class="hljs-comment">//支持位或运算符</span>
+<span class="hljs-func"><span class="hljs-keyword">func</span></span> |( <span class="hljs-keyword">left</span>:<span class="hljs-type">OCBool</span>, <span class="hljs-keyword">right</span>: <span class="hljs-type">OCBool</span>)-&gt;<span class="hljs-type">OCBool</span>{
+
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">left</span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">true</span>
+    }
+    <span class="hljs-keyword">else</span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">right</span>
+    }
+}
+
+<span class="hljs-comment">//支持位异或运算符</span>
+<span class="hljs-func"><span class="hljs-keyword">func</span></span> ^( <span class="hljs-keyword">left</span>:<span class="hljs-type">OCBool</span>, <span class="hljs-keyword">right</span>: <span class="hljs-type">OCBool</span>)-&gt;<span class="hljs-type">OCBool</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-type">OCBool</span>( <span class="hljs-keyword">left</span> != <span class="hljs-keyword">right</span> )
+}
+<span class="hljs-comment">//支持求反运算符</span>
+<span class="hljs-preprocessor">@prefix</span> <span class="hljs-func"><span class="hljs-keyword">func</span></span> !( a:<span class="hljs-type">OCBool</span> )-&gt; <span class="hljs-type">OCBool</span>{
+    <span class="hljs-keyword">return</span> a ^ <span class="hljs-built_in">true</span>
+}
+<span class="hljs-comment">//支持组合求与运算符</span>
+<span class="hljs-func"><span class="hljs-keyword">func</span></span> &amp;= (<span class="hljs-keyword">inout</span> <span class="hljs-keyword">left</span>:<span class="hljs-type">OCBool</span>, <span class="hljs-keyword">right</span>:<span class="hljs-type">OCBool</span> ){
+    <span class="hljs-keyword">left</span> = <span class="hljs-keyword">left</span> &amp; <span class="hljs-keyword">right</span>
+}
+
+
+<span class="hljs-keyword">var</span> isHasMoney:<span class="hljs-type">OCBool</span> = <span class="hljs-built_in">true</span>
+<span class="hljs-keyword">var</span> isHasWife:<span class="hljs-type">OCBool</span> = <span class="hljs-built_in">true</span>
+<span class="hljs-keyword">var</span> isHasHealty:<span class="hljs-type">OCBool</span> = <span class="hljs-built_in">true</span>
+<span class="hljs-keyword">var</span> isHasLover:<span class="hljs-type">OCBool</span> = <span class="hljs-built_in">true</span>
+
+isHasMoney != isHasHealty
+isHasHealty == isHasMoney
+isHasWife ^ isHasLover
+isHasWife = !isHasLover
+
+<span class="hljs-keyword">if</span> (isHasMoney | isHasHealty) &amp; isHasHealty{
+    <span class="hljs-built_in">println</span>( <span class="hljs-string">"人生赢家，就像老码一样！"</span>)
+}<span class="hljs-keyword">else</span>
+{
+    <span class="hljs-built_in">println</span>(<span class="hljs-string">"人生最苦的事事，人死了钱没花了，人生最苦的事是，人活着，钱没了！"</span>)
+}
+</code></pre>
+<p>好了，到这里就到这里了，窗外的雷声叫醒了老码，现在应该去吃饭了，以上老码给大家展示了如果制造一个自己的类型，记得老码的示例是在Xcode6 Beta4下测试的，至于Beta5的改变还没有涉及，小伙伴们要好生练习，以后各种自定类型都是基于这个思想。还有这个章节不是老码的原创，老码认真的阅读了苹果的官方博客，且自己的练习总结，如果小伙伴们费了吃奶的劲还是看不懂，请找度娘谷歌，还是看不懂请到老码官方微博：<a href="http://weibo.com/u/5241713117咆哮。" target="_blank">http://weibo.com/u/5241713117咆哮。</a></p>
+<p>本文由翻译自Apple Swift Blog ：<a href="https://developer.apple.com/swift/blog/?id=8" target="_blank">https://developer.apple.com/swift/blog/?id=8</a></p>
+
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../chapter4/01_Access_Control.html" class="navigation navigation-prev " aria-label="Previous page: Access Control 权限控制的黑与白"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../chapter4/03_Ballons.html" class="navigation navigation-next " aria-label="Next page: WWDC里面的那个“大炮打气球”"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="https://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
