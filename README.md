@@ -17,7 +17,9 @@ Everthing is Ok now, thanks [Samy Pessé](http://www.samypesse.fr/).
 - [Gitbook][2]还不行，如[首页](https://www.gitbook.io/book/muxuezi/swift-codeblocks)不支持swift语法高亮。
 
 如果不论PDF、MOBI、EPUB格式输出，则
-$$Coding \approx Github + Gitbook$$
+```
+Coding = Github + Gitbook
+```
 
 一般html解决办法见[highlightjs][3]，需要xcode.css、highlight.pack.js，并在head增加:
 
