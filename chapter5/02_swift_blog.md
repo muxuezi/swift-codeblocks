@@ -468,6 +468,7 @@ We can fix this by using the Swift @autoclosure attribute. The auto-closure attr
     }
     #endif
   }
+```
 
 This allows you to call it naturally, as in:
 
