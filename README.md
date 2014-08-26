@@ -109,8 +109,4 @@ if (isHasMoney | isHasHealty) & isHasHealty{
 }
 ```
 
-
-
-
-
 [![Build Status](https://www.gitbook.io/button/status/book/muxuezi/swift-codeblocks)](https://www.gitbook.io/book/muxuezi/swift-codeblocks/activity)
