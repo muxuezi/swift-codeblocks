@@ -2,9 +2,11 @@
 
 Everthing is Ok now, thanks [Samy Pessé](http://www.samypesse.fr/).
 
-由于[The Swift Programming Language 中文版](http://numbbbbb.gitbooks.io/-the-swift-programming-language-/)不能swift语言高亮.
+Lastest version at [The Swift Programming Language 中文版](http://numbbbbb.gitbooks.io/-the-swift-programming-language-/).
 
-制作：
+~~由于[The Swift Programming Language 中文版](http://numbbbbb.gitbooks.io/-the-swift-programming-language-/)不能swift语言高亮.~~
+
+Enjoy：
 
 - [Swift Codeblocks Syntax Highlight](http://swift.coding.io/) on [Coding][0].
 
