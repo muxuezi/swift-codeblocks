@@ -47,3 +47,6 @@
    * [与C语言指针的交互](chapter4/04_Interacting_with_C_Pointers.md)
    * [引用类型和值类型的恩怨](chapter4/05_Value_and_Reference_Types.md)
    * [访问控制和protected](chapter4/06_access_control_&_protected.md)
+* [苹果官方原文](chapter5/chapter5.md)
+   * [documentation](chapter5/01_documentation.md)
+   * [blog](chapter5/02_swift_blog.md)

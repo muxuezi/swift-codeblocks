@@ -1,0 +1,2 @@
+* [The Swift Programming Language EN(Single Page)](http://muxuezi.github.io/posts/the-swift-programming-language-en)
+* [The Swift Programming Language EN(Multi Page)](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)
