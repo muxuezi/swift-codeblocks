@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.20" data-basepath=".." data-revision="1409042158486">
+    <div class="book"  data-level="2.20" data-basepath=".." data-revision="1414729181011">
     
 
 <div class="book-summary">
@@ -748,7 +748,7 @@
                         
                             <b>4.1.</b>
                         
-                         权限控制的黑与白
+                         Access Control 权限控制的黑与白
                     </a>
                 
             
@@ -796,7 +796,7 @@
                         
                             <b>4.4.</b>
                         
-                         与C语言指针的交互
+                         Swift与C语言指针友好合作
                     </a>
                 
             
@@ -820,15 +820,31 @@
         </li>
     
         
-        <li class="chapter " data-level="4.6" data-path="chapter4/06_access_control_&amp;_protected.html">
+        <li class="chapter " data-level="4.6" data-path="chapter4/06_Access_Control_and_Protected.html">
             
                 
-                    <a href="../chapter4/06_access_control_&amp;_protected.html">
+                    <a href="../chapter4/06_Access_Control_and_Protected.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
                         
-                         访问控制和protected
+                         访问控制和Protected
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.7" data-path="chapter4/07_Optional_Case_Study.html">
+            
+                
+                    <a href="../chapter4/07_Optional_Case_Study.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                         可选类型完美解决占位问题
                     </a>
                 
             
@@ -983,7 +999,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_129">
+                    <section class="normal" id="section-gitbook_38">
                     
                         <blockquote>
 <p>翻译：<a href="https://github.com/lyuka" target="_blank">lyuka</a><br>校对：<a href="https://github.com/Hawstein" target="_blank">Hawstein</a></p>
@@ -1100,7 +1116,7 @@
 <p>扩展可以向已有类型添加新的实例方法和类型方法。下面的例子向<code>Int</code>类型添加一个名为<code>repetitions</code>的新实例方法：</p>
 <pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Int</span> </span>{
     <span class="hljs-func"><span class="hljs-keyword">func</span></span> repetitions(task: () -&gt; ()) {
-        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..<span class="hljs-keyword">self</span> {
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..&lt;<span class="hljs-keyword">self</span> {
             task()
         }
     }
@@ -1145,12 +1161,13 @@ someInt.square()
 </ul>
 <p>...等等</p>
 <pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">Int</span> </span>{
-    <span class="hljs-keyword">subscript</span>(digitIndex: <span class="hljs-type">Int</span>) -&gt; <span class="hljs-type">Int</span> {
+    <span class="hljs-keyword">subscript</span>(<span class="hljs-keyword">var</span> digitIndex: <span class="hljs-type">Int</span>) -&gt; <span class="hljs-type">Int</span> {
         <span class="hljs-keyword">var</span> decimalBase = <span class="hljs-number">1</span>
-            <span class="hljs-keyword">for</span> <span class="hljs-number">_</span> <span class="hljs-keyword">in</span> <span class="hljs-number">1</span>...digitIndex {
+            <span class="hljs-keyword">while</span> digitIndex &gt; <span class="hljs-number">0</span> {
                 decimalBase *= <span class="hljs-number">10</span>
+                --digitIndex
             }
-        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">self</span> / decimalBase) % <span class="hljs-number">10</span>
+            <span class="hljs-keyword">return</span> (<span class="hljs-keyword">self</span> / decimalBase) % <span class="hljs-number">10</span>
     }
 }
 <span class="hljs-number">746381295</span>[<span class="hljs-number">0</span>]
@@ -1239,10 +1256,6 @@ printLetterKinds(<span class="hljs-string">"Hello"</span>)
 
     
     <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>

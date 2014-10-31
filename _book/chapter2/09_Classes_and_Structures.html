@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.9" data-basepath=".." data-revision="1409042158486">
+    <div class="book"  data-level="2.9" data-basepath=".." data-revision="1414729181011">
     
 
 <div class="book-summary">
@@ -748,7 +748,7 @@
                         
                             <b>4.1.</b>
                         
-                         权限控制的黑与白
+                         Access Control 权限控制的黑与白
                     </a>
                 
             
@@ -796,7 +796,7 @@
                         
                             <b>4.4.</b>
                         
-                         与C语言指针的交互
+                         Swift与C语言指针友好合作
                     </a>
                 
             
@@ -820,15 +820,31 @@
         </li>
     
         
-        <li class="chapter " data-level="4.6" data-path="chapter4/06_access_control_&amp;_protected.html">
+        <li class="chapter " data-level="4.6" data-path="chapter4/06_Access_Control_and_Protected.html">
             
                 
-                    <a href="../chapter4/06_access_control_&amp;_protected.html">
+                    <a href="../chapter4/06_Access_Control_and_Protected.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
                         
-                         访问控制和protected
+                         访问控制和Protected
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.7" data-path="chapter4/07_Optional_Case_Study.html">
+            
+                
+                    <a href="../chapter4/07_Optional_Case_Study.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                         可选类型完美解决占位问题
                     </a>
                 
             
@@ -983,7 +999,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_108">
+                    <section class="normal" id="section-gitbook_17">
                     
                         <blockquote>
 <p>翻译：<a href="https://github.com/JaySurplus" target="_blank">JaySurplus</a>
@@ -1044,7 +1060,7 @@
 <p>以下是定义结构体和定义类的示例：</p>
 <pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Resolution</span> </span>{
     <span class="hljs-keyword">var</span> width = <span class="hljs-number">0</span>
-    <span class="hljs-keyword">var</span> heigth = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">var</span> height = <span class="hljs-number">0</span>
 }
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">VideoMode</span> </span>{
     <span class="hljs-keyword">var</span> resolution = <span class="hljs-type">Resolution</span>()
@@ -1068,7 +1084,7 @@
 <span class="hljs-comment">// 输出 "The width of someResolution is 0"</span>
 </code></pre>
 <p>在上面的例子中，<code>someResolution.width</code>引用<code>someResolution</code>的<code>width</code>属性，返回<code>width</code>的初始值<code>0</code>。</p>
-<p>你也可以访问子属性，如何<code>VideoMode</code>中<code>Resolution</code>属性的<code>width</code>属性：</p>
+<p>你也可以访问子属性，如<code>VideoMode</code>中<code>Resolution</code>属性的<code>width</code>属性：</p>
 <pre><code class="lang-swift"><span class="hljs-built_in">println</span>(<span class="hljs-string">"The width of someVideoMode is <span class="hljs-subst">\(someVideoMode.resolution.width)</span>"</span>)
 <span class="hljs-comment">// 输出 "The width of someVideoMode is 0"</span>
 </code></pre>
@@ -1083,7 +1099,7 @@
 </blockquote>
 <h3 id="memberwise-initializers-for-structure-types">结构体类型的成员逐一构造器(Memberwise Initializers for structure Types)</h3>
 <p>所有结构体都有一个自动生成的成员逐一构造器，用于初始化新结构体实例中成员的属性。新实例中各个属性的初始值可以通过属性的名称传递到成员逐一构造器之中：</p>
-<pre><code class="lang-swift"><span class="hljs-keyword">let</span> vga = resolution(width:<span class="hljs-number">640</span>, heigth: <span class="hljs-number">480</span>)
+<pre><code class="lang-swift"><span class="hljs-keyword">let</span> vga = <span class="hljs-type">Resolution</span>(width:<span class="hljs-number">640</span>, height: <span class="hljs-number">480</span>)
 </code></pre>
 <p>与结构体不同，类实例没有默认的成员逐一构造器。<a href="14_Initialization.html">构造过程</a>章节会对构造器进行更详细的讨论。</p>
 <p><a name="structures_and_enumerations_are_value_types"></a></p>
@@ -1188,7 +1204,7 @@ alsoTenEighty.frameRate = <span class="hljs-number">30.0</span>
 <p>以下对<code>数组</code>和<code>结构体</code>的行为描述与对<code>NSArray</code>和<code>NSDictionary</code>的行为描述在本质上不同，后者是以类的形式实现，前者是以结构体的形式实现。<code>NSArray</code>和<code>NSDictionary</code>实例总是以对已有实例引用,而不是拷贝的方式被赋值和传递。</p>
 <blockquote>
 <p>注意：
-以下是对于数组，字典，字符串和其它值的<code>拷贝</code>的描述。
+以上是对于数组，字典，字符串和其它值的<code>拷贝</code>的描述。
 在你的代码中，拷贝好像是确实是在有拷贝行为的地方产生过。然而，在 Swift 的后台中，只有确有必要，<code>实际（actual）</code>拷贝才会被执行。Swift 管理所有的值拷贝以确保性能最优化的性能，所以你也没有必要去避免赋值以保证最优性能。（实际赋值由系统管理优化）</p>
 </blockquote>
 
@@ -1218,10 +1234,6 @@ alsoTenEighty.frameRate = <span class="hljs-number">30.0</span>
 
     
     <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>

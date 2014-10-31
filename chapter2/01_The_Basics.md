@@ -535,7 +535,7 @@ let convertedNumber = possibleNumber.toInt()
 当你确定可选类型_确实_包含值之后，你可以在可选的名字后面加一个感叹号（`!`）来获取值。这个惊叹号表示“我知道这个可选有值，请使用它。”这被称为可选值的_强制解析（forced unwrapping）_：
 
 ```swift
-if convertedNumber {
+if convertedNumber != nil {
     println("\(possibleNumber) has an integer value of \(convertedNumber!)")
 } else {
     println("\(possibleNumber) could not be converted to an integer")
@@ -657,7 +657,7 @@ if let definiteString = assumedString {
 <a name="assertions"></a>
 ## 断言
 
-可选类型可以让你判断值是否存在，你可以在代码中优雅地处理值缺失的情况。然而，在某些情况下，如果值缺失或者值并不满足特定的条件，你的代码可能并不需要继续执行。这时，你可以在你的代码中触发一个_断言（assertion）_来结束代码运行并通过调试来找到值缺失的原因。
+可选类型可以让你判断值是否存在，你可以在代码中优雅地处理值缺失的情况。然而，在某些情况下，如果值缺失或者值并不满足特定的条件，你的代码可能没办法继续执行。这时，你可以在你的代码中触发一个_断言（assertion）_来结束代码运行并通过调试来找到值缺失的原因。
 
 ### 使用断言进行调试
 
@@ -673,9 +673,9 @@ assert(age >= 0, "A person's age cannot be less than zero")
 // 因为 age < 0，所以断言会触发
 ```
 
-在这个例子中，只有`age >= 0`为`true`的时候代码运行才会继续，也就是说，当`age`的值非负的时候。如果`age`的值是负数，就像代码中那样，`age >= 0`为`false`，断言被触发，结束应用。
+在这个例子中，只有`age >= 0`为`true`的时候，即`age`的值非负的时候，代码运行才会继续。如果`age`的值是负数，就像代码中那样，`age >= 0`为`false`，断言被触发，结束应用。
 
-断言信息不能使用字符串插值。断言信息可以省略，就像这样：
+断言信息如果不需要，可以被省略，就像这样：
 
 ```swift
 assert(age >= 0)

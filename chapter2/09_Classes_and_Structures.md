@@ -65,7 +65,7 @@ struct SomeStructure {
 ```swift
 struct Resolution {
 	var width = 0
-	var heigth = 0
+	var height = 0
 }
 class VideoMode {
 	var resolution = Resolution()
@@ -103,7 +103,7 @@ println("The width of someResolution is \(someResolution.width)")
 
 在上面的例子中，`someResolution.width`引用`someResolution`的`width`属性，返回`width`的初始值`0`。
 
-你也可以访问子属性，如何`VideoMode`中`Resolution`属性的`width`属性：
+你也可以访问子属性，如`VideoMode`中`Resolution`属性的`width`属性：
 
 ```swift
 println("The width of someVideoMode is \(someVideoMode.resolution.width)")
@@ -126,7 +126,7 @@ println("The width of someVideoMode is now \(someVideoMode.resolution.width)")
 所有结构体都有一个自动生成的成员逐一构造器，用于初始化新结构体实例中成员的属性。新实例中各个属性的初始值可以通过属性的名称传递到成员逐一构造器之中：
 
 ```swift
-let vga = resolution(width:640, heigth: 480)
+let vga = Resolution(width:640, height: 480)
 ```
 
 与结构体不同，类实例没有默认的成员逐一构造器。[构造过程](14_Initialization.html)章节会对构造器进行更详细的讨论。
@@ -284,6 +284,6 @@ Swift 中`数组（Array）`和`字典（Dictionary）`类型均以结构体的�
 以下对`数组`和`结构体`的行为描述与对`NSArray`和`NSDictionary`的行为描述在本质上不同，后者是以类的形式实现，前者是以结构体的形式实现。`NSArray`和`NSDictionary`实例总是以对已有实例引用,而不是拷贝的方式被赋值和传递。
 
 > 注意：
-以下是对于数组，字典，字符串和其它值的`拷贝`的描述。
+以上是对于数组，字典，字符串和其它值的`拷贝`的描述。
 在你的代码中，拷贝好像是确实是在有拷贝行为的地方产生过。然而，在 Swift 的后台中，只有确有必要，`实际（actual）`拷贝才会被执行。Swift 管理所有的值拷贝以确保性能最优化的性能，所以你也没有必要去避免赋值以保证最优性能。（实际赋值由系统管理优化）
 

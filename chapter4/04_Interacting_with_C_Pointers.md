@@ -1,6 +1,15 @@
 > 翻译：[老码团队翻译组-Relly](http://weibo.com/penguinliong/)  
+> 校对：[老码团队翻译组-Tyrion](http://weibo.com/u/5241713117) 
 
-#与C语言指针的交互
+# Swift与C语言指针友好合作
+-----------------
+
+本页包含内容：
+
+- [用以输入/输出的参数指针](#inout-para-pointer)
+- [作为数组使用的参数指针](#array-as-para-pointer)
+- [用作字符串参数的指针](#string-as-para-pointer)
+- [指针参数转换的安全性](#security-of-pointer-cast)
 
 Objective-C和C的API常常会需要用到指针。Swift中的数据类型都原生支持基于指针的Cocoa API，不仅如此，Swift会自动处理部分最常用的将指针作为参数传递的情况。这篇文章中，我们将着眼于在Swift中让C语言指针与变量、数组和字符串共同工作。
 

@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.1" data-basepath=".." data-revision="1409042158486">
+    <div class="book"  data-level="2.1" data-basepath=".." data-revision="1414729181011">
     
 
 <div class="book-summary">
@@ -748,7 +748,7 @@
                         
                             <b>4.1.</b>
                         
-                         权限控制的黑与白
+                         Access Control 权限控制的黑与白
                     </a>
                 
             
@@ -796,7 +796,7 @@
                         
                             <b>4.4.</b>
                         
-                         与C语言指针的交互
+                         Swift与C语言指针友好合作
                     </a>
                 
             
@@ -820,15 +820,31 @@
         </li>
     
         
-        <li class="chapter " data-level="4.6" data-path="chapter4/06_access_control_&amp;_protected.html">
+        <li class="chapter " data-level="4.6" data-path="chapter4/06_Access_Control_and_Protected.html">
             
                 
-                    <a href="../chapter4/06_access_control_&amp;_protected.html">
+                    <a href="../chapter4/06_Access_Control_and_Protected.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
                         
-                         访问控制和protected
+                         访问控制和Protected
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.7" data-path="chapter4/07_Optional_Case_Study.html">
+            
+                
+                    <a href="../chapter4/07_Optional_Case_Study.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                         可选类型完美解决占位问题
                     </a>
                 
             
@@ -983,7 +999,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_94">
+                    <section class="normal" id="section-gitbook_3">
                     
                         <blockquote>
 <p>翻译：<a href="https://github.com/numbbbbb" target="_blank">numbbbbb</a>, <a href="https://github.com/lyuka" target="_blank">lyuka</a>, <a href="https://github.com/JaySurplus" target="_blank">JaySurplus</a><br>校对：<a href="https://github.com/lslxdx" target="_blank">lslxdx</a></p>
@@ -1336,7 +1352,7 @@ languageName = <span class="hljs-string">"Swift++"</span>
 <h3 id="if-">if 语句以及强制解析</h3>
 <p>你可以使用<code>if</code>语句来判断一个可选是否包含值。如果可选类型有值，结果是<code>true</code>；如果没有值，结果是<code>false</code>。</p>
 <p>当你确定可选类型<em>确实</em>包含值之后，你可以在可选的名字后面加一个感叹号（<code>!</code>）来获取值。这个惊叹号表示“我知道这个可选有值，请使用它。”这被称为可选值的<em>强制解析（forced unwrapping）</em>：</p>
-<pre><code class="lang-swift"><span class="hljs-keyword">if</span> convertedNumber {
+<pre><code class="lang-swift"><span class="hljs-keyword">if</span> convertedNumber != <span class="hljs-built_in">nil</span> {
     <span class="hljs-built_in">println</span>(<span class="hljs-string">"<span class="hljs-subst">\(possibleNumber)</span> has an integer value of <span class="hljs-subst">\(convertedNumber!)</span>"</span>)
 } <span class="hljs-keyword">else</span> {
     <span class="hljs-built_in">println</span>(<span class="hljs-string">"<span class="hljs-subst">\(possibleNumber)</span> could not be converted to an integer"</span>)
@@ -1419,7 +1435,7 @@ serverResponseCode = <span class="hljs-built_in">nil</span>
 </blockquote>
 <p><a name="assertions"></a></p>
 <h2 id="">断言</h2>
-<p>可选类型可以让你判断值是否存在，你可以在代码中优雅地处理值缺失的情况。然而，在某些情况下，如果值缺失或者值并不满足特定的条件，你的代码可能并不需要继续执行。这时，你可以在你的代码中触发一个<em>断言（assertion）</em>来结束代码运行并通过调试来找到值缺失的原因。</p>
+<p>可选类型可以让你判断值是否存在，你可以在代码中优雅地处理值缺失的情况。然而，在某些情况下，如果值缺失或者值并不满足特定的条件，你的代码可能没办法继续执行。这时，你可以在你的代码中触发一个<em>断言（assertion）</em>来结束代码运行并通过调试来找到值缺失的原因。</p>
 <h3 id="">使用断言进行调试</h3>
 <p>断言会在运行时判断一个逻辑条件是否为<code>true</code>。从字面意思来说，断言“断言”一个条件是否为真。你可以使用断言来保证在运行其他代码之前，某些重要的条件已经被满足。如果条件判断为<code>true</code>，代码运行会继续进行；如果条件判断为<code>false</code>，代码运行停止，你的应用被终止。</p>
 <p>如果你的代码在调试环境下触发了一个断言，比如你在 Xcode 中构建并运行一个应用，你可以清楚地看到不合法的状态发生在哪里并检查断言被触发时你的应用的状态。此外，断言允许你附加一条调试信息。</p>
@@ -1428,8 +1444,8 @@ serverResponseCode = <span class="hljs-built_in">nil</span>
 <span class="hljs-built_in">assert</span>(age &gt;= <span class="hljs-number">0</span>, <span class="hljs-string">"A person's age cannot be less than zero"</span>)
 <span class="hljs-comment">// 因为 age &lt; 0，所以断言会触发</span>
 </code></pre>
-<p>在这个例子中，只有<code>age &gt;= 0</code>为<code>true</code>的时候代码运行才会继续，也就是说，当<code>age</code>的值非负的时候。如果<code>age</code>的值是负数，就像代码中那样，<code>age &gt;= 0</code>为<code>false</code>，断言被触发，结束应用。</p>
-<p>断言信息不能使用字符串插值。断言信息可以省略，就像这样：</p>
+<p>在这个例子中，只有<code>age &gt;= 0</code>为<code>true</code>的时候，即<code>age</code>的值非负的时候，代码运行才会继续。如果<code>age</code>的值是负数，就像代码中那样，<code>age &gt;= 0</code>为<code>false</code>，断言被触发，结束应用。</p>
+<p>断言信息如果不需要，可以被省略，就像这样：</p>
 <pre><code class="lang-swift"><span class="hljs-built_in">assert</span>(age &gt;= <span class="hljs-number">0</span>)
 </code></pre>
 <h3 id="">何时使用断言</h3>
@@ -1470,10 +1486,6 @@ serverResponseCode = <span class="hljs-built_in">nil</span>
 
     
     <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>

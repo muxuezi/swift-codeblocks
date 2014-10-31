@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="1.2" data-basepath=".." data-revision="1409042158486">
+    <div class="book"  data-level="1.2" data-basepath=".." data-revision="1414729181011">
     
 
 <div class="book-summary">
@@ -748,7 +748,7 @@
                         
                             <b>4.1.</b>
                         
-                         权限控制的黑与白
+                         Access Control 权限控制的黑与白
                     </a>
                 
             
@@ -796,7 +796,7 @@
                         
                             <b>4.4.</b>
                         
-                         与C语言指针的交互
+                         Swift与C语言指针友好合作
                     </a>
                 
             
@@ -820,15 +820,31 @@
         </li>
     
         
-        <li class="chapter " data-level="4.6" data-path="chapter4/06_access_control_&amp;_protected.html">
+        <li class="chapter " data-level="4.6" data-path="chapter4/06_Access_Control_and_Protected.html">
             
                 
-                    <a href="../chapter4/06_access_control_&amp;_protected.html">
+                    <a href="../chapter4/06_Access_Control_and_Protected.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
                         
-                         访问控制和protected
+                         访问控制和Protected
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.7" data-path="chapter4/07_Optional_Case_Study.html">
+            
+                
+                    <a href="../chapter4/07_Optional_Case_Study.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                         可选类型完美解决占位问题
                     </a>
                 
             
@@ -983,7 +999,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_142">
+                    <section class="normal" id="section-gitbook_51">
                     
                         <blockquote>
 <p>翻译：<a href="https://github.com/numbbbbb" target="_blank">numbbbbb</a><br>校对：<a href="https://github.com/shinyzhu" target="_blank">shinyzhu</a>, <a href="https://github.com/stanzhai" target="_blank">stanzhai</a></p>
@@ -1052,11 +1068,12 @@ shoppingList[<span class="hljs-number">1</span>] = <span class="hljs-string">"bo
 occupations[<span class="hljs-string">"Jayne"</span>] = <span class="hljs-string">"Public Relations"</span>
 </code></pre>
 <p>要创建一个空数组或者字典，使用初始化语法。</p>
-<pre><code class="lang-swift"><span class="hljs-keyword">let</span> emptyArray = <span class="hljs-type">String</span>[]()
-<span class="hljs-keyword">let</span> emptyDictionary = <span class="hljs-type">Dictionary</span>&lt;<span class="hljs-type">String</span>, <span class="hljs-type">Float</span>&gt;()
+<pre><code class="lang-swift"><span class="hljs-keyword">let</span> emptyArray = [<span class="hljs-type">String</span>]()
+<span class="hljs-keyword">let</span> emptyDictionary = [<span class="hljs-type">String</span>: <span class="hljs-type">Float</span>]()
 </code></pre>
 <p>如果类型信息可以被推断出来，你可以用<code>[]</code>和<code>[:]</code>来创建空数组和空字典——就像你声明变量或者给函数传参数的时候一样。</p>
-<pre><code class="lang-swift">shoppingList = []   <span class="hljs-comment">// 去逛街并买点东西</span>
+<pre><code class="lang-swift">shoppingList = []
+occupations = [:]
 </code></pre>
 <p><a name="control_flow"></a></p>
 <h2 id="">控制流</h2>
@@ -1104,7 +1121,7 @@ optionalString == <span class="hljs-built_in">nil</span>
 <p>练习：<br>删除<code>default</code>语句，看看会有什么错误？</p>
 </blockquote>
 <p>运行<code>switch</code>中匹配到的子句之后，程序会退出<code>switch</code>语句，并不会继续向下运行，所以不需要在每个子句结尾写<code>break</code>。</p>
-<p>你可以使用<code>for-in</code>来遍历字典，需要两个变量来表示每个键值对。</p>
+<p>你可以使用<code>for-in</code>来遍历字典，需要两个变量来表示每个键值对。字典是一个无序的集合，所以他们的键和值以任意顺序迭代结束。</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">let</span> interestingNumbers = [
     <span class="hljs-string">"Prime"</span>: [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">11</span>, <span class="hljs-number">13</span>],
     <span class="hljs-string">"Fibonacci"</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">8</span>],
@@ -1136,20 +1153,20 @@ n
 } <span class="hljs-keyword">while</span> m &lt; <span class="hljs-number">100</span>
 m
 </code></pre>
-<p>你可以在循环中使用<code>..</code>来表示范围，也可以使用传统的写法，两者是等价的：</p>
+<p>你可以在循环中使用<code>..&lt;</code>来表示范围，也可以使用传统的写法，两者是等价的：</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">var</span> firstForLoop = <span class="hljs-number">0</span>
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..<span class="hljs-number">3</span> {
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..&lt;<span class="hljs-number">4</span> {
     firstForLoop += i
 }
 firstForLoop
 
 <span class="hljs-keyword">var</span> secondForLoop = <span class="hljs-number">0</span>
-<span class="hljs-keyword">for</span> <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; ++i {
-    secondForLoop += <span class="hljs-number">1</span>
+<span class="hljs-keyword">for</span> <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; ++i {
+    secondForLoop += i
 }
 secondForLoop
 </code></pre>
-<p>使用<code>..</code>创建的范围不包含上界，如果想包含的话需要使用<code>...</code>。</p>
+<p>使用<code>..&lt;</code>创建的范围不包含上界，如果想包含的话需要使用<code>...</code>。</p>
 <p><a name="functions_and_closures"></a></p>
 <h2 id="">函数和闭包</h2>
 <p>使用<code>func</code>来声明一个函数，使用名字和参数来调用函数。使用<code>-&gt;</code>来指定函数返回值。</p>
@@ -1161,11 +1178,26 @@ greet(<span class="hljs-string">"Bob"</span>, <span class="hljs-string">"Tuesday
 <blockquote>
 <p>练习：<br>删除<code>day</code>参数，添加一个参数来表示今天吃了什么午饭。</p>
 </blockquote>
-<p>使用一个元组来返回多个值。</p>
-<pre><code class="lang-swift"><span class="hljs-func"><span class="hljs-keyword">func</span></span> getGasPrices() -&gt; (<span class="hljs-type">Double</span>, <span class="hljs-type">Double</span>, <span class="hljs-type">Double</span>) {
-    <span class="hljs-keyword">return</span> (<span class="hljs-number">3.59</span>, <span class="hljs-number">3.69</span>, <span class="hljs-number">3.79</span>)
+<p>使用元组来让一个函数返回多个值。该元组的元素可以用名称或数字来表示。</p>
+<pre><code class="lang-swift"><span class="hljs-func"><span class="hljs-keyword">func</span></span> calculateStatistics(scores: [<span class="hljs-type">Int</span>]) -&gt; (<span class="hljs-built_in">min</span>: <span class="hljs-type">Int</span>, <span class="hljs-built_in">max</span>: <span class="hljs-type">Int</span>, sum: <span class="hljs-type">Int</span>) {
+    <span class="hljs-keyword">var</span> <span class="hljs-built_in">min</span> = scores[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">var</span> <span class="hljs-built_in">max</span> = scores[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span>
+
+    <span class="hljs-keyword">for</span> score <span class="hljs-keyword">in</span> scores {
+        <span class="hljs-keyword">if</span> score &gt; <span class="hljs-built_in">max</span> {
+            <span class="hljs-built_in">max</span> = score
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> score &lt; <span class="hljs-built_in">min</span> {
+            <span class="hljs-built_in">min</span> = score
+        }
+        sum += score
+    }
+
+    <span class="hljs-keyword">return</span> (<span class="hljs-built_in">min</span>, <span class="hljs-built_in">max</span>, sum)
 }
-getGasPrices()
+<span class="hljs-keyword">let</span> statistics = calculateStatistics([<span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">100</span>, <span class="hljs-number">3</span>, <span class="hljs-number">9</span>])
+statistics.sum
+statistics.<span class="hljs-number">2</span>
 </code></pre>
 <p>函数可以带有可变个数的参数，这些参数在函数内表现为数组的形式：</p>
 <pre><code class="lang-swift"><span class="hljs-func"><span class="hljs-keyword">func</span></span> sumOf(numbers: <span class="hljs-type">Int</span>...) -&gt; <span class="hljs-type">Int</span> {
@@ -1203,7 +1235,7 @@ returnFifteen()
 increment(<span class="hljs-number">7</span>)
 </code></pre>
 <p>函数也可以当做参数传入另一个函数。</p>
-<pre><code class="lang-swift"><span class="hljs-func"><span class="hljs-keyword">func</span></span> hasAnyMatches(list: <span class="hljs-type">Int</span>[], condition: <span class="hljs-type">Int</span> -&gt; <span class="hljs-type">Bool</span>) -&gt; <span class="hljs-type">Bool</span> {
+<pre><code class="lang-swift"><span class="hljs-func"><span class="hljs-keyword">func</span></span> hasAnyMatches(list: [<span class="hljs-type">Int</span>], condition: <span class="hljs-type">Int</span> -&gt; <span class="hljs-type">Bool</span>) -&gt; <span class="hljs-type">Bool</span> {
     <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> list {
         <span class="hljs-keyword">if</span> condition(item) {
             <span class="hljs-keyword">return</span> <span class="hljs-built_in">true</span>
@@ -1228,10 +1260,12 @@ hasAnyMatches(numbers, lessThanTen)
 <p>练习：<br>重写闭包，对所有奇数返回0。</p>
 </blockquote>
 <p>有很多种创建闭包的方法。如果一个闭包的类型已知，比如作为一个回调函数，你可以忽略参数的类型和返回值。单个语句闭包会把它语句的值当做结果返回。</p>
-<pre><code class="lang-swift">numbers.<span class="hljs-built_in">map</span>({ number <span class="hljs-keyword">in</span> <span class="hljs-number">3</span> * number })
+<pre><code class="lang-swift"><span class="hljs-keyword">let</span> mappedNumbers = numbers.<span class="hljs-built_in">map</span>({ number <span class="hljs-keyword">in</span> <span class="hljs-number">3</span> * number })
+mappedNumbers
 </code></pre>
 <p>你可以通过参数位置而不是参数名字来引用参数——这个方法在非常短的闭包中非常有用。当一个闭包作为最后一个参数传给一个函数的时候，它可以直接跟在括号后面。</p>
-<pre><code class="lang-swift"><span class="hljs-built_in">sort</span>([<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">12</span>, <span class="hljs-number">2</span>]) { $<span class="hljs-number">0</span> &gt; $<span class="hljs-number">1</span> }
+<pre><code class="lang-swift"><span class="hljs-keyword">let</span> sortedNumbers = sorted(numbers) { $<span class="hljs-number">0</span> &gt; $<span class="hljs-number">1</span> }
+sortedNumbers
 </code></pre>
 <p><a name="objects_and_classes"></a></p>
 <h2 id="">对象和类</h2>
@@ -1430,8 +1464,7 @@ counter.incrementBy(<span class="hljs-number">2</span>, numberOfTimes: <span cla
     <span class="hljs-keyword">var</span> rank: <span class="hljs-type">Rank</span>
     <span class="hljs-keyword">var</span> suit: <span class="hljs-type">Suit</span>
     <span class="hljs-func"><span class="hljs-keyword">func</span></span> simpleDescription() -&gt; <span class="hljs-type">String</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-string">"The <span class="hljs-subst">\(rank.simpleDescription()</span>) of \
-        (suit.simpleDescription())"</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"The <span class="hljs-subst">\(rank.simpleDescription()</span>) of <span class="hljs-subst">\(suit.simpleDescription()</span>)"</span>
     }
 }
 <span class="hljs-keyword">let</span> threeOfSpades = <span class="hljs-type">Card</span>(rank: .<span class="hljs-type">Three</span>, suit: .<span class="hljs-type">Spades</span>)
@@ -1518,10 +1551,10 @@ b.adjust()
 <p><a name="generics"></a></p>
 <h2 id="">泛型</h2>
 <p>在尖括号里写一个名字来创建一个泛型函数或者类型。</p>
-<pre><code class="lang-swift"><span class="hljs-func"><span class="hljs-keyword">func</span></span> repeat&lt;<span class="hljs-type">ItemType</span>&gt;(item: <span class="hljs-type">ItemType</span>, times: <span class="hljs-type">Int</span>) -&gt; <span class="hljs-type">ItemType</span>[] {
-    <span class="hljs-keyword">var</span> result = <span class="hljs-type">ItemType</span>[]()
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..times {
-        result += item
+<pre><code class="lang-swift"><span class="hljs-func"><span class="hljs-keyword">func</span></span> repeat&lt;<span class="hljs-type">ItemType</span>&gt;(item: <span class="hljs-type">ItemType</span>, times: <span class="hljs-type">Int</span>) -&gt; [<span class="hljs-type">ItemType</span>] {
+    <span class="hljs-keyword">var</span> result = [<span class="hljs-type">ItemType</span>]()
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..&lt;times {
+        result.append(item)
     }
     <span class="hljs-keyword">return</span> result
 }
@@ -1537,7 +1570,7 @@ repeat(<span class="hljs-string">"knock"</span>, <span class="hljs-number">4</sp
 possibleInteger = .<span class="hljs-type">Some</span>(<span class="hljs-number">100</span>)
 </code></pre>
 <p>在类型名后面使用<code>where</code>来指定对类型的需求，比如，限定类型实现某一个协议，限定两个类型是相同的，或者限定某个类必须有一个特定的父类</p>
-<pre><code class="lang-swift"><span class="hljs-func"><span class="hljs-keyword">func</span></span> anyCommonElements &lt;<span class="hljs-type">T</span>, <span class="hljs-type">U</span> <span class="hljs-keyword">where</span> <span class="hljs-type">T</span>: <span class="hljs-type">Sequence</span>, <span class="hljs-type">U</span>: <span class="hljs-type">Sequence</span>, <span class="hljs-type">T</span>.<span class="hljs-type">GeneratorType</span>.<span class="hljs-type">Element</span>: <span class="hljs-type">Equatable</span>, <span class="hljs-type">T</span>.<span class="hljs-type">GeneratorType</span>.<span class="hljs-type">Element</span> == <span class="hljs-type">U</span>.<span class="hljs-type">GeneratorType</span>.<span class="hljs-type">Element</span>&gt; (lhs: <span class="hljs-type">T</span>, rhs: <span class="hljs-type">U</span>) -&gt; <span class="hljs-type">Bool</span> {
+<pre><code class="lang-swift"><span class="hljs-func"><span class="hljs-keyword">func</span></span> anyCommonElements &lt;<span class="hljs-type">T</span>, <span class="hljs-type">U</span> <span class="hljs-keyword">where</span> <span class="hljs-type">T</span>: <span class="hljs-type">SequenceType</span>, <span class="hljs-type">U</span>: <span class="hljs-type">SequenceType</span>, <span class="hljs-type">T</span>.<span class="hljs-type">Generator</span>.<span class="hljs-type">Element</span>: <span class="hljs-type">Equatable</span>, <span class="hljs-type">T</span>.<span class="hljs-type">Generator</span>.<span class="hljs-type">Element</span> == <span class="hljs-type">U</span>.<span class="hljs-type">Generator</span>.<span class="hljs-type">Element</span>&gt; (lhs: <span class="hljs-type">T</span>, rhs: <span class="hljs-type">U</span>) -&gt; <span class="hljs-type">Bool</span> {
     <span class="hljs-keyword">for</span> lhsItem <span class="hljs-keyword">in</span> lhs {
         <span class="hljs-keyword">for</span> rhsItem <span class="hljs-keyword">in</span> rhs {
             <span class="hljs-keyword">if</span> lhsItem == rhsItem {
@@ -1580,10 +1613,6 @@ anyCommonElements([<span class="hljs-number">1</span>, <span class="hljs-number"
 
     
     <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>

@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.16" data-basepath=".." data-revision="1409042158486">
+    <div class="book"  data-level="2.16" data-basepath=".." data-revision="1414729181011">
     
 
 <div class="book-summary">
@@ -748,7 +748,7 @@
                         
                             <b>4.1.</b>
                         
-                         权限控制的黑与白
+                         Access Control 权限控制的黑与白
                     </a>
                 
             
@@ -796,7 +796,7 @@
                         
                             <b>4.4.</b>
                         
-                         与C语言指针的交互
+                         Swift与C语言指针友好合作
                     </a>
                 
             
@@ -820,15 +820,31 @@
         </li>
     
         
-        <li class="chapter " data-level="4.6" data-path="chapter4/06_access_control_&amp;_protected.html">
+        <li class="chapter " data-level="4.6" data-path="chapter4/06_Access_Control_and_Protected.html">
             
                 
-                    <a href="../chapter4/06_access_control_&amp;_protected.html">
+                    <a href="../chapter4/06_Access_Control_and_Protected.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
                         
-                         访问控制和protected
+                         访问控制和Protected
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.7" data-path="chapter4/07_Optional_Case_Study.html">
+            
+                
+                    <a href="../chapter4/07_Optional_Case_Study.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                         可选类型完美解决占位问题
                     </a>
                 
             
@@ -983,7 +999,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_121">
+                    <section class="normal" id="section-gitbook_30">
                     
                         <blockquote>
 <p>翻译：<a href="https://github.com/TimothyYe" target="_blank">TimothyYe</a><br>校对：<a href="https://github.com/Hawstein" target="_blank">Hawstein</a></p>
@@ -1244,7 +1260,7 @@ john!.card = <span class="hljs-type">CreditCard</span>(number: <span class="hljs
     <span class="hljs-keyword">let</span> name: <span class="hljs-type">String</span>
     <span class="hljs-keyword">let</span> text: <span class="hljs-type">String</span>?
 
-    <span class="hljs-preprocessor">@lazy</span> <span class="hljs-keyword">var</span> asHTML: () -&gt; <span class="hljs-type">String</span> = {
+    lazy <span class="hljs-keyword">var</span> asHTML: () -&gt; <span class="hljs-type">String</span> = {
         <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> text = <span class="hljs-keyword">self</span>.text {
             <span class="hljs-keyword">return</span> <span class="hljs-string">"&lt;<span class="hljs-subst">\(<span class="hljs-keyword">self</span>.name)</span>&gt;<span class="hljs-subst">\(text)</span>&lt;/<span class="hljs-subst">\(<span class="hljs-keyword">self</span>.name)</span>&gt;"</span>
         } <span class="hljs-keyword">else</span> {
@@ -1298,13 +1314,13 @@ john!.card = <span class="hljs-type">CreditCard</span>(number: <span class="hljs
 <h3 id="">定义捕获列表</h3>
 <p>捕获列表中的每个元素都是由<code>weak</code>或者<code>unowned</code>关键字和实例的引用（如<code>self</code>或<code>someInstance</code>）成对组成。每一对都在方括号中，通过逗号分开。</p>
 <p>捕获列表放置在闭包参数列表和返回类型之前：</p>
-<pre><code class="lang-swift"><span class="hljs-preprocessor">@lazy</span> <span class="hljs-keyword">var</span> someClosure: (<span class="hljs-type">Int</span>, <span class="hljs-type">String</span>) -&gt; <span class="hljs-type">String</span> = {
+<pre><code class="lang-swift">lazy <span class="hljs-keyword">var</span> someClosure: (<span class="hljs-type">Int</span>, <span class="hljs-type">String</span>) -&gt; <span class="hljs-type">String</span> = {
     [<span class="hljs-keyword">unowned</span> <span class="hljs-keyword">self</span>] (index: <span class="hljs-type">Int</span>, stringToProcess: <span class="hljs-type">String</span>) -&gt; <span class="hljs-type">String</span> <span class="hljs-keyword">in</span>
     <span class="hljs-comment">// closure body goes here</span>
 }
 </code></pre>
 <p>如果闭包没有指定参数列表或者返回类型，则可以通过上下文推断，那么可以捕获列表放在闭包开始的地方，跟着是关键字<code>in</code>：</p>
-<pre><code class="lang-swift"><span class="hljs-preprocessor">@lazy</span> <span class="hljs-keyword">var</span> someClosure: () -&gt; <span class="hljs-type">String</span> = {
+<pre><code class="lang-swift">lazy <span class="hljs-keyword">var</span> someClosure: () -&gt; <span class="hljs-type">String</span> = {
     [<span class="hljs-keyword">unowned</span> <span class="hljs-keyword">self</span>] <span class="hljs-keyword">in</span>
     <span class="hljs-comment">// closure body goes here</span>
 }
@@ -1321,7 +1337,7 @@ john!.card = <span class="hljs-type">CreditCard</span>(number: <span class="hljs
     <span class="hljs-keyword">let</span> name: <span class="hljs-type">String</span>
     <span class="hljs-keyword">let</span> text: <span class="hljs-type">String</span>?
 
-    <span class="hljs-preprocessor">@lazy</span> <span class="hljs-keyword">var</span> asHTML: () -&gt; <span class="hljs-type">String</span> = {
+    lazy <span class="hljs-keyword">var</span> asHTML: () -&gt; <span class="hljs-type">String</span> = {
         [<span class="hljs-keyword">unowned</span> <span class="hljs-keyword">self</span>] <span class="hljs-keyword">in</span>
         <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> text = <span class="hljs-keyword">self</span>.text {
             <span class="hljs-keyword">return</span> <span class="hljs-string">"&lt;<span class="hljs-subst">\(<span class="hljs-keyword">self</span>.name)</span>&gt;<span class="hljs-subst">\(text)</span>&lt;/<span class="hljs-subst">\(<span class="hljs-keyword">self</span>.name)</span>&gt;"</span>
@@ -1380,10 +1396,6 @@ john!.card = <span class="hljs-type">CreditCard</span>(number: <span class="hljs
 
     
     <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>

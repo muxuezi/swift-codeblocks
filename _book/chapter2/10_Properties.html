@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.10" data-basepath=".." data-revision="1409042158486">
+    <div class="book"  data-level="2.10" data-basepath=".." data-revision="1414729181011">
     
 
 <div class="book-summary">
@@ -748,7 +748,7 @@
                         
                             <b>4.1.</b>
                         
-                         权限控制的黑与白
+                         Access Control 权限控制的黑与白
                     </a>
                 
             
@@ -796,7 +796,7 @@
                         
                             <b>4.4.</b>
                         
-                         与C语言指针的交互
+                         Swift与C语言指针友好合作
                     </a>
                 
             
@@ -820,15 +820,31 @@
         </li>
     
         
-        <li class="chapter " data-level="4.6" data-path="chapter4/06_access_control_&amp;_protected.html">
+        <li class="chapter " data-level="4.6" data-path="chapter4/06_Access_Control_and_Protected.html">
             
                 
-                    <a href="../chapter4/06_access_control_&amp;_protected.html">
+                    <a href="../chapter4/06_Access_Control_and_Protected.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
                         
-                         访问控制和protected
+                         访问控制和Protected
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.7" data-path="chapter4/07_Optional_Case_Study.html">
+            
+                
+                    <a href="../chapter4/07_Optional_Case_Study.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                         可选类型完美解决占位问题
                     </a>
                 
             
@@ -983,7 +999,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_109">
+                    <section class="normal" id="section-gitbook_18">
                     
                         <blockquote>
 <p>翻译：<a href="https://github.com/shinyzhu" target="_blank">shinyzhu</a><br>校对：<a href="https://github.com/pp-prog" target="_blank">pp-prog</a></p>
@@ -1029,7 +1045,7 @@ rangeOfFourItems.firstValue = <span class="hljs-number">6</span>
 <p>属于<em>引用类型</em>的类（class）则不一样，把一个引用类型的实例赋给一个常量后，仍然可以修改实例的变量属性。</p>
 <p><a name="lazy_stored_properties"></a></p>
 <h3 id="">延迟存储属性</h3>
-<p>延迟存储属性是指当第一次被调用的时候才会计算其初始值的属性。在属性声明前使用<code>@lazy</code>来标示一个延迟存储属性。</p>
+<p>延迟存储属性是指当第一次被调用的时候才会计算其初始值的属性。在属性声明前使用<code>lazy</code>来标示一个延迟存储属性。</p>
 <blockquote>
 <p>注意：<br>必须将延迟存储属性声明成变量（使用<code>var</code>关键字），因为属性的值在实例构造完成之前可能无法得到。而常量属性在构造过程完成之前必须要有初始值，因此无法声明成延迟属性。  </p>
 </blockquote>
@@ -1045,27 +1061,27 @@ rangeOfFourItems.firstValue = <span class="hljs-number">6</span>
 }
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DataManager</span> </span>{
-    <span class="hljs-preprocessor">@lazy</span> <span class="hljs-keyword">var</span> importer = <span class="hljs-type">DataImporter</span>()
-    <span class="hljs-keyword">var</span> data = <span class="hljs-type">String</span>[]()
+    lazy <span class="hljs-keyword">var</span> importer = <span class="hljs-type">DataImporter</span>()
+    <span class="hljs-keyword">var</span> data = [<span class="hljs-type">String</span>]()
     <span class="hljs-comment">// 这是提供数据管理功能</span>
 }
 
 <span class="hljs-keyword">let</span> manager = <span class="hljs-type">DataManager</span>()
-manager.data += <span class="hljs-string">"Some data"</span>
-manager.data += <span class="hljs-string">"Some more data"</span>
+manager.data.append(<span class="hljs-string">"Some data"</span>)
+manager.data.append(<span class="hljs-string">"Some more data"</span>)
 <span class="hljs-comment">// DataImporter 实例的 importer 属性还没有被创建</span>
 </code></pre>
 <p><code>DataManager</code>类包含一个名为<code>data</code>的存储属性，初始值是一个空的字符串（<code>String</code>）数组。虽然没有写出全部代码，<code>DataManager</code>类的目的是管理和提供对这个字符串数组的访问。</p>
 <p><code>DataManager</code>的一个功能是从文件导入数据，该功能由<code>DataImporter</code>类提供，<code>DataImporter</code>需要消耗不少时间完成初始化：因为它的实例在初始化时可能要打开文件，还要读取文件内容到内存。</p>
 <p><code>DataManager</code>也可能不从文件中导入数据。所以当<code>DataManager</code>的实例被创建时，没必要创建一个<code>DataImporter</code>的实例，更明智的是当用到<code>DataImporter</code>的时候才去创建它。</p>
-<p>由于使用了<code>@lazy</code>，<code>importer</code>属性只有在第一次被访问的时候才被创建。比如访问它的属性<code>fileName</code>时：</p>
+<p>由于使用了<code>lazy</code>，<code>importer</code>属性只有在第一次被访问的时候才被创建。比如访问它的属性<code>fileName</code>时：</p>
 <pre><code class="lang-swift"><span class="hljs-built_in">println</span>(manager.importer.fileName)
 <span class="hljs-comment">// DataImporter 实例的 importer 属性现在被创建了</span>
 <span class="hljs-comment">// 输出 "data.txt”</span>
 </code></pre>
 <p><a name="stored_properties_and_instance_variables"></a></p>
 <h3 id="">存储属性和实例变量</h3>
-<p>如果您有过 Objective-C 经验，应该知道Objective-C为类实例存储值和引提供两种方法。对于属性来说，也可以使用实例变量作为属性值的后端存储。</p>
+<p>如果您有过 Objective-C 经验，应该知道Objective-C为类实例存储值和引用提供两种方法。对于属性来说，也可以使用实例变量作为属性值的后端存储。</p>
 <p>Swift 编程语言中把这些理论统一用属性来实现。Swift 中的属性没有对应的实例变量，属性的后端存储也无法直接访问。这就避免了不同场景下访问方式的困扰，同时也将属性的定义简化成一个语句。
 一个类型中属性的全部信息——包括命名、类型和内存管理特征——都在唯一一个地方（类型定义中）定义。</p>
 <p><a name="computed_properties"></a></p>
@@ -1203,7 +1219,7 @@ stepCounter.totalSteps = <span class="hljs-number">896</span>
 <p>前面章节提到的全局或局部变量都属于存储型变量，跟存储属性类似，它提供特定类型的存储空间，并允许读取和写入。</p>
 <p>另外，在全局或局部范围都可以定义计算型变量和为存储型变量定义观察器，计算型变量跟计算属性一样，返回一个计算的值而不是存储值，声明格式也完全一样。</p>
 <blockquote>
-<p>注意：<br>全局的常量或变量都是延迟计算的，跟<a href="#lazy_stored_properties">延迟存储属性</a>相似，不同的地方在于，全局的常量或变量不需要标记<code>@lazy</code>特性。<br>局部范围的常量或变量不会延迟计算。  </p>
+<p>注意：<br>全局的常量或变量都是延迟计算的，跟<a href="#lazy_stored_properties">延迟存储属性</a>相似，不同的地方在于，全局的常量或变量不需要标记<code>lazy</code>特性。<br>局部范围的常量或变量不会延迟计算。  </p>
 </blockquote>
 <p><a name="type_properties"></a></p>
 <h2 id="">类型属性</h2>
@@ -1329,10 +1345,6 @@ stepCounter.totalSteps = <span class="hljs-number">896</span>
 
     
     <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>

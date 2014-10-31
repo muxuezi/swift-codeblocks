@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.21" data-basepath=".." data-revision="1409042158486">
+    <div class="book"  data-level="2.21" data-basepath=".." data-revision="1414729181011">
     
 
 <div class="book-summary">
@@ -748,7 +748,7 @@
                         
                             <b>4.1.</b>
                         
-                         权限控制的黑与白
+                         Access Control 权限控制的黑与白
                     </a>
                 
             
@@ -796,7 +796,7 @@
                         
                             <b>4.4.</b>
                         
-                         与C语言指针的交互
+                         Swift与C语言指针友好合作
                     </a>
                 
             
@@ -820,15 +820,31 @@
         </li>
     
         
-        <li class="chapter " data-level="4.6" data-path="chapter4/06_access_control_&amp;_protected.html">
+        <li class="chapter " data-level="4.6" data-path="chapter4/06_Access_Control_and_Protected.html">
             
                 
-                    <a href="../chapter4/06_access_control_&amp;_protected.html">
+                    <a href="../chapter4/06_Access_Control_and_Protected.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
                         
-                         访问控制和protected
+                         访问控制和Protected
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.7" data-path="chapter4/07_Optional_Case_Study.html">
+            
+                
+                    <a href="../chapter4/07_Optional_Case_Study.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                         可选类型完美解决占位问题
                     </a>
                 
             
@@ -983,7 +999,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_131">
+                    <section class="normal" id="section-gitbook_40">
                     
                         <blockquote>
 <p>翻译：<a href="https://github.com/geek5nan" target="_blank">geek5nan</a><br>校对：<a href="https://github.com/dabing1022" target="_blank">dabing1022</a></p>
@@ -995,13 +1011,15 @@
 <li><a href="#protocol_syntax">协议的语法（Protocol Syntax）</a></li>
 <li><a href="#property_requirements">对属性的规定（Property Requirements）</a></li>
 <li><a href="#method_requirements">对方法的规定（Method Requirements）</a></li>
-<li><a href="#mutating_method_requirements">对突变方法的的规定（Mutating Method Requirements）</a></li>
+<li><a href="#mutating_method_requirements">对突变方法的规定（Mutating Method Requirements）</a></li>
+<li><a href="#initializer_requirements">对构造器的规定（Initializer Requirements）</a></li>
 <li><a href="#protocols_as_types">协议类型（Protocols as Types）</a></li>
 <li><a href="#delegation">委托(代理)模式（Delegation）</a></li>
 <li><a href="#adding_protocol_conformance_with_an_extension">在扩展中添加协议成员（Adding Protocol Conformance with an Extension）</a></li>
 <li><a href="#declaring_protocol_adoption_with_an_extension">通过扩展补充协议声明（Declaring Protocol Adoption with an Extension）</a></li>
 <li><a href="#collections_of_protocol_types">集合中的协议类型（Collections of Protocol Types）</a></li>
 <li><a href="#protocol_inheritance">协议的继承（Protocol Inheritance）</a></li>
+<li><a href="#class_only_protocol">类专属协议（Class-Only Protocol）</a></li>
 <li><a href="#protocol_composition">协议合成（Protocol Composition）</a></li>
 <li><a href="#checking_for_protocol_conformance">检验协议的一致性（Checking for Protocol Conformance）</a></li>
 <li><a href="#optional_protocol_requirements">对可选协议的规定（Optional Protocol Requirements）</a></li>
@@ -1064,7 +1082,7 @@
         <span class="hljs-keyword">self</span>.<span class="hljs-keyword">prefix</span> = <span class="hljs-keyword">prefix</span>
     }
     <span class="hljs-keyword">var</span> fullName: <span class="hljs-type">String</span> {
-    <span class="hljs-keyword">return</span> (<span class="hljs-keyword">prefix</span> ? <span class="hljs-keyword">prefix</span>! + <span class="hljs-string">" "</span> : <span class="hljs-string">" "</span>) + name
+    <span class="hljs-keyword">return</span> (<span class="hljs-keyword">prefix</span> != <span class="hljs-built_in">nil</span> ? <span class="hljs-keyword">prefix</span>! + <span class="hljs-string">" "</span> : <span class="hljs-string">" "</span>) + name
     }
 }
 <span class="hljs-keyword">var</span> ncc1701 = <span class="hljs-type">Starship</span>(name: <span class="hljs-string">"Enterprise"</span>, <span class="hljs-keyword">prefix</span>: <span class="hljs-string">"USS"</span>)
@@ -1137,6 +1155,47 @@
 lightSwitch.toggle()
 <span class="hljs-comment">//lightSwitch 现在的值为 .On</span>
 </code></pre>
+<p><a name="initializer_requirements"></a></p>
+<h2 id="">对构造器的规定</h2>
+<p>协议可以要求它的遵循类型实现特定的构造器。你可以像书写普通的构造器那样，在协议的定义里写下构造器的需求，但不需要写花括号和构造器的实体：</p>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">protocol</span> <span class="hljs-title">SomeProtocol</span> </span>{
+    <span class="hljs-keyword">init</span>(someParameter: <span class="hljs-type">Int</span>)
+}
+</code></pre>
+<p><strong>协议构造器规定在类中的实现</strong></p>
+<p>你可以在遵循该协议的类中实现构造器，并指定其为类的特定构造器或者便捷构造器。在这两种情况下，你都必须给构造器实现标上&quot;required&quot;修饰符：</p>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SomeClass</span>: <span class="hljs-title">SomeProtocol</span> </span>{
+    required <span class="hljs-keyword">init</span>(someParameter: <span class="hljs-type">Int</span>) {
+        <span class="hljs-comment">//构造器实现</span>
+    }
+}
+</code></pre>
+<p>使用<code>required</code>修饰符可以保证：所有的遵循该协议的子类，同样能为构造器规定提供一个显式的实现或继承实现。</p>
+<p>关于<code>required</code>构造器的更多内容，请参考<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-XID_454"><code>required</code>构造器 </a></p>
+<blockquote>
+<p>注意</p>
+<p>如果类已经被“final”修饰符所标示，你就不需要在协议构造器规定的实现中使用&quot;required&quot;修饰符。因为final类不能有子类。关于<code>final</code>修饰符的更多内容，请参见<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-XID_339">防止重写</a></p>
+</blockquote>
+<p>如果一个子类重写了父类的指定构造器，并且该构造器遵循了某个协议的规定，那么该构造器的实现需要被同时标示<code>required</code>和<code>override</code>修饰符</p>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">protocol</span> <span class="hljs-title">SomeProtocol</span> </span>{
+    <span class="hljs-keyword">init</span>()
+}
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SomeSuperClass</span> </span>{
+    <span class="hljs-keyword">init</span>() {
+        <span class="hljs-comment">//协议定义</span>
+    }
+}
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SomeSubClass</span>: <span class="hljs-title">SomeSuperClass</span>, <span class="hljs-title">SomeProtocol</span> </span>{
+    <span class="hljs-comment">// "required" from SomeProtocol conformance; "override" from SomeSuperClass</span>
+    required <span class="hljs-keyword">override</span> <span class="hljs-keyword">init</span>() {
+        <span class="hljs-comment">// 构造器实现</span>
+    }
+}
+</code></pre>
 <p><a name="protocols_as_types"></a></p>
 <h2 id="">协议类型</h2>
 <p>尽管<code>协议</code>本身并不实现任何功能，但是<code>协议</code>可以被当做类型来使用。</p>
@@ -1201,9 +1260,9 @@ lightSwitch.toggle()
     <span class="hljs-keyword">let</span> finalSquare = <span class="hljs-number">25</span>
     <span class="hljs-keyword">let</span> dice = <span class="hljs-type">Dice</span>(sides: <span class="hljs-number">6</span>, generator: <span class="hljs-type">LinearCongruentialGenerator</span>())
     <span class="hljs-keyword">var</span> square = <span class="hljs-number">0</span>
-    <span class="hljs-keyword">var</span> board: <span class="hljs-type">Int</span>[]
+    <span class="hljs-keyword">var</span> board: [<span class="hljs-type">Int</span>]
     <span class="hljs-keyword">init</span>() {
-        board = <span class="hljs-type">Int</span>[](<span class="hljs-built_in">count</span>: finalSquare + <span class="hljs-number">1</span>, repeatedValue: <span class="hljs-number">0</span>)
+        board = [<span class="hljs-type">Int</span>](<span class="hljs-built_in">count</span>: finalSquare + <span class="hljs-number">1</span>, repeatedValue: <span class="hljs-number">0</span>)
         board[<span class="hljs-number">03</span>] = +<span class="hljs-number">08</span>; board[<span class="hljs-number">06</span>] = +<span class="hljs-number">11</span>; board[<span class="hljs-number">09</span>] = +<span class="hljs-number">09</span>; board[<span class="hljs-number">10</span>] = +<span class="hljs-number">02</span>
         board[<span class="hljs-number">14</span>] = -<span class="hljs-number">10</span>; board[<span class="hljs-number">19</span>] = -<span class="hljs-number">11</span>; board[<span class="hljs-number">22</span>] = -<span class="hljs-number">02</span>; board[<span class="hljs-number">24</span>] = -<span class="hljs-number">08</span>
     }
@@ -1320,12 +1379,12 @@ game.play()
 <span class="hljs-comment">// 输出 "A hamster named Simon"</span>
 </code></pre>
 <blockquote>
-<p>注意: 即时满足了协议的所有要求，类型也不会自动转变，因此你必须为它做出明显的协议声明</p>
+<p>注意: 即使满足了协议的所有要求，类型也不会自动转变，因此你必须为它做出明显的协议声明</p>
 </blockquote>
 <p><a name="collections_of_protocol_types"></a></p>
 <h2 id="">集合中的协议类型</h2>
 <p>协议类型可以被集合使用，表示集合中的元素均为协议类型:</p>
-<pre><code class="lang-swift"><span class="hljs-keyword">let</span> things: <span class="hljs-type">TextRepresentable</span>[] = [game,d12,simonTheHamster]
+<pre><code class="lang-swift"><span class="hljs-keyword">let</span> things: [<span class="hljs-type">TextRepresentable</span>] = [game,d12,simonTheHamster]
 </code></pre>
 <p>如下所示，<code>things</code>数组可以被直接遍历，并调用其中元素的<code>asText()</code>函数:</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">for</span> thing <span class="hljs-keyword">in</span> things {
@@ -1378,6 +1437,18 @@ game.play()
 <span class="hljs-comment">// A game of Snakes and Ladders with 25 squares:</span>
 <span class="hljs-comment">// ○ ○ ▲ ○ ○ ▲ ○ ○ ▲ ▲ ○ ○ ○ ▼ ○ ○ ○ ○ ▼ ○ ○ ▼ ○ ▼ ○</span>
 </code></pre>
+<p><a name="class_only_protocol"></a></p>
+<h2 id="">类专属协议</h2>
+<p>你可以在协议的继承列表中,通过添加“class”关键字,限制协议只能适配到类（class）类型。（结构体或枚举不能遵循该协议）。该“class”关键字必须是第一个出现在协议的继承列表中，其后，才是其他继承协议。</p>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">protocol</span> <span class="hljs-title">SomeClassOnlyProtocol</span>: <span class="hljs-title">class</span>, <span class="hljs-title">SomeInheritedProtocol</span> </span>{
+    <span class="hljs-comment">// class-only protocol definition goes here</span>
+}
+</code></pre>
+<p>在以上例子中，协议SomeClassOnlyProtocol只能被类（class）类型适配。如果尝试让结构体或枚举类型适配该协议，则会出现编译错误。</p>
+<blockquote>
+<p>注意</p>
+<p>当协议需求定义的行为，要求（或假设）它的遵循类型必须是引用语义而非值语义时，应该采用类专属协议。关于引用语义，值语义的更多内容，请查看<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-XID_145">结构体和枚举是值类型</a>和<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-XID_146">类是引用类型</a></p>
+</blockquote>
 <p><a name="protocol_composition"></a></p>
 <h2 id="">协议合成</h2>
 <p>一个协议可由多个协议采用<code>protocol&lt;SomeProtocol， AnotherProtocol&gt;</code>这样的格式进行组合，称为<code>协议合成(protocol composition)</code>。</p>
@@ -1439,7 +1510,7 @@ wishHappyBirthday(birthdayPerson)
 }
 </code></pre>
 <p><code>Circle，Country，Animal</code>并没有一个相同的基类，因而采用<code>AnyObject</code>类型的数组来装载在他们的实例，如下所示:</p>
-<pre><code class="lang-swift"><span class="hljs-keyword">let</span> objects: <span class="hljs-type">AnyObject</span>[] = [
+<pre><code class="lang-swift"><span class="hljs-keyword">let</span> objects: [<span class="hljs-type">AnyObject</span>] = [
     <span class="hljs-type">Circle</span>(radius: <span class="hljs-number">2.0</span>),
     <span class="hljs-type">Country</span>(area: <span class="hljs-number">243_610</span>),
     <span class="hljs-type">Animal</span>(legs: <span class="hljs-number">4</span>)
@@ -1470,8 +1541,8 @@ wishHappyBirthday(birthdayPerson)
 </blockquote>
 <p>如下所示，<code>Counter</code>类使用含有两个可选成员的<code>CounterDataSource</code>协议类型的外部数据源来提供<code>增量值(increment amount)</code></p>
 <pre><code class="lang-swift"><span class="hljs-preprocessor">@objc</span> <span class="hljs-class"><span class="hljs-keyword">protocol</span> <span class="hljs-title">CounterDataSource</span> </span>{
-    <span class="hljs-preprocessor">@optional</span> <span class="hljs-func"><span class="hljs-keyword">func</span></span> incrementForCount(<span class="hljs-built_in">count</span>: <span class="hljs-type">Int</span>) -&gt; <span class="hljs-type">Int</span>
-    <span class="hljs-preprocessor">@optional</span> <span class="hljs-keyword">var</span> fixedIncrement: <span class="hljs-type">Int</span> { <span class="hljs-keyword">get</span> }
+    optional <span class="hljs-func"><span class="hljs-keyword">func</span></span> incrementForCount(<span class="hljs-built_in">count</span>: <span class="hljs-type">Int</span>) -&gt; <span class="hljs-type">Int</span>
+    optional <span class="hljs-keyword">var</span> fixedIncrement: <span class="hljs-type">Int</span> { <span class="hljs-keyword">get</span> }
 }
 </code></pre>
 <p><code>CounterDataSource</code>含有<code>incrementForCount</code>的<code>可选方法</code>和<code>fiexdIncrement</code>的<code>可选属性</code>，它们使用了不同的方法来从数据源中获取合适的增量值。</p>
@@ -1570,10 +1641,6 @@ counter.dataSource = <span class="hljs-type">TowardsZeroSource</span>()
 
     
     <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>

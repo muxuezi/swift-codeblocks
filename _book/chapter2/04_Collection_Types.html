@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.4" data-basepath=".." data-revision="1409042158486">
+    <div class="book"  data-level="2.4" data-basepath=".." data-revision="1414729181011">
     
 
 <div class="book-summary">
@@ -748,7 +748,7 @@
                         
                             <b>4.1.</b>
                         
-                         权限控制的黑与白
+                         Access Control 权限控制的黑与白
                     </a>
                 
             
@@ -796,7 +796,7 @@
                         
                             <b>4.4.</b>
                         
-                         与C语言指针的交互
+                         Swift与C语言指针友好合作
                     </a>
                 
             
@@ -820,15 +820,31 @@
         </li>
     
         
-        <li class="chapter " data-level="4.6" data-path="chapter4/06_access_control_&amp;_protected.html">
+        <li class="chapter " data-level="4.6" data-path="chapter4/06_Access_Control_and_Protected.html">
             
                 
-                    <a href="../chapter4/06_access_control_&amp;_protected.html">
+                    <a href="../chapter4/06_Access_Control_and_Protected.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
                         
-                         访问控制和protected
+                         访问控制和Protected
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.7" data-path="chapter4/07_Optional_Case_Study.html">
+            
+                
+                    <a href="../chapter4/07_Optional_Case_Study.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                         可选类型完美解决占位问题
                     </a>
                 
             
@@ -983,10 +999,10 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_100">
+                    <section class="normal" id="section-gitbook_7">
                     
                         <blockquote>
-<p>翻译：<a href="https://github.com/zqp" target="_blank">zqp</a><br>校对：<a href="https://github.com/shinyzhu" target="_blank">shinyzhu</a>, <a href="https://github.com/stanzhai" target="_blank">stanzhai</a>  </p>
+<p>翻译：<a href="https://github.com/zqp" target="_blank">zqp</a><br>校对：<a href="https://github.com/shinyzhu" target="_blank">shinyzhu</a>, <a href="https://github.com/stanzhai" target="_blank">stanzhai</a>, <a href="https://github.com/feiin" target="_blank">feiin</a>    </p>
 </blockquote>
 <h1 id="-collection-types">集合类型 (Collection Types)</h1>
 <hr>
@@ -1007,16 +1023,16 @@
 <p>Swift 数组特定于它所存储元素的类型。这与 Objective-C 的 NSArray 和 NSMutableArray 不同，这两个类可以存储任意类型的对象，并且不提供所返回对象的任何特别信息。在 Swift 中，数据值在被存储进入某个数组之前类型必须明确，方法是通过显式的类型标注或类型推断，而且不是必须是<code>class</code>类型。例如： 如果我们创建了一个<code>Int</code>值类型的数组，我们不能往其中插入任何不是<code>Int</code>类型的数据。 Swift 中的数组是类型安全的，并且它们中包含的类型必须明确。</p>
 <p><a name="array_type_shorthand_syntax"></a></p>
 <h3 id="">数组的简单语法</h3>
-<p>写 Swift 数组应该遵循像<code>Array&lt;SomeType&gt;</code>这样的形式，其中<code>SomeType</code>是这个数组中唯一允许存在的数据类型。 我们也可以使用像<code>SomeType[]</code>这样的简单语法。 尽管两种形式在功能上是一样的，但是推荐较短的那种，而且在本文中都会使用这种形式来使用数组。</p>
+<p>写 Swift 数组应该遵循像<code>Array&lt;SomeType&gt;</code>这样的形式，其中<code>SomeType</code>是这个数组中唯一允许存在的数据类型。 我们也可以使用像<code>[SomeType]</code>这样的简单语法。 尽管两种形式在功能上是一样的，但是推荐较短的那种，而且在本文中都会使用这种形式来使用数组。</p>
 <p><a name="array_literals"></a></p>
 <h3 id="">数组构造语句</h3>
 <p>我们可以使用字面量来进行数组构造，这是一种用一个或者多个数值构造数组的简单方法。字面量是一系列由逗号分割并由方括号包含的数值。
 <code>[value 1, value 2, value 3]</code>。</p>
 <p>下面这个例子创建了一个叫做<code>shoppingList</code>并且存储字符串的数组：</p>
-<pre><code class="lang-swift"><span class="hljs-keyword">var</span> shoppingList: <span class="hljs-type">String</span>[] = [<span class="hljs-string">"Eggs"</span>, <span class="hljs-string">"Milk"</span>]
+<pre><code class="lang-swift"><span class="hljs-keyword">var</span> shoppingList: [<span class="hljs-type">String</span>] = [<span class="hljs-string">"Eggs"</span>, <span class="hljs-string">"Milk"</span>]
 <span class="hljs-comment">// shoppingList 已经被构造并且拥有两个初始项。</span>
 </code></pre>
-<p><code>shoppingList</code>变量被声明为“字符串值类型的数组“，记作<code>String[]</code>。 因为这个数组被规定只有<code>String</code>一种数据结构，所以只有<code>String</code>类型可以在其中被存取。 在这里，<code>shoppinglist</code>数组由两个<code>String</code>值（<code>&quot;Eggs&quot;</code> 和<code>&quot;Milk&quot;</code>）构造，并且由字面量定义。</p>
+<p><code>shoppingList</code>变量被声明为“字符串值类型的数组“，记作<code>[String]</code>。 因为这个数组被规定只有<code>String</code>一种数据结构，所以只有<code>String</code>类型可以在其中被存取。 在这里，<code>shoppinglist</code>数组由两个<code>String</code>值（<code>&quot;Eggs&quot;</code> 和<code>&quot;Milk&quot;</code>）构造，并且由字面量定义。</p>
 <blockquote>
 <p>注意：<br><code>Shoppinglist</code>数组被声明为变量（<code>var</code>关键字创建）而不是常量（<code>let</code>创建）是因为以后可能会有更多的数据项被插入其中。  </p>
 </blockquote>
@@ -1024,7 +1040,7 @@
 <p>由于 Swift 的类型推断机制，当我们用字面量构造只拥有相同类型值数组的时候，我们不必把数组的类型定义清楚。 <code>shoppinglist</code>的构造也可以这样写：</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">var</span> shoppingList = [<span class="hljs-string">"Eggs"</span>, <span class="hljs-string">"Milk"</span>]
 </code></pre>
-<p>因为所有字面量中的值都是相同的类型，Swift 可以推断出<code>String[]</code>是<code>shoppinglist</code>中变量的正确类型。</p>
+<p>因为所有字面量中的值都是相同的类型，Swift 可以推断出<code>[String]</code>是<code>shoppinglist</code>中变量的正确类型。</p>
 <p><a name="accessing_and_modifying_an_array"></a></p>
 <h3 id="">访问和修改数组</h3>
 <p>我们可以通过数组的方法和属性来访问和修改数组，或者下标语法。
@@ -1114,28 +1130,28 @@ shoppingList += [<span class="hljs-string">"Chocolate Spread"</span>,<span class
 <p><a name="creating_and_initializing_an_array"></a></p>
 <h3 id="">创建并且构造一个数组</h3>
 <p>我们可以使用构造语法来创建一个由特定数据类型构成的空数组：</p>
-<pre><code class="lang-swift"><span class="hljs-keyword">var</span> someInts = <span class="hljs-type">Int</span>[]()
-<span class="hljs-built_in">println</span>(<span class="hljs-string">"someInts is of type Int[] with <span class="hljs-subst">\(someInts.<span class="hljs-built_in">count</span>)</span> items。"</span>)
-<span class="hljs-comment">// 打印 "someInts is of type Int[] with 0 items。"（someInts是0数据项的Int[]数组）</span>
+<pre><code class="lang-swift"><span class="hljs-keyword">var</span> someInts = [<span class="hljs-type">Int</span>]()
+<span class="hljs-built_in">println</span>(<span class="hljs-string">"someInts is of type [Int] with <span class="hljs-subst">\(someInts.<span class="hljs-built_in">count</span>)</span> items。"</span>)
+<span class="hljs-comment">// 打印 "someInts is of type [Int] with 0 items。"（someInts是0数据项的Int[]数组）</span>
 </code></pre>
-<p>注意<code>someInts</code>被设置为一个<code>Int[]</code>构造函数的输出所以它的变量类型被定义为<code>Int[]</code>。</p>
+<p>注意<code>someInts</code>被设置为一个<code>[Int]</code>构造函数的输出所以它的变量类型被定义为<code>[Int]</code>。</p>
 <p>除此之外，如果代码上下文中提供了类型信息， 例如一个函数参数或者一个已经定义好类型的常量或者变量，我们可以使用空数组语句创建一个空数组，它的写法很简单：<code>[]</code>（一对空方括号）：</p>
 <pre><code class="lang-swift">someInts.append(<span class="hljs-number">3</span>)
 <span class="hljs-comment">// someInts 现在包含一个INT值</span>
 someInts = []
-<span class="hljs-comment">// someInts 现在是空数组，但是仍然是Int[]类型的。</span>
+<span class="hljs-comment">// someInts 现在是空数组，但是仍然是[Int]类型的。</span>
 </code></pre>
 <p>Swift 中的<code>Array</code>类型还提供一个可以创建特定大小并且所有数据都被默认的构造方法。我们可以把准备加入新数组的数据项数量（<code>count</code>）和适当类型的初始值（<code>repeatedValue</code>）传入数组构造函数：</p>
-<pre><code class="lang-swift"><span class="hljs-keyword">var</span> threeDoubles = <span class="hljs-type">Double</span>[](<span class="hljs-built_in">count</span>: <span class="hljs-number">3</span>, repeatedValue:<span class="hljs-number">0.0</span>)
-<span class="hljs-comment">// threeDoubles 是一种 Double[]数组, 等于 [0.0, 0.0, 0.0]</span>
+<pre><code class="lang-swift"><span class="hljs-keyword">var</span> threeDoubles = [<span class="hljs-type">Double</span>](<span class="hljs-built_in">count</span>: <span class="hljs-number">3</span>, repeatedValue:<span class="hljs-number">0.0</span>)
+<span class="hljs-comment">// threeDoubles 是一种 [Double]数组, 等于 [0.0, 0.0, 0.0]</span>
 </code></pre>
 <p>因为类型推断的存在，我们使用这种构造方法的时候不需要特别指定数组中存储的数据类型，因为类型可以从默认值推断出来：</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">var</span> anotherThreeDoubles = <span class="hljs-type">Array</span>(<span class="hljs-built_in">count</span>: <span class="hljs-number">3</span>, repeatedValue: <span class="hljs-number">2.5</span>)
-<span class="hljs-comment">// anotherThreeDoubles is inferred as Double[], and equals [2.5, 2.5, 2.5]</span>
+<span class="hljs-comment">// anotherThreeDoubles is inferred as [Double], and equals [2.5, 2.5, 2.5]</span>
 </code></pre>
 <p>最后，我们可以使用加法操作符（<code>+</code>）来组合两种已存在的相同类型数组。新数组的数据类型会被从两个数组的数据类型中推断出来：</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">var</span> sixDoubles = threeDoubles + anotherThreeDoubles
-<span class="hljs-comment">// sixDoubles 被推断为 Double[], 等于 [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]</span>
+<span class="hljs-comment">// sixDoubles 被推断为 [Double], 等于 [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]</span>
 </code></pre>
 <p><a name="dictionaries"></a></p>
 <h2 id="">字典</h2>
@@ -1290,10 +1306,6 @@ namesOfIntegers = [:]
 
     
     <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>

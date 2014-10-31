@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.14" data-basepath=".." data-revision="1409042158486">
+    <div class="book"  data-level="2.14" data-basepath=".." data-revision="1414729181011">
     
 
 <div class="book-summary">
@@ -748,7 +748,7 @@
                         
                             <b>4.1.</b>
                         
-                         权限控制的黑与白
+                         Access Control 权限控制的黑与白
                     </a>
                 
             
@@ -796,7 +796,7 @@
                         
                             <b>4.4.</b>
                         
-                         与C语言指针的交互
+                         Swift与C语言指针友好合作
                     </a>
                 
             
@@ -820,15 +820,31 @@
         </li>
     
         
-        <li class="chapter " data-level="4.6" data-path="chapter4/06_access_control_&amp;_protected.html">
+        <li class="chapter " data-level="4.6" data-path="chapter4/06_Access_Control_and_Protected.html">
             
                 
-                    <a href="../chapter4/06_access_control_&amp;_protected.html">
+                    <a href="../chapter4/06_Access_Control_and_Protected.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
                         
-                         访问控制和protected
+                         访问控制和Protected
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.7" data-path="chapter4/07_Optional_Case_Study.html">
+            
+                
+                    <a href="../chapter4/07_Optional_Case_Study.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                         可选类型完美解决占位问题
                     </a>
                 
             
@@ -983,7 +999,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_117">
+                    <section class="normal" id="section-gitbook_26">
                     
                         <blockquote>
 <p>翻译：<a href="https://github.com/lifedim" target="_blank">lifedim</a><br>校对：<a href="https://github.com/lifedim" target="_blank">lifedim</a></p>
@@ -1331,7 +1347,7 @@ beetsQuestion.response = <span class="hljs-string">"I also like beets. (But not 
         <span class="hljs-keyword">self</span>.quantity = quantity
         <span class="hljs-keyword">super</span>.<span class="hljs-keyword">init</span>(name: name)
     }
-    convenience <span class="hljs-keyword">init</span>(name: <span class="hljs-type">String</span>) {
+    <span class="hljs-keyword">override</span> convenience <span class="hljs-keyword">init</span>(name: <span class="hljs-type">String</span>) {
         <span class="hljs-keyword">self</span>.<span class="hljs-keyword">init</span>(name: name, quantity: <span class="hljs-number">1</span>)
     }
 }
@@ -1340,7 +1356,7 @@ beetsQuestion.response = <span class="hljs-string">"I also like beets. (But not 
 <p><img src="https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/Art/initializersExample02_2x.png" alt="RecipeIngredient构造器"></p>
 <p><code>RecipeIngredient</code>类拥有一个指定构造器<code>init(name: String, quantity: Int)</code>，它可以用来产生新<code>RecipeIngredient</code>实例的所有属性值。这个构造器一开始先将传入的<code>quantity</code>参数赋值给<code>quantity</code>属性，这个属性也是唯一在<code>RecipeIngredient</code>中新引入的属性。随后，构造器将任务向上代理给父类<code>Food</code>的<code>init(name: String)</code>。这个过程满足<a href="#two_phase_initialization">两段式构造过程</a>中的安全检查1。</p>
 <p><code>RecipeIngredient</code>也定义了一个便利构造器<code>init(name: String)</code>，它只通过<code>name</code>来创建<code>RecipeIngredient</code>的实例。这个便利构造器假设任意<code>RecipeIngredient</code>实例的<code>quantity</code>为1，所以不需要显示指明数量即可创建出实例。这个便利构造器的定义可以让创建实例更加方便和快捷，并且避免了使用重复的代码来创建多个<code>quantity</code>为 1 的<code>RecipeIngredient</code>实例。这个便利构造器只是简单的将任务代理给了同一类里提供的指定构造器。</p>
-<p>注意，<code>RecipeIngredient</code>的便利构造器<code>init(name: String)</code>使用了跟<code>Food</code>中指定构造器<code>init(name: String)</code>相同的参数。尽管<code>RecipeIngredient</code>这个构造器是便利构造器，<code>RecipeIngredient</code>依然提供了对所有父类指定构造器的实现。因此，<code>RecipeIngredient</code>也能自动继承了所有父类的便利构造器。</p>
+<p>注意，<code>RecipeIngredient</code>的便利构造器<code>init(name: String)</code>使用了跟<code>Food</code>中指定构造器<code>init(name: String)</code>相同的参数。因为这个便利构造器重写要父类的指定构造器<code>init(name: String)</code>，必须在前面使用使用<code>override</code>标识。</p>
 <p>在这个例子中，<code>RecipeIngredient</code>的父类是<code>Food</code>，它有一个便利构造器<code>init()</code>。这个构造器因此也被<code>RecipeIngredient</code>继承。这个继承的<code>init()</code>函数版本跟<code>Food</code>提供的版本是一样的，除了它是将任务代理给<code>RecipeIngredient</code>版本的<code>init(name: String)</code>而不是<code>Food</code>提供的版本。</p>
 <p>所有的这三种构造器都可以用来创建新的<code>RecipeIngredient</code>实例：</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">let</span> oneMysteryItem = <span class="hljs-type">RecipeIngredient</span>()
@@ -1453,10 +1469,6 @@ breakfastList[<span class="hljs-number">0</span>].purchased = <span class="hljs-
 
     
     <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>

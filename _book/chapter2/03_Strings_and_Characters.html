@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.3" data-basepath=".." data-revision="1409042158486">
+    <div class="book"  data-level="2.3" data-basepath=".." data-revision="1414729181011">
     
 
 <div class="book-summary">
@@ -748,7 +748,7 @@
                         
                             <b>4.1.</b>
                         
-                         权限控制的黑与白
+                         Access Control 权限控制的黑与白
                     </a>
                 
             
@@ -796,7 +796,7 @@
                         
                             <b>4.4.</b>
                         
-                         与C语言指针的交互
+                         Swift与C语言指针友好合作
                     </a>
                 
             
@@ -820,15 +820,31 @@
         </li>
     
         
-        <li class="chapter " data-level="4.6" data-path="chapter4/06_access_control_&amp;_protected.html">
+        <li class="chapter " data-level="4.6" data-path="chapter4/06_Access_Control_and_Protected.html">
             
                 
-                    <a href="../chapter4/06_access_control_&amp;_protected.html">
+                    <a href="../chapter4/06_Access_Control_and_Protected.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
                         
-                         访问控制和protected
+                         访问控制和Protected
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.7" data-path="chapter4/07_Optional_Case_Study.html">
+            
+                
+                    <a href="../chapter4/07_Optional_Case_Study.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                         可选类型完美解决占位问题
                     </a>
                 
             
@@ -983,7 +999,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_96">
+                    <section class="normal" id="section-gitbook_5">
                     
                         <blockquote>
 <p>翻译：<a href="https://github.com/wh1100717" target="_blank">wh1100717</a><br>校对：<a href="https://github.com/Hawstein" target="_blank">Hawstein</a></p>
@@ -1029,18 +1045,16 @@
 <p>字符串字面量可以包含以下特殊字符：</p>
 <ul>
 <li>转义字符<code>\0</code>(空字符)、<code>\\</code>(反斜线)、<code>\t</code>(水平制表符)、<code>\n</code>(换行符)、<code>\r</code>(回车符)、<code>\&quot;</code>(双引号)、<code>\&#39;</code>(单引号)。</li>
-<li>单字节 Unicode 标量，写成<code>\xnn</code>，其中<code>nn</code>为两位十六进制数。</li>
-<li>双字节 Unicode 标量，写成<code>\unnnn</code>，其中<code>nnnn</code>为四位十六进制数。</li>
-<li>四字节 Unicode 标量，写成<code>\Unnnnnnnn</code>，其中<code>nnnnnnnn</code>为八位十六进制数。</li>
+<li>Unicode 标量，写成<code>\u{n}</code>(u为小写)，其中<code>n</code>为任意的一到八位十六进制数。</li>
 </ul>
 <p>下面的代码为各种特殊字符的使用示例。
 <code>wiseWords</code>常量包含了两个转移特殊字符 (双括号)；
 <code>dollarSign</code>、<code>blackHeart</code>和<code>sparklingHeart</code>常量演示了三种不同格式的 Unicode 标量：</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">let</span> wiseWords = <span class="hljs-string">"\"我是要成为海贼王的男人\" - 路飞"</span>
 <span class="hljs-comment">// "我是要成为海贼王的男人" - 路飞</span>
-<span class="hljs-keyword">let</span> dollarSign = <span class="hljs-string">"\x24"</span>             <span class="hljs-comment">// $,  Unicode 标量 U+0024</span>
-<span class="hljs-keyword">let</span> blackHeart = <span class="hljs-string">"\u2665"</span>           <span class="hljs-comment">// ♥,  Unicode 标量 U+2665</span>
-<span class="hljs-keyword">let</span> sparklingHeart = <span class="hljs-string">"\U0001F496"</span>  <span class="hljs-comment">// 💖, Unicode 标量 U+1F496</span>
+<span class="hljs-keyword">let</span> dollarSign = <span class="hljs-string">"\u{24}"</span>             <span class="hljs-comment">// $,  Unicode 标量 U+0024</span>
+<span class="hljs-keyword">let</span> blackHeart = <span class="hljs-string">"\u{2665}"</span>           <span class="hljs-comment">// ♥,  Unicode 标量 U+2665</span>
+<span class="hljs-keyword">let</span> sparklingHeart = <span class="hljs-string">"\u{1F496}"</span>  <span class="hljs-comment">// 💖, Unicode 标量 U+1F496</span>
 </code></pre>
 <p><a name="initializing_an_empty_string"></a></p>
 <h2 id="-initializing-an-empty-string">初始化空字符串 (Initializing an Empty String)</h2>
@@ -1113,25 +1127,21 @@ constantString += <span class="hljs-string">" and another Highlander"</span>
 </blockquote>
 <p><a name="concatenating_strings_and_characters"></a></p>
 <h2 id="-concatenating-strings-and-characters">连接字符串和字符 (Concatenating Strings and Characters)</h2>
-<p>字符串和字符的值可以通过加法运算符（<code>+</code>）相加在一起并创建一个新的字符串值：</p>
+<p>字符串可以通过加法运算符（<code>+</code>）相加在一起（或称“串联”）并创建一个新的字符串：</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">let</span> string1 = <span class="hljs-string">"hello"</span>
 <span class="hljs-keyword">let</span> string2 = <span class="hljs-string">" there"</span>
-<span class="hljs-keyword">let</span> character1: <span class="hljs-type">Character</span> = <span class="hljs-string">"!"</span>
-<span class="hljs-keyword">let</span> character2: <span class="hljs-type">Character</span> = <span class="hljs-string">"?"</span>
-
-<span class="hljs-keyword">let</span> stringPlusCharacter = string1 + character1        <span class="hljs-comment">// 等于 "hello!"</span>
-<span class="hljs-keyword">let</span> stringPlusString = string1 + string2              <span class="hljs-comment">// 等于 "hello there"</span>
-<span class="hljs-keyword">let</span> characterPlusString = character1 + string1        <span class="hljs-comment">// 等于 "!hello"</span>
-<span class="hljs-keyword">let</span> characterPlusCharacter = character1 + character2  <span class="hljs-comment">// 等于 "!?"</span>
+<span class="hljs-keyword">var</span> welcome = string1 +　string2
+<span class="hljs-comment">// welcome 现在等于 "hello there"</span>
 </code></pre>
-<p>您也可以通过加法赋值运算符 (<code>+=</code>) 将一个字符串或者字符添加到一个已经存在字符串变量上：</p>
+<p>您也可以通过加法赋值运算符 (<code>+=</code>) 将一个字符串添加到一个已经存在字符串变量上：</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">var</span> <span class="hljs-keyword">in</span><span class="hljs-class"><span class="hljs-keyword">struct</span><span class="hljs-title">ion</span> = "<span class="hljs-title">look</span> <span class="hljs-title">over</span>"
 <span class="hljs-title">instruction</span> += <span class="hljs-title">string2</span>
-// <span class="hljs-title">instruction</span> 现在等于 "<span class="hljs-title">look</span> <span class="hljs-title">over</span> <span class="hljs-title">there</span>"
-
-<span class="hljs-title">var</span> <span class="hljs-title">welcome</span> = "<span class="hljs-title">good</span> <span class="hljs-title">morning</span>"
-<span class="hljs-title">welcome</span> += <span class="hljs-title">character1</span>
-// <span class="hljs-title">welcome</span> 现在等于 "<span class="hljs-title">good</span> <span class="hljs-title">morning</span>!"</span>
+// <span class="hljs-title">instruction</span> 现在等于　"<span class="hljs-title">look</span> <span class="hljs-title">over</span> <span class="hljs-title">there</span>"</span>
+</code></pre>
+<p>你可以用将<code>append</code>方法将一个字符附加到一个字符串变量的尾部：</p>
+<pre><code class="lang-swift"><span class="hljs-keyword">let</span> exclamationMark: <span class="hljs-type">Character</span> = <span class="hljs-string">"!"</span>
+welcome.append(exclamationMark)
+<span class="hljs-comment">// welcome 现在等于 "hello there!"</span>
 </code></pre>
 <blockquote>
 <p>注意：<br>您不能将一个字符串或者字符添加到一个已经存在的字符变量上，因为字符变量只能包含一个字符。</p>
@@ -1211,7 +1221,9 @@ constantString += <span class="hljs-string">" and another Highlander"</span>
 <p><a name="uppercase_and_lowercase_strings"></a></p>
 <h3 id="uppercase-and-lowercase-strings">大写和小写字符串（Uppercase and Lowercase Strings）</h3>
 <p>您可以通过字符串的<code>uppercaseString</code>和<code>lowercaseString</code>属性来访问大写/小写版本的字符串。</p>
-<pre><code class="lang-swift"><span class="hljs-keyword">let</span> normal = <span class="hljs-string">"Could you help me, please?"</span>
+<pre><code class="lang-swift"><span class="hljs-keyword">import</span> <span class="hljs-type">Foundation</span>
+
+<span class="hljs-keyword">let</span> normal = <span class="hljs-string">"Could you help me, please?"</span>
 <span class="hljs-keyword">let</span> shouty = normal.uppercaseString
 <span class="hljs-comment">// shouty 值为 "COULD YOU HELP ME, PLEASE?"</span>
 <span class="hljs-keyword">let</span> whispered = normal.lowercaseString
@@ -1318,10 +1330,6 @@ constantString += <span class="hljs-string">" and another Highlander"</span>
 
     
     <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>

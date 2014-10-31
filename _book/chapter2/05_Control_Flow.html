@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.5" data-basepath=".." data-revision="1409042158486">
+    <div class="book"  data-level="2.5" data-basepath=".." data-revision="1414729181011">
     
 
 <div class="book-summary">
@@ -748,7 +748,7 @@
                         
                             <b>4.1.</b>
                         
-                         权限控制的黑与白
+                         Access Control 权限控制的黑与白
                     </a>
                 
             
@@ -796,7 +796,7 @@
                         
                             <b>4.4.</b>
                         
-                         与C语言指针的交互
+                         Swift与C语言指针友好合作
                     </a>
                 
             
@@ -820,15 +820,31 @@
         </li>
     
         
-        <li class="chapter " data-level="4.6" data-path="chapter4/06_access_control_&amp;_protected.html">
+        <li class="chapter " data-level="4.6" data-path="chapter4/06_Access_Control_and_Protected.html">
             
                 
-                    <a href="../chapter4/06_access_control_&amp;_protected.html">
+                    <a href="../chapter4/06_Access_Control_and_Protected.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
                         
-                         访问控制和protected
+                         访问控制和Protected
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.7" data-path="chapter4/07_Optional_Case_Study.html">
+            
+                
+                    <a href="../chapter4/07_Optional_Case_Study.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                         可选类型完美解决占位问题
                     </a>
                 
             
@@ -983,7 +999,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_98">
+                    <section class="normal" id="section-gitbook_9">
                     
                         <blockquote>
 <p>翻译：<a href="https://github.com/vclwei" target="_blank">vclwei</a>, <a href="https://github.com/coverxit" target="_blank">coverxit</a>, <a href="https://github.com/NicePiao" target="_blank">NicePiao</a><br>校对：<a href="https://github.com/coverxit" target="_blank">coverxit</a>, <a href="https://github.com/stanzhai" target="_blank">stanzhai</a></p>
@@ -1129,7 +1145,7 @@
 </ul>
 <p>游戏盘面可以使用一个<code>Int</code>数组来表达。数组的长度由一个<code>finalSquare</code>常量储存，用来初始化数组和检测最终胜利条件。游戏盘面由 26 个 <code>Int</code> 0 值初始化，而不是 25 个（由<code>0</code>到<code>25</code>，一共 26 个）：</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">let</span> finalSquare = <span class="hljs-number">25</span>
-<span class="hljs-keyword">var</span> board = <span class="hljs-type">Int</span>[](<span class="hljs-built_in">count</span>: finalSquare + <span class="hljs-number">1</span>, repeatedValue: <span class="hljs-number">0</span>)
+<span class="hljs-keyword">var</span> board = [<span class="hljs-type">Int</span>](<span class="hljs-built_in">count</span>: finalSquare + <span class="hljs-number">1</span>, repeatedValue: <span class="hljs-number">0</span>)
 </code></pre>
 <p>一些方块被设置成有蛇或者梯子的指定值。梯子底部的方块是一个正值，使你可以向上移动，蛇头处的方块是一个负值，会让你向下移动：</p>
 <pre><code class="lang-swift">board[<span class="hljs-number">03</span>] = +<span class="hljs-number">08</span>; board[<span class="hljs-number">06</span>] = +<span class="hljs-number">11</span>; board[<span class="hljs-number">09</span>] = +<span class="hljs-number">09</span>; board[<span class="hljs-number">10</span>] = +<span class="hljs-number">02</span>
@@ -1165,7 +1181,7 @@ board[<span class="hljs-number">14</span>] = -<span class="hljs-number">10</span
 </blockquote>
 <p>还是蛇和梯子的游戏，使用<code>do-while</code>循环来替代<code>while</code>循环。<code>finalSquare</code>、<code>board</code>、<code>square</code>和<code>diceRoll</code>的值初始化同<code>while</code>循环一样：</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">let</span> finalSquare = <span class="hljs-number">25</span>
-<span class="hljs-keyword">var</span> board = <span class="hljs-type">Int</span>[](<span class="hljs-built_in">count</span>: finalSquare + <span class="hljs-number">1</span>, repeatedValue: <span class="hljs-number">0</span>)
+<span class="hljs-keyword">var</span> board = [<span class="hljs-type">Int</span>](<span class="hljs-built_in">count</span>: finalSquare + <span class="hljs-number">1</span>, repeatedValue: <span class="hljs-number">0</span>)
 board[<span class="hljs-number">03</span>] = +<span class="hljs-number">08</span>; board[<span class="hljs-number">06</span>] = +<span class="hljs-number">11</span>; board[<span class="hljs-number">09</span>] = +<span class="hljs-number">09</span>; board[<span class="hljs-number">10</span>] = +<span class="hljs-number">02</span>
 board[<span class="hljs-number">14</span>] = -<span class="hljs-number">10</span>; board[<span class="hljs-number">19</span>] = -<span class="hljs-number">11</span>; board[<span class="hljs-number">22</span>] = -<span class="hljs-number">02</span>; board[<span class="hljs-number">24</span>] = -<span class="hljs-number">08</span>
 <span class="hljs-keyword">var</span> square = <span class="hljs-number">0</span>
@@ -1389,7 +1405,7 @@ board[<span class="hljs-number">14</span>] = -<span class="hljs-number">10</span
     <span class="hljs-keyword">case</span> <span class="hljs-string">"a"</span>, <span class="hljs-string">"e"</span>, <span class="hljs-string">"i"</span>, <span class="hljs-string">"o"</span>, <span class="hljs-string">"u"</span>, <span class="hljs-string">" "</span>:
         <span class="hljs-keyword">continue</span>
     <span class="hljs-keyword">default</span>:
-        puzzleOutput += character
+        puzzleOutput.append(character)
     }
 }
 <span class="hljs-built_in">println</span>(puzzleOutput)
@@ -1535,10 +1551,6 @@ board[<span class="hljs-number">14</span>] = -<span class="hljs-number">10</span
 
     
     <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>

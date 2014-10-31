@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.17" data-basepath=".." data-revision="1409042158486">
+    <div class="book"  data-level="2.17" data-basepath=".." data-revision="1414729181011">
     
 
 <div class="book-summary">
@@ -748,7 +748,7 @@
                         
                             <b>4.1.</b>
                         
-                         权限控制的黑与白
+                         Access Control 权限控制的黑与白
                     </a>
                 
             
@@ -796,7 +796,7 @@
                         
                             <b>4.4.</b>
                         
-                         与C语言指针的交互
+                         Swift与C语言指针友好合作
                     </a>
                 
             
@@ -820,15 +820,31 @@
         </li>
     
         
-        <li class="chapter " data-level="4.6" data-path="chapter4/06_access_control_&amp;_protected.html">
+        <li class="chapter " data-level="4.6" data-path="chapter4/06_Access_Control_and_Protected.html">
             
                 
-                    <a href="../chapter4/06_access_control_&amp;_protected.html">
+                    <a href="../chapter4/06_Access_Control_and_Protected.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
                         
-                         访问控制和protected
+                         访问控制和Protected
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.7" data-path="chapter4/07_Optional_Case_Study.html">
+            
+                
+                    <a href="../chapter4/07_Optional_Case_Study.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                         可选类型完美解决占位问题
                     </a>
                 
             
@@ -983,7 +999,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_123">
+                    <section class="normal" id="section-gitbook_32">
                     
                         <blockquote>
 <p>翻译：<a href="https://github.com/Jasonbroker" target="_blank">Jasonbroker</a><br>校对：<a href="https://github.com/numbbbbb" target="_blank">numbbbbb</a>, <a href="https://github.com/stanzhai" target="_blank">stanzhai</a></p>
@@ -1037,7 +1053,7 @@
 <span class="hljs-comment">// 打印 "Unable to retrieve the number of rooms.</span>
 </code></pre>
 <p>这告诉 Swift 来链接可选<code>residence?</code>属性，如果<code>residence</code>存在则取回<code>numberOfRooms</code>的值。</p>
-<p>因为这种尝试获得<code>numberOfRooms</code>的操作有可能失败，可选链会返回<code>Int?</code>类型值，或者称作“可选<code>Int</code>”。当<code>residence</code>是空的时候（上例），选择<code>Int</code>将会为空，因此会出先无法访问<code>numberOfRooms</code>的情况。</p>
+<p>因为这种尝试获得<code>numberOfRooms</code>的操作有可能失败，可选链会返回<code>Int?</code>类型值，或者称作“可选<code>Int</code>”。当<code>residence</code>是空的时候（上例），选择<code>Int</code>将会为空，因此会出现无法访问<code>numberOfRooms</code>的情况。</p>
 <p>要注意的是，即使numberOfRooms是非可选<code>Int</code>（<code>Int?</code>）时这一点也成立。只要是通过可选链的请求就意味着最后<code>numberOfRooms</code>总是返回一个<code>Int?</code>而不是<code>Int</code>。</p>
 <p>你可以自己定义一个<code>Residence</code>实例给<code>john.residence</code>，这样它就不再为空了：</p>
 <pre><code class="lang-swift">john.residence = <span class="hljs-type">Residence</span>()
@@ -1061,7 +1077,7 @@
 </code></pre>
 <p><code>Residence</code>类比之前复杂些。这次，它定义了一个变量 <code>rooms</code>，它被初始化为一个<code>Room[]</code>类型的空数组：</p>
 <pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Residence</span> </span>{
-    <span class="hljs-keyword">var</span> rooms = <span class="hljs-type">Room</span>[]()
+    <span class="hljs-keyword">var</span> rooms = [<span class="hljs-type">Room</span>]()
     <span class="hljs-keyword">var</span> numberOfRooms: <span class="hljs-type">Int</span> {
     <span class="hljs-keyword">return</span> rooms.<span class="hljs-built_in">count</span>
     }
@@ -1124,7 +1140,7 @@
 </code></pre>
 <p>这个方法没有返回值。但是，没有返回值类型的函数和方法有一个隐式的返回值类型<code>Void</code>（参见Function Without Return Values）。</p>
 <p>如果你利用可选链调用此方法，这个方法的返回值类型将是<code>Void?</code>，而不是<code>Void</code>，因为当通过可选链调用方法时返回值总是可选类型（optional type）。即使这个方法本身没有定义返回值，你也可以使用<code>if</code>语句来检查是否能成功调用<code>printNumberOfRooms</code>方法：如果方法通过可选链调用成功，<code>printNumberOfRooms</code>的隐式返回值将会是<code>Void</code>，如果没有成功，将返回<code>nil</code>：</p>
-<pre><code class="lang-swift"><span class="hljs-keyword">if</span> john.residence?.printNumberOfRooms() {
+<pre><code class="lang-swift"><span class="hljs-keyword">if</span> john.residence?.printNumberOfRooms?() {
     <span class="hljs-built_in">println</span>(<span class="hljs-string">"It was possible to print the number of rooms."</span>)
 } <span class="hljs-keyword">else</span> {
     <span class="hljs-built_in">println</span>(<span class="hljs-string">"It was not possible to print the number of rooms."</span>)
@@ -1237,10 +1253,6 @@ john.residence!.address = johnsAddress
 
     
     <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>

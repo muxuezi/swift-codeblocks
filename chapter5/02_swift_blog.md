@@ -1,3 +1,268 @@
+* Oct 20, 2014
+
+##  [Failable Initializers](https://developer.apple.com/swift/blog/?id=17)
+
+Swift version 1.1 is new in [Xcode 6.1](https://developer.apple.com/xcode/downloads/), and it introduces a new feature: failable initializers. Initialization is the process of providing initial values to each of the stored properties of a class or struct, establishing the invariants of the object. In some cases initialization can fail. For example, initializing the object requires access to a resource, such as loading an image from a file:
+```swift    
+    NSImage(contentsOfFile: "swift.png")
+```
+
+If the file does not exist or is unreadable for any reason, the initialization of the NSImage will fail. With Swift version 1.1, such failures can be reported using a failable initializer. When constructing an object using a failable initializer, the result is an optional that either contains the object (when the initialization succeeded) or contains nil (when the initialization failed). Therefore, the initialization above should handle the optional result directly:
+```swift    
+    if let image = NSImage(contentsOfFile: "swift.png") {
+        // loaded the image successfully
+    } else {
+        // could not load the image
+    }
+```
+
+An initializer defined with init can be made failable by adding a ? or a ! after the init, which indicates the form of optional that will be produced by constructing an object with that initializer. For example, one could add a failable initializer to Int that attempts to perform a conversion from a String:
+```swift    
+    extension Int {
+        init?(fromString: String) { 
+            if let i = fromString.toInt() {
+                // Initialize
+                self = i
+            } else { 
+                // return nil, discarding self is implied
+                return nil
+            }
+        }
+    }
+```
+
+In a failable initializer, return nil indicates that initialization has failed; no other value can be returned. In the example, failure occurs when the string could not be parsed as an integer. Otherwise, self is initialized to the parsed value.
+
+Failable initializers eliminate the most common reason for factory methods in Swift, which were previously the only way to report failure when constructing this object. For example, enums that have a raw type provided a factory method fromRaw that returned an optional enum. Now, the Swift compiler synthesizes a failable initializer that takes a raw value and attempts to map it to one of the enum cases. For example:
+```swift    
+    enum Color : Int {
+        case Red = 0, Green = 1, Blue = 2
+    
+        // implicitly synthesized
+        var rawValue: Int { /* returns raw value for current case */ }
+    
+        // implicitly synthesized
+        init?(rawValue: Int) {
+            switch rawValue { 
+                case 0: self = .Red
+                case 1: self = .Green
+                case 2: self = .Blue
+                default: return nil
+            }
+        }
+    }
+```
+
+Using the failable initializer allows greater use of Swift’s uniform construction syntax, which simplifies the language by eliminating the confusion and duplication between initializers and factory methods. Along with the introduction of failable initializers, Swift now treats more Cocoa factory methods — those with NSError arguments — as initializers, providing a more uniform experience for object construction.
+
+You can read more about failable initializers in [The Swift Programming Language](https://developer.apple.com/library/mac/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-XID_339).
+
+* Oct 7, 2014
+
+##  [Building Your First Swift App Video](https://developer.apple.com/swift/blog/?id=16)
+
+So far the Swift blog has focused on advanced programming topics, including the design principles of the Swift language. We thought it would be helpful to provide content for programmers who are new to Swift and just trying Xcode for the first time. To make it more approachable for everyone, we put together a very short video that demonstrates how to build an iOS app in Swift from scratch, in less than ten minutes.
+
+    * [Watch the video](https://developer.apple.com/swift/blog/?id=16)
+
+* Sep 25, 2014
+
+##  [Building assert() in Swift, Part 2: __FILE__ and __LINE__](https://developer.apple.com/swift/blog/?id=15)
+
+Two occasionally useful features of C are the __FILE__ and __LINE__ magic macros. These are built into the preprocessor, and expanded out before the C parser is run. Despite not having a preprocessor, Swift provides very similar functionality with similar names, but Swift works quite differently under the covers.
+
+### Built-In Identifiers
+
+As described in [the Swift programming guide](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/LexicalStructure.html), Swift has a number of built-in identifiers, including __FILE__, __LINE__, __COLUMN__, and __FUNCTION__. These expressions can be used anywhere and are expanded by the parser to string or integer literals that correspond to the current location in the source code. This is incredibly useful for manual logging, e.g. to print out the current position before quitting.
+
+However, this doesn’t help us in our quest to implement assert(). If we defined assert like this:
+```swift    
+    func assert(predicate : @autoclosure () -> Bool) { 
+        #if DEBUG
+            if !predicate() {
+                println("assertion failed at \(__FILE__):\(__LINE__)")
+                abort()
+            }
+        #endif
+    }
+```
+
+The above code would print out of the file/line location that implements assert() itself, not the location from the caller. That isn’t helpful.
+
+### Getting the location of a caller
+
+Swift borrows a clever feature from the D language: these identifiers expand to the location of the caller _when evaluated in a default argument list_. To enable this behavior, the assert() function is defined something like this:
+```swift    
+    func assert(condition: @autoclosure () -> Bool, _ message: String = "",
+        file: String = __FILE__, line: Int = __LINE__) {
+            #if DEBUG
+                if !condition() {
+                    println("assertion failed at \(file):\(line): \(message)")
+                    abort()
+                }
+            #endif
+    }
+```
+
+The second parameter to the Swift assert() function is an optional string that you can specify, and the third and forth arguments are defaulted to be the position in the caller’s context. This allows assert() to pick up the source location of the caller by default, and if you want to define your own abstractions on top of assert, you can pass down locations from its caller. As a trivial example, you could define a function that logs and asserts like this:
+```swift    
+    func logAndAssert(condition: @autoclosure () -> Bool, _ message: StaticString = "",
+        file: StaticString = __FILE__, line: UWord = __LINE__) {
+    
+        logMessage(message)
+        assert(condition, message, file: file, line: line)
+    }
+```
+
+This properly propagates the file/line location of the logAndAssert() caller down to the implementation of assert(). Note that StaticString, as shown in the code above, is a simple String-like type used to store a string literal, such as one produced by __FILE__, with no memory-management overhead.
+
+In addition to being useful for assert(), this functionality is used in the Swift implementation of the higher-level XCTest framework, and may be useful for your own libraries as well.
+
+* Sep 9, 2014
+
+##  [Swift Has Reached 1.0](https://developer.apple.com/swift/blog/?id=14)
+
+On June 2, 2014 at WWDC, the Swift team finally showed you what we had been working on for years. That was a big day with lots of excitement, for us and for developers around the world. Today, we’ve reached the second giant milestone:
+
+Swift version 1.0 is now GM.
+
+You can now submit your apps that use Swift to the App Store. Whether your app uses Swift for a small feature or a complete application, now is the time to share your app with the world. It’s your turn to excite everyone with your new creations.
+
+### Swift for OS X
+
+Today is the GM date for Swift on iOS. We have one more GM date to go for Mac. Swift for OS X currently requires the SDK for OS X Yosemite, and when Yosemite ships later this fall, Swift will also be GM on the Mac. In the meantime, you can keep developing your Mac apps with Swift by downloading the beta of [Xcode 6.1](https://developer.apple.com/xcode/downloads/).
+
+### The Road Ahead
+
+You’ll notice we’re using the word “GM”, not “final”. That’s because Swift will continue to advance with new features, improved performance, and refined syntax. In fact, you can expect a few improvements to come in Xcode 6.1 in time for the Yosemite launch. Because your apps today embed a version of the Swift GM runtime, they will continue to run well into the future.
+
+* Sep 3, 2014
+
+##  [Patterns Playground](https://developer.apple.com/swift/blog/?id=13)
+
+In Swift, a pattern is a way to describe and match a set of values based on certain rules, such as: 
+
+    * All tuples whose first value is 0
+    * All numbers in the range 1...5
+    * All class instances of a certain type
+
+The learning playground linked below includes embedded documentation and experiments for you to perform. Download it for an interactive experience that will give you a jump start into using patterns in your own apps.
+
+This playground requires the latest beta version of Xcode 6 on OS X Mavericks or OS X Yosemite beta.
+
+    * [Patterns.playground](https://developer.apple.com/swift/blog/downloads/Patterns.zip)
+
+* Aug 26, 2014
+
+##  [Optionals Case Study: valuesForKeys](https://developer.apple.com/swift/blog/?id=12)
+
+This post explores how optionals help preserve strong type safety within Swift. We’re going to create a Swift version of an Objective-C API. Swift doesn’t really need this API, but it makes for a fun example.
+
+In Objective-C, NSDictionary has a method -objectsForKeys:notFoundMarker: that takes an NSArray of keys, and returns an NSArray of corresponding values. From the documentation: “the _N_-th object in the returned array corresponds to the _N_-th key in [the input parameter] keys.” What if the third key isn’t actually in the dictionary? That’s where the notFoundMarker parameter comes in. The third element in the array will be this marker object rather than a value from the dictionary. The Foundation framework even provides a class for this case if you don’t have another to use: NSNull.
+
+In Swift, the Dictionary type doesn’t have an objectsForKeys equivalent. For this exercise, we’re going to add one — as valuesForKeys in keeping with the common use of ‘value’ in Swift — using an extension:
+```swift    
+    extension Dictionary {
+        func valuesForKeys(keys: [K], notFoundMarker: V) -> [V] {
+            // To be implemented
+        }
+    }
+```
+
+This is where our new implementation in Swift will differ from Objective-C. In Swift, the stronger typing restricts the resulting array to contain only a single type of element — we can’t put NSNull in an array of strings. However, Swift gives an even better option: we can return an array of optionals. All our values get wrapped in optionals, and instead of NSNull, we just use nil.
+```swift    
+    extension Dictionary {
+        func valuesForKeys(keys: [Key]) -> [Value?] {
+            var result = [Value?]()
+            result.reserveCapacity(keys.count)
+            for key in keys {
+                result.append(self[key])
+            }
+            return result
+        }
+    }
+```
+
+NOTE: Some of you may have guessed why a Swift Dictionary doesn’t need this API, and already imagined something like this:
+```swift    
+    extension Dictionary {
+        func valuesForKeys(keys: [Key]) -> [Value?] {
+            return keys.map { self[$0] }
+        }
+    }
+```
+
+This has the exact same effect as the imperative version above, but all of the boilerplate has been wrapped up in the call to map. This is great example why Swift types often have a small API surface area, because it’s so easy to just call map directly.
+
+Now we can try out some examples:
+```swift    
+    let dict = ["A": "Amir", "B": "Bertha", "C": "Ching"]
+    
+    dict.valuesForKeys(["A", "C"])
+    // [Optional("Amir"), Optional("Ching")]
+    
+    dict.valuesForKeys(["B", "D"])
+    // [Optional("Bertha"), nil]
+    
+    dict.valuesForKeys([])
+    // []
+```
+
+### Nested Optionals
+
+Now, what if we asked for the last element of each result?
+```swift    
+    dict.valuesForKeys(["A", "C"]).last
+    // Optional(Optional("Ching"))
+    
+    dict.valuesForKeys(["B", "D"]).last
+    // Optional(nil)
+    
+    dict.valuesForKeys([]).last
+    // nil
+```
+
+That’s strange — we have two levels of Optional in the first case, and Optional(nil) in the second case. What’s going on?
+
+Remember the declaration of the last property:
+```swift    
+    var last: T? { get }
+```
+
+This says that the last property’s type is an Optional version of the array’s element type. In _this_ case, the element type is also optional (String?). So we end up with String??, a doubly-nested optional type.
+
+So what does Optional(nil) mean?
+
+Recall that in Objective-C we were going to use NSNull as a placeholder. The Objective-C version of these three calls looks like this:
+```swift    
+    [dict valuesForKeys:@[@"A", @"C"] notFoundMarker:[NSNull null]].lastObject
+    // @"Ching"
+    
+    [dict valuesForKeys:@[@"B", @"D"] notFoundMarker:[NSNull null]].lastObject
+    // NSNull
+    
+    [dict valuesForKeys:@[] notFoundMarker:[NSNull null]].lastObject
+    // nil
+```
+
+In both the Swift and Objective-C cases, a return value of nil means “the array is empty, therefore there’s no last element.” The return value of Optional(nil) (or in Objective-C NSNull) means “the last element of this array exists, but it represents an absence.” Objective-C has to rely on a placeholder object to do this, but Swift can represent it in the type system.
+
+### Providing a Default
+
+To wrap up, what if you _did_ want to provide a default value for anything that wasn’t in the dictionary? Well, that’s easy enough.
+```swift    
+    extension Dictionary {
+        func valuesForKeys(keys: [Key], notFoundMarker: Value) -> [Value] {
+            return self.valuesForKeys(keys).map { $0 ?? notFoundMarker }
+        }
+    }  
+    
+    dict.valuesForKeys(["B", "D"], notFoundMarker: "Anonymous")
+    // ["Bertha", "Anonymous"]
+```
+
+While Objective-C has to rely on a placeholder object to do this, Swift can represent it in the type system, and provides rich syntactic support for handling optional results.
+
 * Aug 19, 2014
 
 ##  [Access Control and protected](https://developer.apple.com/swift/blog/?id=11)

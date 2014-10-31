@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.13" data-basepath=".." data-revision="1409042158486">
+    <div class="book"  data-level="2.13" data-basepath=".." data-revision="1414729181011">
     
 
 <div class="book-summary">
@@ -748,7 +748,7 @@
                         
                             <b>4.1.</b>
                         
-                         权限控制的黑与白
+                         Access Control 权限控制的黑与白
                     </a>
                 
             
@@ -796,7 +796,7 @@
                         
                             <b>4.4.</b>
                         
-                         与C语言指针的交互
+                         Swift与C语言指针友好合作
                     </a>
                 
             
@@ -820,15 +820,31 @@
         </li>
     
         
-        <li class="chapter " data-level="4.6" data-path="chapter4/06_access_control_&amp;_protected.html">
+        <li class="chapter " data-level="4.6" data-path="chapter4/06_Access_Control_and_Protected.html">
             
                 
-                    <a href="../chapter4/06_access_control_&amp;_protected.html">
+                    <a href="../chapter4/06_Access_Control_and_Protected.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
                         
-                         访问控制和protected
+                         访问控制和Protected
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.7" data-path="chapter4/07_Optional_Case_Study.html">
+            
+                
+                    <a href="../chapter4/07_Optional_Case_Study.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                         可选类型完美解决占位问题
                     </a>
                 
             
@@ -983,7 +999,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_92">
+                    <section class="normal" id="section-gitbook_1">
                     
                         <blockquote>
 <p>翻译：<a href="https://github.com/Hawstein" target="_blank">Hawstein</a><br>校对：<a href="https://github.com/menlongsheng" target="_blank">menlongsheng</a></p>
@@ -1006,31 +1022,25 @@
 <blockquote>
 <p>注意：<br>Swift 中的类并不是从一个通用的基类继承而来。如果你不为你定义的类指定一个超类的话，这个类就自动成为基类。</p>
 </blockquote>
-<p>下面的例子定义了一个叫<code>Vehicle</code>的基类。这个基类声明了两个对所有车辆都通用的属性（<code>numberOfWheels</code>和<code>maxPassengers</code>）。这些属性在<code>description</code>方法中使用，这个方法返回一个<code>String</code>类型的，对车辆特征的描述：</p>
+<p>下面的例子定义了一个叫<code>Vehicle</code>的基类。这个基类声明了一个名为<code>currentSpeed</code>，默认值是0.0的存储属性(属性类型推断为<code>Double</code>)。<code>currentSpeed</code>属性的值被一个<code>String</code> 类型的只读计算型属性<code>description</code>使用，用来创建车辆的描述。</p>
+<p><code>Vehicle</code>基类也定义了一个名为<code>makeNoise</code>的方法。这个方法实际上不为<code>Vehicle</code>实例做任何事，但之后将会被<code>Vehicle</code>的子类定制</p>
 <pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vehicle</span> </span>{
-    <span class="hljs-keyword">var</span> numberOfWheels: <span class="hljs-type">Int</span>
-    <span class="hljs-keyword">var</span> maxPassengers: <span class="hljs-type">Int</span>
-    <span class="hljs-func"><span class="hljs-keyword">func</span></span> description() -&gt; <span class="hljs-type">String</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-string">"<span class="hljs-subst">\(numberOfWheels)</span> wheels; up to <span class="hljs-subst">\(maxPassengers)</span> passengers"</span>
+    <span class="hljs-keyword">var</span> currentSpeed = <span class="hljs-number">0.0</span>
+    <span class="hljs-keyword">var</span> description: <span class="hljs-type">String</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"traveling at <span class="hljs-subst">\(currentSpeed)</span> miles per hour"</span>
     }
-    <span class="hljs-keyword">init</span>() {
-        numberOfWheels = <span class="hljs-number">0</span>
-        maxPassengers = <span class="hljs-number">1</span>
+    <span class="hljs-func"><span class="hljs-keyword">func</span></span> makeNoise() {
+        <span class="hljs-comment">// 什么也不做-因为车辆不一定会有噪音</span>
     }
 }
 </code></pre>
-<p><code>Vehicle</code>类定义了<em>构造器（initializer）</em>来设置属性的值。构造器会在<a href="../chapter2/_14Initialization.html">构造过程</a>一节中详细介绍，这里我们做一下简单介绍，以便于讲解子类中继承来的属性如何被修改。</p>
-<p>构造器用于创建某个类型的一个新实例。尽管构造器并不是方法，但在语法上，两者很相似。构造器的工作是准备新实例以供使用，并确保实例中的所有属性都拥有有效的初始化值。</p>
-<p>构造器的最简单形式就像一个没有参数的实例方法，使用<code>init</code>关键字：</p>
-<pre><code class="lang-swift"><span class="hljs-keyword">init</span>() {
-    <span class="hljs-comment">// 执行构造过程</span>
-}
-</code></pre>
-<p>如果要创建一个<code>Vehicle</code>类的新实例，使用<em>构造器</em>语法调用上面的初始化器，即类名后面跟一个空的小括号：</p>
+<p>您可以用初始化语法创建一个<code>Vehicle</code>的新实例，即 <code>TypeName</code>后面跟一个空括号：</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">let</span> someVehicle = <span class="hljs-type">Vehicle</span>()
 </code></pre>
-<p>这个<code>Vehicle</code>类的构造器为任意的一辆车设置一些初始化属性值（<code>numberOfWheels = 0</code>和<code>maxPassengers = 1</code>）。</p>
-<p><code>Vehicle</code>类定义了车辆的共同特性，但这个类本身并没太大用处。为了使它更为实用，你需要进一步细化它来描述更具体的车辆。</p>
+<p>现在已经创建了一个<code>Vehicle</code>的新实例，你可以访问它的<code>description</code>属性来打印车辆的当前速度。</p>
+<pre><code class="lang-swift"><span class="hljs-built_in">println</span>(<span class="hljs-string">"Vehicle: <span class="hljs-subst">\(someVehicle.description)</span>"</span>)
+<span class="hljs-comment">// Vehicle: traveling at 0.0 miles per hour</span>
+</code></pre>
 <p><a name="subclassing"></a></p>
 <h2 id="subclassing">子类生成（Subclassing）</h2>
 <p><em>子类生成（Subclassing）</em>指的是在一个已有类的基础上创建一个新的类。子类继承超类的特性，并且可以优化或改变它。你还可以为子类添加新的特性。</p>
@@ -1043,42 +1053,34 @@
 <p>我们可以将这读作：</p>
 <p>“定义一个新的类叫<code>Bicycle</code>，它继承了<code>Vehicle</code>的特性”；</p>
 <pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bicycle</span>: <span class="hljs-title">Vehicle</span> </span>{
-    <span class="hljs-keyword">init</span>() {
-        <span class="hljs-keyword">super</span>.<span class="hljs-keyword">init</span>()
-        numberOfWheels = <span class="hljs-number">2</span>
-    }
+    <span class="hljs-keyword">var</span> hasBasket = <span class="hljs-built_in">false</span>
 }
 </code></pre>
-<p>preview
- <code>Bicycle</code>是<code>Vehicle</code>的子类，<code>Vehicle</code>是<code>Bicycle</code>的超类。新的<code>Bicycle</code>类自动获得<code>Vehicle</code>类的特性，比如 <code>maxPassengers</code>和<code>numberOfWheels</code>属性。你可以在子类中定制这些特性，或添加新的特性来更好地描述<code>Bicycle</code>类。</p>
-<p><code>Bicycle</code>类定义了一个构造器来设置它定制的特性（自行车只有2个轮子）。<code>Bicycle</code>的构造器调用了它父类<code>Vehicle</code>的构造器 <code>super.init()</code>，以此确保在<code>Bicycle</code>类试图修改那些继承来的属性前<code>Vehicle</code>类已经初始化过它们了。</p>
-<blockquote>
-<p>注意：<br>不像 Objective-C，在 Swift 中，初始化器默认是不继承的，见<a href="../chapter2/_14Initialization.html#initializer_inheritance_and_ overriding">初始化器的继承与重写</a></p>
-</blockquote>
-<p><code>Vehicle</code>类中<code>maxPassengers</code>的默认值对自行车来说已经是正确的，因此在<code>Bicycle</code>的构造器中并没有改变它。而<code>numberOfWheels</code>原来的值对自行车来说是不正确的，因此在初始化器中将它更改为 2。</p>
-<p><code>Bicycle</code>不仅可以继承<code>Vehicle</code>的属性，还可以继承它的方法。如果你创建了一个<code>Bicycle</code>类的实例，你就可以调用它继承来的<code>description</code>方法，并且可以看到，它输出的属性值已经发生了变化：</p>
+<p>新的<code>Bicycle</code>类自动获得<code>Vehicle</code>类的所有特性，比如 <code>currentSpeed</code>和<code>description</code>属性，还有它的<code>makeNoise</code>方法。</p>
+<p>除了它所继承的特性，<code>Bicycle</code>类还定义了一个默认值为<code>false</code>的存储型属性<code>hasBasket</code>（属性推断为<code>Bool</code>）。</p>
+<p>默认情况下，你创建任何新的<code>Bicycle</code>实例将不会有一个篮子，创建该实例之后，你可以为特定的<code>Bicycle</code>实例设置<code>hasBasket</code>属性为<code>ture</code>：</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">let</span> bicycle = <span class="hljs-type">Bicycle</span>()
-<span class="hljs-built_in">println</span>(<span class="hljs-string">"Bicycle: <span class="hljs-subst">\(bicycle.description()</span>)"</span>)
-<span class="hljs-comment">// Bicycle: 2 wheels; up to 1 passengers</span>
+bicycle.hasBasket = <span class="hljs-built_in">true</span>
 </code></pre>
-<p>子类还可以继续被其它类继承：</p>
+<p>你还可以修改<code>Bicycle</code>实例所继承的<code>currentSpeed</code>属性，和查询实例所继承的<code>description</code>属性：</p>
+<pre><code class="lang-swift">bicycle.currentSpeed = <span class="hljs-number">15.0</span>
+<span class="hljs-built_in">println</span>(<span class="hljs-string">"Bicycle: <span class="hljs-subst">\(bicycle.description)</span>"</span>)
+<span class="hljs-comment">// Bicycle: traveling at 15.0 miles per hour</span>
+</code></pre>
+<p>子类还可以继续被其它类继承，下面的示例为<code>Bicycle</code>创建了一个名为<code>Tandem</code>（双人自行车）的子类：</p>
 <pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Tandem</span>: <span class="hljs-title">Bicycle</span> </span>{
-    <span class="hljs-keyword">init</span>() {
-        <span class="hljs-keyword">super</span>.<span class="hljs-keyword">init</span>()
-        maxPassengers = <span class="hljs-number">2</span>
-    }
+    <span class="hljs-keyword">var</span> currentNumberOfPassengers = <span class="hljs-number">0</span>
 }
 </code></pre>
-<p>上面的例子创建了<code>Bicycle</code>的一个子类：双人自行车（tandem）。<code>Tandem</code>从<code>Bicycle</code>继承了两个属性，而这两个属性是<code>Bicycle</code>从<code>Vehicle</code>继承而来的。<code>Tandem</code>并不修改轮子的数量，因为它仍是一辆自行车，有 2 个轮子。但它需要修改<code>maxPassengers</code>的值，因为双人自行车可以坐两个人。</p>
-<blockquote>
-<p>注意：<br>子类只允许修改从超类继承来的变量属性，而不能修改继承来的常量属性。</p>
-</blockquote>
-<p>创建一个<code>Tandem</code>类的实例，打印它的描述，即可看到它的属性已被更新：</p>
+<p><code>Tandem</code>从<code>Bicycle</code>继承了所有的属性与方法，这又使它同时继承了<code>Vehicle</code>的所有属性与方法。<code>Tandem</code>也增加了一个新的叫做<code>currentNumberOfPassengers</code>的存储型属性，默认值为0。</p>
+<p>如果你创建了一个<code>Tandem</code>的实例，你可以使用它所有的新属性和继承的属性，还能查询从<code>Vehicle</code>继承来的只读属性<code>description</code>：</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">let</span> tandem = <span class="hljs-type">Tandem</span>()
-<span class="hljs-built_in">println</span>(<span class="hljs-string">"Tandem: <span class="hljs-subst">\(tandem.description()</span>)"</span>)
-<span class="hljs-comment">// Tandem: 2 wheels; up to 2 passengers</span>
+tandem.hasBasket = <span class="hljs-built_in">true</span>
+tandem.currentNumberOfPassengers = <span class="hljs-number">2</span>
+tandem.currentSpeed = <span class="hljs-number">22.0</span>
+<span class="hljs-built_in">println</span>(<span class="hljs-string">"Tandem: <span class="hljs-subst">\(tandem.description)</span>"</span>)
+<span class="hljs-comment">// Tandem: traveling at 22.0 miles per hour</span>
 </code></pre>
-<p>注意，<code>Tandem</code>类也继承了<code>description</code>方法。一个类的实例方法会被这个类的所有子类继承。</p>
 <p><a name="overriding"></a></p>
 <h2 id="overriding">重写（Overriding）</h2>
 <p>子类可以为继承来的实例方法（instance method），类方法（class method），实例属性（instance property），或下标脚本（subscript）提供自己定制的实现（implementation）。我们把这种行为叫<em>重写（overriding）</em>。</p>
@@ -1094,27 +1096,17 @@
 </ul>
 <h3 id="">重写方法</h3>
 <p>在子类中，你可以重写继承来的实例方法或类方法，提供一个定制或替代的方法实现。</p>
-<p>下面的例子定义了<code>Vehicle</code>的一个新的子类，叫<code>Car</code>，它重写了从<code>Vehicle</code>类继承来的<code>description</code>方法：</p>
-<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span>: <span class="hljs-title">Vehicle</span> </span>{
-    <span class="hljs-keyword">var</span> speed: <span class="hljs-type">Double</span> = <span class="hljs-number">0.0</span>
-    <span class="hljs-keyword">init</span>() {
-        <span class="hljs-keyword">super</span>.<span class="hljs-keyword">init</span>()
-        maxPassengers = <span class="hljs-number">5</span>
-        numberOfWheels = <span class="hljs-number">4</span>
-    }
-    <span class="hljs-keyword">override</span> <span class="hljs-func"><span class="hljs-keyword">func</span></span> description() -&gt; <span class="hljs-type">String</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.description() + <span class="hljs-string">"; "</span>
-            + <span class="hljs-string">"traveling at <span class="hljs-subst">\(speed)</span> mph"</span>
+<p>下面的例子定义了<code>Vehicle</code>的一个新的子类，叫<code>Train</code>，它重写了从<code>Vehicle</code>类继承来的<code>makeNoise</code>方法：</p>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Train</span>: <span class="hljs-title">Vehicle</span> </span>{
+    <span class="hljs-keyword">override</span> <span class="hljs-func"><span class="hljs-keyword">func</span></span> makeNoise() {
+        <span class="hljs-built_in">println</span>(<span class="hljs-string">"Choo Choo"</span>)
     }
 }
 </code></pre>
-<p><code>Car</code>声明了一个新的存储型属性<code>speed</code>，它是<code>Double</code>类型的，默认值是<code>0.0</code>，表示“时速是0英里”。<code>Car</code>有自己的初始化器，它将乘客的最大数量设为5，轮子数量设为4。</p>
-<p><code>Car</code>重写了继承来的<code>description</code>方法，它的声明与<code>Vehicle</code>中的<code>description</code>方法一致，声明前面加上了<code>override</code>关键字。</p>
-<p><code>Car</code>中的<code>description</code>方法并非完全自定义，而是通过<code>super.description</code>使用了超类<code>Vehicle</code>中的<code>description</code>方法，然后再追加一些额外的信息，比如汽车的当前速度。</p>
-<p>如果你创建一个<code>Car</code>的新实例，并打印<code>description</code>方法的输出，你就会发现描述信息已经发生了改变：</p>
-<pre><code class="lang-swift"><span class="hljs-keyword">let</span> car = <span class="hljs-type">Car</span>()
-<span class="hljs-built_in">println</span>(<span class="hljs-string">"Car: <span class="hljs-subst">\(car.description()</span>)"</span>)
-<span class="hljs-comment">// Car: 4 wheels; up to 5 passengers; traveling at 0.0 mph</span>
+<p>如果你创建一个<code>Train</code>的新实例，并调用了它的<code>makeNoise</code>方法，你就会发现<code>Train</code>版本的方法被调用：</p>
+<pre><code class="lang-swift"><span class="hljs-keyword">let</span> train = <span class="hljs-type">Train</span>()
+train.makeNoise()
+<span class="hljs-comment">// prints "Choo Choo"</span>
 </code></pre>
 <h3 id="">重写属性</h3>
 <p>你可以重写继承来的实例属性或类属性，提供自己定制的getter和setter，或添加属性观察器使重写的属性观察属性值什么时候发生改变。</p>
@@ -1122,56 +1114,49 @@
 <p>你可以提供定制的 getter（或 setter）来重写任意继承来的属性，无论继承来的属性是存储型的还是计算型的属性。子类并不知道继承来的属性是存储型的还是计算型的，它只知道继承来的属性会有一个名字和类型。你在重写一个属性时，必需将它的名字和类型都写出来。这样才能使编译器去检查你重写的属性是与超类中同名同类型的属性相匹配的。</p>
 <p>你可以将一个继承来的只读属性重写为一个读写属性，只需要你在重写版本的属性里提供 getter 和 setter 即可。但是，你不可以将一个继承来的读写属性重写为一个只读属性。</p>
 <blockquote>
-<p>注意：<br>如果你在重写属性中提供了 setter，那么你也一定要提供 getter。如果你不想在重写版本中的 getter 里修改继承来的属性值，你可以直接返回<code>super.someProperty</code>来返回继承来的值。正如下面的<code>SpeedLimitedCar</code>的例子所示。</p>
+<p>注意：<br>如果你在重写属性中提供了 setter，那么你也一定要提供 getter。如果你不想在重写版本中的 getter 里修改继承来的属性值，你可以直接通过<code>super.someProperty</code>来返回继承来的值，其中<code>someProperty</code>是你要重写的属性的名字。</p>
 </blockquote>
-<p>以下的例子定义了一个新类，叫<code>SpeedLimitedCar</code>，它是<code>Car</code>的子类。类<code>SpeedLimitedCar</code>表示安装了限速装置的车，它的最高速度只能达到40mph。你可以通过重写继承来的<code>speed</code>属性来实现这个速度限制：</p>
-<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SpeedLimitedCar</span>: <span class="hljs-title">Car</span> </span>{
-    <span class="hljs-keyword">override</span> <span class="hljs-keyword">var</span> speed: <span class="hljs-type">Double</span>  {
-    <span class="hljs-keyword">get</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.speed
-    }
-    <span class="hljs-keyword">set</span> {
-        <span class="hljs-keyword">super</span>.speed = <span class="hljs-built_in">min</span>(newValue, <span class="hljs-number">40.0</span>)
-    }
+<p>以下的例子定义了一个新类，叫<code>Car</code>，它是<code>Vehicle</code>的子类。这个类引入了一个新的存储型属性叫做<code>gear</code>，默认为整数1。<code>Car</code>类重写了继承自<code>Vehicle</code>的description属性，提供自定义的，包含当前档位的描述：</p>
+<pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span>: <span class="hljs-title">Vehicle</span> </span>{
+    <span class="hljs-keyword">var</span> gear = <span class="hljs-number">1</span>
+    <span class="hljs-keyword">override</span> <span class="hljs-keyword">var</span> description: <span class="hljs-type">String</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.description + <span class="hljs-string">" in gear <span class="hljs-subst">\(gear)</span>"</span>
     }
 }
 </code></pre>
-<p>当你设置一个<code>SpeedLimitedCar</code>实例的<code>speed</code>属性时，属性setter的实现会去检查新值与限制值40mph的大小，它会将超类的<code>speed</code>设置为<code>newValue</code>和<code>40.0</code>中较小的那个。这两个值哪个较小由<code>min</code>函数决定，它是Swift标准库中的一个全局函数。<code>min</code>函数接收两个或更多的数，返回其中最小的那个。</p>
-<p>如果你尝试将<code>SpeedLimitedCar</code>实例的<code>speed</code>属性设置为一个大于40mph的数，然后打印<code>description</code>函数的输出，你会发现速度被限制在40mph：</p>
-<pre><code class="lang-swift"><span class="hljs-keyword">let</span> limitedCar = <span class="hljs-type">SpeedLimitedCar</span>()
-limitedCar.speed = <span class="hljs-number">60.0</span>
-<span class="hljs-built_in">println</span>(<span class="hljs-string">"SpeedLimitedCar: <span class="hljs-subst">\(limitedCar.description()</span>)"</span>)
-<span class="hljs-comment">// SpeedLimitedCar: 4 wheels; up to 5 passengers; traveling at 40.0 mph</span>
+<p>重写的<code>description</code>属性，首先要调用<code>super.description</code>返回<code>Vehicle</code>类的<code>description</code>属性。之后，<code>Car</code>类版本的<code>description</code>在末尾增加了一些额外的文本来提供关于当前档位的信息。</p>
+<p>如果你创建了<code>Car</code>的实例并且设置了它的<code>gear</code>和<code>currentSpeed</code>属性，你可以看到它的<code>description</code>返回了<code>Car</code>中定义的<code>description</code>：</p>
+<pre><code class="lang-swift"><span class="hljs-keyword">let</span> car = <span class="hljs-type">Car</span>()
+car.currentSpeed = <span class="hljs-number">25.0</span>
+car.gear = <span class="hljs-number">3</span>
+<span class="hljs-built_in">println</span>(<span class="hljs-string">"Car: <span class="hljs-subst">\(car.description)</span>"</span>)
+<span class="hljs-comment">// Car: traveling at 25.0 miles per hour in gear 3</span>
 </code></pre>
 <h4 id="property-observer">重写属性观察器（Property Observer）</h4>
 <p>你可以在属性重写中为一个继承来的属性添加属性观察器。这样一来，当继承来的属性值发生改变时，你就会被通知到，无论那个属性原本是如何实现的。关于属性观察器的更多内容，请看<a href="../chapter2/_10Properties.html#property_observer">属性观察器</a>。</p>
 <blockquote>
 <p>注意：<br>你不可以为继承来的常量存储型属性或继承来的只读计算型属性添加属性观察器。这些属性的值是不可以被设置的，所以，为它们提供<code>willSet</code>或<code>didSet</code>实现是不恰当。此外还要注意，你不可以同时提供重写的 setter 和重写的属性观察器。如果你想观察属性值的变化，并且你已经为那个属性提供了定制的 setter，那么你在 setter 中就可以观察到任何值变化了。</p>
 </blockquote>
-<p>下面的例子定义了一个新类叫<code>AutomaticCar</code>，它是<code>Car</code>的子类。<code>AutomaticCar</code>表示自动挡汽车，它可以根据当前的速度自动选择合适的挡位。<code>AutomaticCar</code>也提供了定制的<code>description</code>方法，可以输出当前挡位。</p>
+<p>下面的例子定义了一个新类叫<code>AutomaticCar</code>，它是<code>Car</code>的子类。<code>AutomaticCar</code>表示自动挡汽车，它可以根据当前的速度自动选择合适的挡位:</p>
 <pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AutomaticCar</span>: <span class="hljs-title">Car</span> </span>{
-    <span class="hljs-keyword">var</span> gear = <span class="hljs-number">1</span>
-    <span class="hljs-keyword">override</span> <span class="hljs-keyword">var</span> speed: <span class="hljs-type">Double</span> {
-    <span class="hljs-keyword">didSet</span> {
-        gear = <span class="hljs-type">Int</span>(speed / <span class="hljs-number">10.0</span>) + <span class="hljs-number">1</span>
-    }
-    }
-    <span class="hljs-keyword">override</span> <span class="hljs-func"><span class="hljs-keyword">func</span></span> description() -&gt; <span class="hljs-type">String</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.description() + <span class="hljs-string">" in gear <span class="hljs-subst">\(gear)</span>"</span>
+    <span class="hljs-keyword">override</span> <span class="hljs-keyword">var</span> currentSpeed: <span class="hljs-type">Double</span> {
+        <span class="hljs-keyword">didSet</span> {
+            gear = <span class="hljs-type">Int</span>(currentSpeed / <span class="hljs-number">10.0</span>) + <span class="hljs-number">1</span>
+        }
     }
 }
 </code></pre>
-<p>当你设置<code>AutomaticCar</code>的<code>speed</code>属性，属性的<code>didSet</code>观察器就会自动地设置<code>gear</code>属性，为新的速度选择一个合适的挡位。具体来说就是，属性观察器将新的速度值除以10，然后向下取得最接近的整数值，最后加1来得到档位<code>gear</code>的值。例如，速度为10.0时，挡位为1；速度为35.0时，挡位为4：</p>
+<p>当你设置<code>AutomaticCar</code>的<code>currentSpeed</code>属性，属性的<code>didSet</code>观察器就会自动地设置<code>gear</code>属性，为新的速度选择一个合适的挡位。具体来说就是，属性观察器将新的速度值除以10，然后向下取得最接近的整数值，最后加1来得到档位<code>gear</code>的值。例如，速度为10.0时，挡位为1；速度为35.0时，挡位为4：</p>
 <pre><code class="lang-swift"><span class="hljs-keyword">let</span> automatic = <span class="hljs-type">AutomaticCar</span>()
-automatic.speed = <span class="hljs-number">35.0</span>
-<span class="hljs-built_in">println</span>(<span class="hljs-string">"AutomaticCar: <span class="hljs-subst">\(automatic.description()</span>)"</span>)
-<span class="hljs-comment">// AutomaticCar: 4 wheels; up to 5 passengers; traveling at 35.0 mph in gear 4</span>
+automatic.currentSpeed = <span class="hljs-number">35.0</span>
+<span class="hljs-built_in">println</span>(<span class="hljs-string">"AutomaticCar: <span class="hljs-subst">\(automatic.description)</span>"</span>)
+<span class="hljs-comment">// AutomaticCar: traveling at 35.0 miles per hour in gear 4</span>
 </code></pre>
 <p><a name="preventing_overrides"></a></p>
 <h2 id="">防止重写</h2>
-<p>你可以通过把方法，属性或下标脚本标记为<em><code>final</code></em>来防止它们被重写，只需要在声明关键字前加上<code>@final</code>特性即可。（例如：<code>@final var</code>, <code>@final func</code>, <code>@final class func</code>, 以及 <code>@final subscript</code>）</p>
+<p>你可以通过把方法，属性或下标脚本标记为<em><code>final</code></em>来防止它们被重写，只需要在声明关键字前加上<code>@final</code>特性即可。（例如：<code>final var</code>, <code>final func</code>, <code>final class func</code>, 以及 <code>final subscript</code>）</p>
 <p>如果你重写了<code>final</code>方法，属性或下标脚本，在编译时会报错。在扩展中，你添加到类里的方法，属性或下标脚本也可以在扩展的定义里标记为 final。</p>
-<p>你可以通过在关键字<code>class</code>前添加<code>@final</code>特性（<code>@final class</code>）来将整个类标记为 final 的，这样的类是不可被继承的，否则会报编译错误。</p>
+<p>你可以通过在关键字<code>class</code>前添加<code>final</code>特性（<code>final class</code>）来将整个类标记为 final 的，这样的类是不可被继承的，否则会报编译错误。</p>
 
                     
                     </section>
@@ -1199,10 +1184,6 @@ automatic.speed = <span class="hljs-number">35.0</span>
 
     
     <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>

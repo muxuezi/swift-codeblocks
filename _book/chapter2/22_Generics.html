@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.22" data-basepath=".." data-revision="1409042158486">
+    <div class="book"  data-level="2.22" data-basepath=".." data-revision="1414729181011">
     
 
 <div class="book-summary">
@@ -748,7 +748,7 @@
                         
                             <b>4.1.</b>
                         
-                         权限控制的黑与白
+                         Access Control 权限控制的黑与白
                     </a>
                 
             
@@ -796,7 +796,7 @@
                         
                             <b>4.4.</b>
                         
-                         与C语言指针的交互
+                         Swift与C语言指针友好合作
                     </a>
                 
             
@@ -820,15 +820,31 @@
         </li>
     
         
-        <li class="chapter " data-level="4.6" data-path="chapter4/06_access_control_&amp;_protected.html">
+        <li class="chapter " data-level="4.6" data-path="chapter4/06_Access_Control_and_Protected.html">
             
                 
-                    <a href="../chapter4/06_access_control_&amp;_protected.html">
+                    <a href="../chapter4/06_Access_Control_and_Protected.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
                         
-                         访问控制和protected
+                         访问控制和Protected
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.7" data-path="chapter4/07_Optional_Case_Study.html">
+            
+                
+                    <a href="../chapter4/07_Optional_Case_Study.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                         可选类型完美解决占位问题
                     </a>
                 
             
@@ -983,7 +999,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_133">
+                    <section class="normal" id="section-gitbook_42">
                     
                         <blockquote>
 <p>翻译：<a href="https://github.com/takalard" target="_blank">takalard</a><br>校对：<a href="https://github.com/lifedim" target="_blank">lifedim</a></p>
@@ -1111,7 +1127,7 @@ swapTwoValues(&amp;someString, &amp;anotherString)
 <p>上面所展现的<code>IntStack</code>类型只能用于<code>Int</code>值，不过，其对于定义一个泛型<code>Stack</code>类（可以处理<em>任何</em>类型值的栈）是非常有用的。</p>
 <p>这里是一个相同代码的泛型版本：</p>
 <pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Stack</span>&lt;<span class="hljs-title">T</span>&gt; </span>{
-    <span class="hljs-keyword">var</span> items = <span class="hljs-type">T</span>[]()
+    <span class="hljs-keyword">var</span> items = [<span class="hljs-type">T</span>]()
     <span class="hljs-keyword">mutating</span> <span class="hljs-func"><span class="hljs-keyword">func</span></span> push(item: <span class="hljs-type">T</span>) {
         items.append(item)
     }
@@ -1158,7 +1174,7 @@ stackOfStrings.push(<span class="hljs-string">"cuatro"</span>)
 <p>上面这个假定函数有两个类型参数。第一个类型参数<code>T</code>，有一个需要<code>T</code>必须是<code>SomeClass</code>子类的类型约束；第二个类型参数<code>U</code>，有一个需要<code>U</code>必须遵循<code>SomeProtocol</code>协议的类型约束。</p>
 <h3 id="">类型约束行为</h3>
 <p>这里有个名为<code>findStringIndex</code>的非泛型函数，该函数功能是去查找包含一给定<code>String</code>值的数组。若查找到匹配的字符串，<code>findStringIndex</code>函数返回该字符串在数组中的索引值（<code>Int</code>），反之则返回<code>nil</code>：</p>
-<pre><code class="lang-swift"><span class="hljs-func"><span class="hljs-keyword">func</span></span> findStringIndex(array: <span class="hljs-type">String</span>[], valueToFind: <span class="hljs-type">String</span>) -&gt; <span class="hljs-type">Int</span>? {
+<pre><code class="lang-swift"><span class="hljs-func"><span class="hljs-keyword">func</span></span> findStringIndex(array: [<span class="hljs-type">String</span>], valueToFind: <span class="hljs-type">String</span>) -&gt; <span class="hljs-type">Int</span>? {
     <span class="hljs-keyword">for</span> (index, value) <span class="hljs-keyword">in</span> <span class="hljs-class"><span class="hljs-keyword">enum</span><span class="hljs-title">erate</span>(<span class="hljs-title">array</span>) </span>{
         <span class="hljs-keyword">if</span> value == valueToFind {
             <span class="hljs-keyword">return</span> index
@@ -1229,7 +1245,7 @@ stackOfStrings.push(<span class="hljs-string">"cuatro"</span>)
 <p>这里是一个早前IntStack类型的非泛型版本，遵循Container协议：</p>
 <pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">IntStack</span>: <span class="hljs-title">Container</span> </span>{
     <span class="hljs-comment">// IntStack的原始实现</span>
-    <span class="hljs-keyword">var</span> items = <span class="hljs-type">Int</span>[]()
+    <span class="hljs-keyword">var</span> items = [<span class="hljs-type">Int</span>]()
     <span class="hljs-keyword">mutating</span> <span class="hljs-func"><span class="hljs-keyword">func</span></span> push(item: <span class="hljs-type">Int</span>) {
         items.append(item)
     }
@@ -1255,7 +1271,7 @@ stackOfStrings.push(<span class="hljs-string">"cuatro"</span>)
 <p>你也可以生成遵循<code>Container</code>协议的泛型<code>Stack</code>类型：</p>
 <pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Stack</span>&lt;<span class="hljs-title">T</span>&gt;: <span class="hljs-title">Container</span> </span>{
     <span class="hljs-comment">// original Stack&lt;T&gt; implementation</span>
-    <span class="hljs-keyword">var</span> items = <span class="hljs-type">T</span>[]()
+    <span class="hljs-keyword">var</span> items = [<span class="hljs-type">T</span>]()
     <span class="hljs-keyword">mutating</span> <span class="hljs-func"><span class="hljs-keyword">func</span></span> push(item: <span class="hljs-type">T</span>) {
         items.append(item)
     }
@@ -1298,7 +1314,7 @@ stackOfStrings.push(<span class="hljs-string">"cuatro"</span>)
         }
 
         <span class="hljs-comment">// 检查两个Container相应位置的元素彼此是否相等</span>
-        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..someContainer.<span class="hljs-built_in">count</span> {
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..&lt;someContainer.<span class="hljs-built_in">count</span> {
             <span class="hljs-keyword">if</span> someContainer[i] != anotherContainer[i] {
                 <span class="hljs-keyword">return</span> <span class="hljs-built_in">false</span>
             }
@@ -1371,10 +1387,6 @@ stackOfStrings.push(<span class="hljs-string">"tres"</span>)
 
     
     <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>

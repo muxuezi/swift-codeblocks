@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="3.6" data-basepath=".." data-revision="1409042158486">
+    <div class="book"  data-level="3.6" data-basepath=".." data-revision="1414729181011">
     
 
 <div class="book-summary">
@@ -748,7 +748,7 @@
                         
                             <b>4.1.</b>
                         
-                         权限控制的黑与白
+                         Access Control 权限控制的黑与白
                     </a>
                 
             
@@ -796,7 +796,7 @@
                         
                             <b>4.4.</b>
                         
-                         与C语言指针的交互
+                         Swift与C语言指针友好合作
                     </a>
                 
             
@@ -820,15 +820,31 @@
         </li>
     
         
-        <li class="chapter " data-level="4.6" data-path="chapter4/06_access_control_&amp;_protected.html">
+        <li class="chapter " data-level="4.6" data-path="chapter4/06_Access_Control_and_Protected.html">
             
                 
-                    <a href="../chapter4/06_access_control_&amp;_protected.html">
+                    <a href="../chapter4/06_Access_Control_and_Protected.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
                         
-                         访问控制和protected
+                         访问控制和Protected
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.7" data-path="chapter4/07_Optional_Case_Study.html">
+            
+                
+                    <a href="../chapter4/07_Optional_Case_Study.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                         可选类型完美解决占位问题
                     </a>
                 
             
@@ -983,7 +999,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_156">
+                    <section class="normal" id="section-gitbook_67">
                     
                         <blockquote>
 <p>翻译：<a href="https://github.com/marsprince" target="_blank">marsprince</a><br>校对：<a href="https://github.com/numbbbbb" target="_blank">numbbbbb</a>, <a href="https://github.com/stanzhai" target="_blank">stanzhai</a></p>
@@ -1008,6 +1024,7 @@
 <li><a href="#extension_declaration">扩展声明</a></li>
 <li><a href="#subscript_declaration">下标脚本声明</a></li>
 <li><a href="#operator_declaration">运算符声明</a></li>
+<li><a href="#declaration_modifiers">声明修饰符</a></li>
 </ul>
 <p>一条声明可以在你的程序里引入新的名字和构造。举例来说，你可以使用声明来引入函数和方法，变量和常量，或者来定义
 新的命名好的枚举，结构，类和协议类型。你也可以使用一条声明来延长一个已经存在的命名好的类型的行为。或者在你的
@@ -1509,6 +1526,41 @@ type-inheritance-clause是一个只包含协议列表的扩展声明。</p>
 <blockquote>
 <p>运算符声明语法<br><em>运算符声明</em> → <a href="..\chapter3\05_Declarations.html#prefix_operator_declaration"><em>前置运算符声明</em></a> | <a href="..\chapter3\05_Declarations.html#postfix_operator_declaration"><em>后置运算符声明</em></a> | <a href="..\chapter3\05_Declarations.html#infix_operator_declaration"><em>中置运算符声明</em></a><br><em>前置运算符声明</em> → <strong>运算符</strong> <strong>prefix</strong> <a href="LexicalStructure.html#operator"><em>运算符</em></a> <strong>{</strong> <strong>}</strong><br><em>后置运算符声明</em> → <strong>运算符</strong> <strong>postfix</strong> <a href="LexicalStructure.html#operator"><em>运算符</em></a> <strong>{</strong> <strong>}</strong><br><em>中置运算符声明</em> → <strong>运算符</strong> <strong>infix</strong> <a href="LexicalStructure.html#operator"><em>运算符</em></a> <strong>{</strong> <a href="..\chapter3\05_Declarations.html#infix_operator_attributes"><em>中置运算符属性</em></a> <em>可选</em> <strong>}</strong><br><em>中置运算符属性</em> → <a href="..\chapter3\05_Declarations.html#precedence_clause"><em>优先级子句</em></a> <em>可选</em> <a href="..\chapter3\05_Declarations.html#associativity_clause"><em>结和性子句</em></a> <em>可选</em><br><em>优先级子句</em> → <strong>precedence</strong> <a href="..\chapter3\05_Declarations.html#precedence_level"><em>优先级水平</em></a><br><em>优先级水平</em> → 数值 0 到 255<br><em>结和性子句</em> → <strong>associativity</strong> <a href="..\chapter3\05_Declarations.html#associativity"><em>结和性</em></a><br><em>结和性</em> → <strong>left</strong> | <strong>right</strong> | <strong>none</strong>  </p>
 </blockquote>
+<p><a name="declaration_modifiers"></a></p>
+<h2 id="">声明修饰符</h2>
+<p>声明修饰符是关键字或者说是上下文相关的关键字，它可以修改一个声明的行为或者含义。你可以在一个声明的特性和引进该声明的关键字之间，指定一个声明修饰符，并写下它的关键字或上下文相关的关键字。</p>
+<p><code>dynamic</code>
+可以将该修饰符用于任何可以出现在Objective-C中的类成员上。当你将<code>dynamic</code>修饰符用于一个成员声明上时，对该成员的访问总是由Objective-C的实时系统动态地安排，而永远不会由编译器内联或去虚拟化。
+因为当一个声明被标识<code>dynamic</code>修饰符时，会由Objective-C的实时系统动态地安排，所以他们是被隐式的标识了<code>objc</code>特性的。</p>
+<p><code>final</code></p>
+<p>该修饰符用于修饰一个类或类中的属性，方法，以及下标成员。如果用它修饰一个类，那么这个类则不能被继承。如果用它修饰类中的属性，方法或下标，则表示在子类中，它们不能被重写。</p>
+<p><code>lazy</code></p>
+<p>该修饰符用于修饰类或结构体中的存储型变量属性，表示该属性的初始值最多只被计算和存储一次，且发生在第一次访问它时。如何使用<code>lazy</code>特性的一个例子，请见：<a href="">惰性存储型属性</a>。</p>
+<p><code>optional</code></p>
+<p>该修饰符用于修饰一个类或类中的属性，方法，以及下标成员,表示遵循类型没有被要求实现这些成员。
+你只能将<code>optional</code>修饰符用于被<code>objc</code>标识的协议。这样一来，只有类类型可以适配或遵循拥有可选成员需求的协议。关于如何使用<code>optional</code>修饰符,以及如何访问可选协议成员的指导(比如，你不确定遵循类型是否已经实现了这些可选成员)，你可以参见<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-XID_415">可选成员需求</a>一章</p>
+<p><code>required</code></p>
+<p>该修饰符用于修饰一个类的特定构造器或便捷构造器,表示该类所有的子类都需要实现该构造器。在子类实现该构造器时，同样必须使用<code>required</code>修饰符修饰该构造器。</p>
+<p><code>weak</code></p>
+<p><code>weak</code>修饰符用于修饰一个变量或一个存储型变量属性，表示该变量或属性通过一个弱引用指向存储其值的对象。该变量或属性的类型必须是一个可选类类型。通过<code>weak</code>修饰符可避免强引用循环。关于<code>weak</code>修饰符的例子和更多信息，你可以参见<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html#//apple_ref/doc/uid/TP40014097-CH20-XID_94">弱引用</a>一章</p>
+<h3 id="">权限控制的级别</h3>
+<p>Swift提供了三个级别的权限控制：<code>public</code>, <code>internal</code>, 和 <code>private</code>。你可以给声明标识以下访问级别修饰符中的一个以指定声明的权限级别。权限控制在<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html#//apple_ref/doc/uid/TP40014097-CH41-XID_29">权限控制</a>一章有详细说明。</p>
+<p><code>public</code></p>
+<p>修饰符用于修饰声明时，表示该声明可被同一个模块中的代码访问。被<code>public</code>权限级别修饰符修饰的声明，还可被其他模块的代码访问，只要该模块注入了该声明所在的模块。</p>
+<p><code>internal</code></p>
+<p>修饰符用于修饰声明时，表示该声明只能被同一模块中的代码访问。默认的，绝大多数声明会被隐式的标识上<code>internal</code>权限级别修饰符</p>
+<p><code>private</code></p>
+<p>修饰符用于修饰声明时，表示该声明只能被同一源文件中的代码访问。</p>
+<p>以上的任意一个权限级别修饰符都可以有选择的带上一个参数，该参数由关键字<code>set</code>和一对括号组成（比如，<code>private(set)</code>）。当你想要指明一个变量或下标脚注的setter的访问级别要低于或等于该变量或下标脚注的实际访问级别时，使用这种格式的权限级别修饰符，就像<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html#//apple_ref/doc/uid/TP40014097-CH41-XID_49">Getters and Setters</a>一章中讨论的一样。</p>
+<blockquote>
+<p>声明修饰符的语法</p>
+<p>声明修饰符 → class­ | convenience­ | dynamic­ | final­ | infix­ | lazy­ | mutating­ | nonmutating­ | optional­ | override­ | postfix |­ prefix­ | required­ | static­ | unowned­ | unowned­(­safe­)­ | unowned­(­unsafe­)­ | weak­</p>
+<p>声明修饰符 → 权限级别修饰符­</p>
+<p>权限级别修饰符 → internal­  internal­(­set­)­</p>
+<p>权限级别修饰符 → private­  private­(­set­)­</p>
+<p>权限级别修饰符 → public­  public­(­set­)­
+­</p>
+</blockquote>
 
                     
                     </section>
@@ -1536,10 +1588,6 @@ type-inheritance-clause是一个只包含协议列表的扩展声明。</p>
 
     
     <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>

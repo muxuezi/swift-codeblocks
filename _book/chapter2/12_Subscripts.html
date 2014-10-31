@@ -33,7 +33,7 @@
 
 
         
-    <div class="book"  data-level="2.12" data-basepath=".." data-revision="1409042158486">
+    <div class="book"  data-level="2.12" data-basepath=".." data-revision="1414729181011">
     
 
 <div class="book-summary">
@@ -748,7 +748,7 @@
                         
                             <b>4.1.</b>
                         
-                         权限控制的黑与白
+                         Access Control 权限控制的黑与白
                     </a>
                 
             
@@ -796,7 +796,7 @@
                         
                             <b>4.4.</b>
                         
-                         与C语言指针的交互
+                         Swift与C语言指针友好合作
                     </a>
                 
             
@@ -820,15 +820,31 @@
         </li>
     
         
-        <li class="chapter " data-level="4.6" data-path="chapter4/06_access_control_&amp;_protected.html">
+        <li class="chapter " data-level="4.6" data-path="chapter4/06_Access_Control_and_Protected.html">
             
                 
-                    <a href="../chapter4/06_access_control_&amp;_protected.html">
+                    <a href="../chapter4/06_Access_Control_and_Protected.html">
                         <i class="fa fa-check"></i>
                         
                             <b>4.6.</b>
                         
-                         访问控制和protected
+                         访问控制和Protected
+                    </a>
+                
+            
+            
+        </li>
+    
+        
+        <li class="chapter " data-level="4.7" data-path="chapter4/07_Optional_Case_Study.html">
+            
+                
+                    <a href="../chapter4/07_Optional_Case_Study.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                         可选类型完美解决占位问题
                     </a>
                 
             
@@ -983,7 +999,7 @@
                 <div class="page-inner">
                 
                 
-                    <section class="normal" id="section-gitbook_113">
+                    <section class="normal" id="section-gitbook_22">
                     
                         <blockquote>
 <p>翻译：<a href="https://github.com/siemenliu" target="_blank">siemenliu</a><br>校对：<a href="https://github.com/zq54zquan" target="_blank">zq54zquan</a></p>
@@ -1055,7 +1071,7 @@ numberOfLegs[<span class="hljs-string">"bird"</span>] = <span class="hljs-number
 <p>一个下标脚本入参是最常见的情况，但只要有合适的场景也可以定义多个下标脚本入参。如下例定义了一个<code>Matrix</code>结构体，将呈现一个<code>Double</code>类型的二维矩阵。<code>Matrix</code>结构体的下标脚本需要两个整型参数：</p>
 <pre><code class="lang-swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Matrix</span> </span>{
     <span class="hljs-keyword">let</span> rows: <span class="hljs-type">Int</span>, columns: <span class="hljs-type">Int</span>
-    <span class="hljs-keyword">var</span> grid: <span class="hljs-type">Double</span>[]
+    <span class="hljs-keyword">var</span> grid: [<span class="hljs-type">Double</span>]
     <span class="hljs-keyword">init</span>(rows: <span class="hljs-type">Int</span>, columns: <span class="hljs-type">Int</span>) {
       <span class="hljs-keyword">self</span>.rows = rows
       <span class="hljs-keyword">self</span>.columns = columns
@@ -1132,10 +1148,6 @@ matrix[<span class="hljs-number">1</span>, <span class="hljs-number">0</span>] =
 
     
     <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
-    
-
-    
-    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
     
 
 <script>
