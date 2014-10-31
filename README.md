@@ -1,5 +1,9 @@
 # Swift Codeblocks Syntax Highlight
 
+2014-10-31 修复语法高亮的bug
+
+**[Gitbook](http://www.gitbook.io) also has bugs when show syntax highlight**
+
 Everthing is Ok now, thanks [Samy Pessé](http://www.samypesse.fr/).
 
 Lastest version at [The Swift Programming Language 中文版](http://numbbbbb.gitbooks.io/-the-swift-programming-language-/).
